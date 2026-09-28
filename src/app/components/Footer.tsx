@@ -7,17 +7,17 @@ import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, Globe, Sparkles } from "l
 export default function Footer() {
   return (
     <footer className="w-full pt-16 pb-12 px-4 sm:px-8 max-w-7xl mx-auto select-none">
-      
+
       {/* Luxury Dark Glass Shell */}
       <div className="relative rounded-[2.5rem] bg-[#030919]/85 backdrop-blur-3xl border border-[#E8DCC8]/20 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)] p-8 sm:p-12 lg:p-16 overflow-hidden">
-        
+
         {/* Soft Background Accent Ambient Glows */}
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-600/15 blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-sky-500/10 blur-[120px] pointer-events-none" />
 
         {/* Top Tier: Brand Statement & Sample Kit Request Strip */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 pb-14 border-b border-[#E8DCC8]/15 items-center">
-          
+
           <div className="lg:col-span-6 space-y-4">
             <Link href="/" className="inline-block">
               <Image
@@ -45,7 +45,7 @@ export default function Footer() {
                 type="button"
                 className="absolute right-1.5 top-1/2 -translate-y-1/2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] hover:from-blue-600 hover:to-cyan-400 text-white text-xs font-bold tracking-wide flex items-center gap-1.5 transition-all duration-200 shadow-[0_0_15px_rgba(0,180,255,0.3)] hover:scale-[1.02]"
               >
-                <span>Sample Kit</span>
+                <span>Become a Distributor</span>
                 <ArrowRight size={13} />
               </button>
             </div>
@@ -54,7 +54,7 @@ export default function Footer() {
 
         {/* Middle Tier: Enterprise Architecture Navigation */}
         <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 py-14 text-sm">
-          
+
           {/* Col 1: Materials */}
           <div className="space-y-4">
             <h4 className="font-bold text-[#E8DCC8] text-xs uppercase tracking-widest flex items-center gap-1.5 font-mono">

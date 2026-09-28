@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+
+/* Hide default native cursor on desktop completely */
+@media (min-width: 768px) {
+  html,
+  body,
+  body *,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
+
+
 :root {
   --bg-darkest: #020612;
   --bg-glow: #0a1628;

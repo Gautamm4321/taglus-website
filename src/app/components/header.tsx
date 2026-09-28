@@ -9,12 +9,12 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   return (
-    <header 
+    <header
       className="fixed top-0 inset-x-0 z-50 w-full bg-[#020612]/80 backdrop-blur-2xl border-b border-[#E8DCC8]/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all"
       onMouseLeave={() => setActiveMenu(null)}
     >
       <nav className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
-        
+
         {/* Left: Taglus Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <Image
@@ -30,9 +30,9 @@ export default function Header() {
 
         {/* Center: Main Nav Items */}
         <ul className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-wide">
-          
+
           {/* 1. Products (Mega-Menu Trigger) */}
-          <li 
+          <li
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("products")}
           >
@@ -43,7 +43,7 @@ export default function Header() {
           </li>
 
           {/* 2. Solutions Dropdown */}
-          <li 
+          <li
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("solutions")}
           >
@@ -80,7 +80,7 @@ export default function Header() {
           </li>
 
           {/* 3. Resources Dropdown */}
-          <li 
+          <li
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("resources")}
           >
@@ -120,7 +120,7 @@ export default function Header() {
           </li>
 
           {/* 4. Company Dropdown */}
-          <li 
+          <li
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("company")}
           >
@@ -167,19 +167,18 @@ export default function Header() {
           </li>
         </ul>
 
-        {/* Right Corner: Request a Sample Kit Button */}
         <Link
-          href="#sample-kit"
+          href="#distributor"
           className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] hover:from-blue-600 hover:to-cyan-400 text-white text-xs sm:text-[13px] font-semibold tracking-wide shadow-md shadow-sky-500/20 hover:scale-[1.02] transition-all duration-200"
         >
-          <span>Request a Sample Kit</span>
+          <span>Become a Distributor</span>
           <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
         </Link>
       </nav>
 
       {/* ================= PRODUCTS MEGA-MENU OVERLAY ================= */}
       {activeMenu === "products" && (
-        <div 
+        <div
           className="max-w-7xl mx-auto mb-4 rounded-2xl bg-[#030919]/98 backdrop-blur-3xl border border-[#E8DCC8]/15 shadow-[0_30px_70px_rgba(0,0,0,0.9)] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
           onMouseEnter={() => setActiveMenu("products")}
         >
@@ -189,7 +188,7 @@ export default function Header() {
               NOTE: client's doc said "six columns" but listed 7 categories — confirm
               with client which they actually want; this version keeps them separate. */}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 p-7 border-b border-white/[0.08]">
-            
+
             {/* Column 1: Aligner Materials */}
             <div className="space-y-4">
               <h4 className="text-[11px] font-bold text-sky-400 uppercase tracking-widest border-b border-white/10 pb-2">
@@ -325,8 +324,8 @@ export default function Header() {
             <span className="text-[#E8DCC8]/80 font-light">
               Not sure which sheet fits your workflow?
             </span>
-            <Link 
-              href="#contact" 
+            <Link
+              href="#contact"
               className="inline-flex items-center gap-1.5 font-semibold text-sky-300 hover:text-white transition-colors"
             >
               <span>Talk to a specialist</span>

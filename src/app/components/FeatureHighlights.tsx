@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Scan, 
-  Layers, 
   Printer, 
   Flame, 
   Scissors, 
@@ -33,60 +31,8 @@ interface WorkflowStep {
 
 const WORKFLOW_STEPS: WorkflowStep[] = [
   {
-    id: "scan",
-    stepNumber: "01",
-    title: "SCAN",
-    category: "Data Acquisition",
-    shortDesc: "Intraoral digital scanning",
-    fullDesc: "Capture high-fidelity 3D digital impressions of the patient dentition using standard open-format intraoral scanners, laying the bedrock for clinical precision.",
-    icon: Scan,
-    bulletPoints: [
-      "Open STL / PLY file architecture",
-      "Sub-micron gingival margin resolution",
-      "Seamless laboratory software transfer"
-    ],
-    products: [
-      { name: "Digital Impression", tag: "Diagnostic", desc: "Patient arch scan data" }
-    ],
-    mediaType: "single",
-    mediaLabel: "Digital Arch Impression",
-    mediaItems: [
-      { 
-        title: "3D Intraoral Scan", 
-        subtitle: "Open Architecture STL/PLY", 
-        imagePath: "/Screenshot_2026-09-15_102027-removebg-preview.png" 
-      }
-    ]
-  },
-  {
-    id: "plan",
-    stepNumber: "02",
-    title: "PLAN",
-    category: "Software & CAD",
-    shortDesc: "Design and stage tooth movements",
-    fullDesc: "Simulate and design sequential tooth movements, staging velocity and anchorage control within orthodontic CAD planning platforms.",
-    icon: Layers,
-    bulletPoints: [
-      "Staged biomechanical force vectors",
-      "Automatic trimline curve generation",
-      "Precision attachment positioning"
-    ],
-    products: [
-      { name: "Trimline Generator", tag: "CAD Software", desc: "Automated margin toolpath generator" }
-    ],
-    mediaType: "single",
-    mediaLabel: "CAD Treatment Staging",
-    mediaItems: [
-      { 
-        title: "Trimline Software Planning", 
-        subtitle: "Automated Path Calculations", 
-        imagePath: "/plan.jpeg" 
-      }
-    ]
-  },
-  {
     id: "print",
-    stepNumber: "03",
+    stepNumber: "01",
     title: "PRINT",
     category: "3D Additive Resins",
     shortDesc: "Create accurate treatment models",
@@ -124,7 +70,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
   },
   {
     id: "form",
-    stepNumber: "04",
+    stepNumber: "02",
     title: "FORM",
     category: "Thermoforming Engineering",
     shortDesc: "Thermoform with Taglus materials",
@@ -156,7 +102,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
   },
   {
     id: "trim",
-    stepNumber: "05",
+    stepNumber: "03",
     title: "TRIM",
     category: "Automated Trimming",
     shortDesc: "Automated Laser & Milling Trimming",
@@ -188,7 +134,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
   },
   {
     id: "finish",
-    stepNumber: "06",
+    stepNumber: "04",
     title: "FINISH",
     category: "Polishing & Essentials",
     shortDesc: "Smooth, polish and prepare the appliance",
@@ -231,7 +177,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
 ];
 
 export default function FeatureHighlights() {
-  const [activeStepIndex, setActiveStepIndex] = useState(2); // Step 3 PRINT
+  const [activeStepIndex, setActiveStepIndex] = useState(0); // Default to Step 01 PRINT
   const currentStep = WORKFLOW_STEPS[activeStepIndex];
 
   return (
@@ -244,16 +190,16 @@ export default function FeatureHighlights() {
           <span>Integrated Production Architecture</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
-          The 6-Step Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-indigo-300">Orthodontic Workflow</span>
+          The 4-Step Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-indigo-300">Orthodontic Workflow</span>
         </h2>
         <p className="mt-4 text-sm sm:text-base text-[#E8DCC8]/70 font-light leading-relaxed">
-          From first intraoral scan to final patient packaging. Taglus supplies every critical layer of material science, 3D resin chemistry, and automated fabrication machinery.
+          From 3D model printing to final patient packaging. Taglus supplies every critical layer of material science, 3D resin chemistry, and automated fabrication machinery.
         </p>
       </div>
 
-      {/* Progress Bar */}
-      <div className="w-full mb-12 overflow-x-auto pb-4 scrollbar-none">
-        <div className="flex items-center justify-between min-w-[720px] bg-[#030919]/80 border border-[#E8DCC8]/15 rounded-2xl p-2 backdrop-blur-xl">
+      {/* Progress Bar (Now 4 Steps) */}
+      <div className="w-full mb-12 flex justify-center">
+        <div className="w-full max-w-3xl flex items-center justify-between bg-[#030919]/90 border border-[#E8DCC8]/20 rounded-2xl p-2 backdrop-blur-2xl shadow-xl">
           {WORKFLOW_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isActive = idx === activeStepIndex;
@@ -263,18 +209,18 @@ export default function FeatureHighlights() {
                 onClick={() => setActiveStepIndex(idx)}
                 className={`flex-1 flex items-center justify-center gap-2.5 py-3 px-3 rounded-xl transition-all duration-300 cursor-pointer text-left ${
                   isActive 
-                    ? "bg-gradient-to-r from-sky-500/20 to-blue-600/30 border border-sky-400/50 shadow-[0_0_20px_rgba(0,180,255,0.25)] text-white" 
-                    : "text-[#E8DCC8]/60 hover:text-[#E8DCC8] hover:bg-white/[0.03]"
+                    ? "bg-gradient-to-r from-sky-500/25 to-blue-600/35 border border-sky-400/60 shadow-[0_0_20px_rgba(0,180,255,0.25)] text-white" 
+                    : "text-[#E8DCC8]/60 hover:text-[#E8DCC8] hover:bg-white/[0.04]"
                 }`}
               >
                 <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                  isActive ? "bg-sky-400 text-slate-950 font-bold" : "bg-white/[0.05] text-[#E8DCC8]/70"
+                  isActive ? "bg-sky-400 text-slate-950 font-bold" : "bg-white/[0.06] text-[#E8DCC8]/70"
                 }`}>
                   <Icon size={14} />
                 </div>
                 <div className="overflow-hidden">
-                  <p className="text-[10px] font-mono leading-none tracking-wider text-sky-400/80">STEP {step.stepNumber}</p>
-                  <p className={`text-xs font-bold uppercase tracking-wide truncate ${isActive ? "text-white" : "text-[#E8DCC8]"}`}>
+                  <p className="text-[10px] font-mono leading-none tracking-wider text-sky-400 font-semibold">STEP {step.stepNumber}</p>
+                  <p className={`text-xs font-bold uppercase tracking-wide truncate mt-0.5 ${isActive ? "text-white" : "text-[#E8DCC8]"}`}>
                     {step.title}
                   </p>
                 </div>
@@ -299,7 +245,7 @@ export default function FeatureHighlights() {
             <div className="lg:col-span-6 flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-medium uppercase tracking-wider mb-4">
-                  <span>Stage {currentStep.stepNumber} of 06</span>
+                  <span>Stage {currentStep.stepNumber} of 04</span>
                   <span>•</span>
                   <span>{currentStep.category}</span>
                 </div>
@@ -416,18 +362,6 @@ export default function FeatureHighlights() {
                     ))}
                   </div>
                 )}
-
-                {/* 4. Single for Scan & Plan */}
-                {currentStep.mediaType === "single" && (
-                  <div className="w-full max-w-sm mx-auto aspect-[16/10] rounded-2xl bg-black/50 border border-[#E8DCC8]/20 relative overflow-hidden flex items-center justify-center p-4">
-                    <Image
-                      src={currentStep.mediaItems[0].imagePath}
-                      alt={currentStep.mediaItems[0].title}
-                      fill
-                      className="object-contain p-4"
-                    />
-                  </div>
-                )}
               </div>
             </div>
           </motion.div>
@@ -465,22 +399,22 @@ export default function FeatureHighlights() {
             </thead>
             <tbody className="divide-y divide-white/[0.05]">
               <tr>
-                <td className="py-3 px-4 font-bold text-white">PRINT</td>
+                <td className="py-3 px-4 font-bold text-white">01. PRINT</td>
                 <td className="py-3 px-4">Taglus Resins (Model resin, Odorless model resin, Water-washable)</td>
                 <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Dimensionally stable 3D dental model</td>
               </tr>
               <tr>
-                <td className="py-3 px-4 font-bold text-white">FORM</td>
+                <td className="py-3 px-4 font-bold text-white">02. FORM</td>
                 <td className="py-3 px-4">Taglus Sheets (Standard, Premium, PU Flex, Ultra, Hard & Soft)</td>
                 <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Thermoformed clear aligner shell</td>
               </tr>
               <tr>
-                <td className="py-3 px-4 font-bold text-white">TRIM</td>
+                <td className="py-3 px-4 font-bold text-white">03. TRIM</td>
                 <td className="py-3 px-4">LAC (Laser Aligner Cutter) & 5X Trimming Machine</td>
                 <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Clean, consistent scalloped gingival margin</td>
               </tr>
               <tr>
-                <td className="py-3 px-4 font-bold text-white">FINISH</td>
+                <td className="py-3 px-4 font-bold text-white">04. FINISH</td>
                 <td className="py-3 px-4">Finishing Solutions & Orthodontic Accessories</td>
                 <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Polished patient-ready clear aligner appliance</td>
               </tr>

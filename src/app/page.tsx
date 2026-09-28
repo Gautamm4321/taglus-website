@@ -84,7 +84,7 @@ export default function Home() {
                 href="#sample-kit"
                 className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] hover:from-blue-600 hover:to-cyan-400 text-white text-sm font-semibold tracking-wide shadow-[0_0_30px_rgba(0,180,255,0.35)] hover:scale-[1.03] transition-all duration-300"
               >
-                <span>Request a Sample Kit</span>
+                <span>Become a Distributor</span>
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
               </Link>
 
