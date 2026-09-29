@@ -123,12 +123,12 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { 
         title: "5X Trimming Machine", 
         subtitle: "Milling cutter follows margin contour", 
-        imagePath: "/machine-5x.png" 
+        imagePath: "/trim-1.png" 
       },
       { 
         title: "LAC Laser Cutter", 
         subtitle: "Contactless CO2 Laser Precision", 
-        imagePath: "/machine-lac.png" 
+        imagePath: "/trim-2.png" 
       }
     ]
   },
@@ -160,7 +160,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { 
         title: "Retainer Box", 
         subtitle: "Smart Storage", 
-        imagePath: "/finish-3.jpeg" 
+        imagePath: "/finish-2.jpeg" 
       },
       { 
         title: "Impression Tray", 
@@ -170,7 +170,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { 
         title: "Removal Tool", 
         subtitle: "Safe Patient Removal", 
-        imagePath: "/finish-2.jpeg" 
+        imagePath: "/finish4img.jpeg" 
       }
     ]
   }
@@ -241,7 +241,7 @@ export default function FeatureHighlights() {
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
           >
-            {/* Left Specs */}
+            {/* Left Specs — UNCHANGED */}
             <div className="lg:col-span-6 flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-medium uppercase tracking-wider mb-4">
@@ -290,7 +290,14 @@ export default function FeatureHighlights() {
               </div>
             </div>
 
-            {/* Right Images Gallery */}
+            {/* ============================================================
+                Right Images Gallery — ONLY THIS PART REDESIGNED
+                Boxes/borders around each photo removed. Images now fill
+                their card edge-to-edge (object-cover) with a soft bottom
+                gradient and the title/subtitle overlaid on the photo
+                itself, like a premium product tile instead of a framed
+                thumbnail with a background box behind it.
+                ============================================================ */}
             <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[380px] bg-gradient-to-b from-white/[0.03] to-transparent rounded-3xl border border-white/[0.08] p-6 overflow-hidden">
               <div className="absolute w-64 h-64 rounded-full bg-sky-500/15 blur-[80px] pointer-events-none" />
 
@@ -301,23 +308,27 @@ export default function FeatureHighlights() {
 
                 {/* 1. 3 Resins Grid */}
                 {currentStep.mediaType === "grid-resins" && (
-                  <div className="grid grid-cols-3 gap-3 sm:gap-4 items-end justify-center">
+                  <div className="grid grid-cols-3 gap-3 sm:gap-4">
                     {currentStep.mediaItems.map((item, idx) => (
-                      <div key={idx} className="flex flex-col items-center group">
-                        <div className="w-full aspect-[3/4] max-w-[130px] rounded-2xl bg-black/50 border border-[#E8DCC8]/20 flex items-center justify-center p-2 group-hover:border-sky-400/50 transition-all shadow-lg relative overflow-hidden">
-                          <Image
-                            src={item.imagePath}
-                            alt={item.title}
-                            fill
-                            className="object-contain p-2 group-hover:scale-105 transition-transform"
-                          />
+                      <div
+                        key={idx}
+                        className="group relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:shadow-sky-500/20 transition-shadow duration-300"
+                      >
+                        <Image
+                          src={item.imagePath}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-3">
+                          <p className="text-xs font-bold text-white leading-tight">
+                            {item.title}
+                          </p>
+                          <p className="text-[10px] text-white/70 font-light leading-tight mt-0.5">
+                            {item.subtitle}
+                          </p>
                         </div>
-                        <p className="text-xs font-semibold text-[#E8DCC8] text-center mt-2 group-hover:text-sky-300 transition-colors">
-                          {item.title}
-                        </p>
-                        <p className="text-[10px] text-[#E8DCC8]/60 text-center font-light">
-                          {item.subtitle}
-                        </p>
                       </div>
                     ))}
                   </div>
@@ -327,17 +338,25 @@ export default function FeatureHighlights() {
                 {currentStep.mediaType === "grid-duo" && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {currentStep.mediaItems.map((item, idx) => (
-                      <div key={idx} className="p-4 rounded-2xl bg-black/50 border border-[#E8DCC8]/20 flex flex-col items-center text-center group hover:border-sky-400/50 transition shadow-lg">
-                        <div className="w-full aspect-[4/3] rounded-xl relative overflow-hidden mb-3 bg-black/30">
-                          <Image
-                            src={item.imagePath}
-                            alt={item.title}
-                            fill
-                            className="object-contain p-2 group-hover:scale-105 transition-transform"
-                          />
+                      <div
+                        key={idx}
+                        className="group relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg hover:shadow-sky-500/20 transition-shadow duration-300"
+                      >
+                        <Image
+                          src={item.imagePath}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <p className="text-sm font-bold text-white leading-tight">
+                            {item.title}
+                          </p>
+                          <p className="text-xs text-white/70 font-light leading-tight mt-0.5">
+                            {item.subtitle}
+                          </p>
                         </div>
-                        <p className="text-xs font-bold text-[#E8DCC8]">{item.title}</p>
-                        <p className="text-[10px] text-[#E8DCC8]/60 font-light mt-0.5">{item.subtitle}</p>
                       </div>
                     ))}
                   </div>
@@ -347,17 +366,21 @@ export default function FeatureHighlights() {
                 {currentStep.mediaType === "grid-quad" && (
                   <div className="grid grid-cols-2 gap-3">
                     {currentStep.mediaItems.map((item, idx) => (
-                      <div key={idx} className="p-3 rounded-xl bg-black/50 border border-[#E8DCC8]/20 flex flex-col items-center text-center group hover:border-sky-400/50 transition shadow-md">
-                        <div className="w-full aspect-[16/10] rounded-lg relative overflow-hidden mb-2 bg-black/30">
-                          <Image
-                            src={item.imagePath}
-                            alt={item.title}
-                            fill
-                            className="object-contain p-2 group-hover:scale-105 transition-transform"
-                          />
+                      <div
+                        key={idx}
+                        className="group relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-md hover:shadow-sky-500/20 transition-shadow duration-300"
+                      >
+                        <Image
+                          src={item.imagePath}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2.5">
+                          <p className="text-[11px] font-bold text-white truncate">{item.title}</p>
+                          <p className="text-[9px] text-white/70 font-light truncate">{item.subtitle}</p>
                         </div>
-                        <p className="text-[11px] font-bold text-[#E8DCC8] truncate w-full">{item.title}</p>
-                        <p className="text-[9px] text-[#E8DCC8]/60 font-light truncate w-full">{item.subtitle}</p>
                       </div>
                     ))}
                   </div>
@@ -368,7 +391,7 @@ export default function FeatureHighlights() {
         </AnimatePresence>
       </div>
 
-      {/* Summary Matrix Table */}
+      {/* Summary Matrix Table — UNCHANGED */}
       <div className="mt-14 glass-box rounded-2xl p-6 sm:p-8 border border-white/[0.08] bg-[#020612]/60">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>

@@ -13,7 +13,6 @@ export default function CustomCursor() {
   }, []);
 
   useEffect(() => {
-    // Initial center alignment
     gsap.set(dotRef.current, { xPercent: -50, yPercent: -50 });
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -21,7 +20,6 @@ export default function CustomCursor() {
     };
 
     const render = () => {
-      // GPU accelerated direct update
       gsap.set(dotRef.current, { x: mousePos.current.x, y: mousePos.current.y });
     };
 
@@ -29,7 +27,7 @@ export default function CustomCursor() {
     gsap.ticker.add(render);
 
     const handleMouseDown = () => {
-      gsap.to(dotRef.current, { scale: 0.85, duration: 0.15, ease: 'power2.out' });
+      gsap.to(dotRef.current, { scale: 0.9, duration: 0.15, ease: 'power2.out' });
     };
     const handleMouseUp = () => {
       gsap.to(dotRef.current, { scale: 1, duration: 0.15, ease: 'power2.out' });
@@ -46,7 +44,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  // Hover detection for buttons, links, cards, tabs, and interactive items
+  // Hover detection matching the reference halo exactly
   useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
@@ -57,20 +55,20 @@ export default function CustomCursor() {
       );
 
       if (isInteractive) {
-        // Expanded luxury glowing sun state (image 2)
+        // Calibrated to reference photo: scale 1.65 with soft tight warm reflection
         gsap.to(dotRef.current, {
-          scale: 2.8,
-          duration: 0.25,
+          scale: 1.65,
+          duration: 0.22,
           ease: 'power2.out',
-          boxShadow: '0 0 24px 8px rgba(232, 220, 200, 0.85), 0 0 45px 14px rgba(232, 220, 200, 0.45)',
+          boxShadow: '0 0 14px 4px rgba(232, 220, 200, 0.45), 0 0 28px 8px rgba(232, 220, 200, 0.2)',
         });
       } else {
-        // Normal refined small dot (image 1)
+        // Normal refined state with subtle glow
         gsap.to(dotRef.current, {
           scale: 1,
-          duration: 0.25,
+          duration: 0.22,
           ease: 'power2.out',
-          boxShadow: '0 0 10px 2px rgba(232, 220, 200, 0.7), 0 0 20px 4px rgba(232, 220, 200, 0.3)',
+          boxShadow: '0 0 8px 2px rgba(232, 220, 200, 0.35)',
         });
       }
     };
@@ -82,7 +80,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={dotRef}
-      className="hidden md:block fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[99999] bg-[#E8DCC8] shadow-[0_0_10px_2px_rgba(232,220,200,0.7),0_0_20px_4px_rgba(232,220,200,0.3)]"
+      className="hidden md:block fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[99999] bg-[#E8DCC8] shadow-[0_0_8px_2px_rgba(232,220,200,0.35)]"
       style={{ willChange: 'transform', transform: 'translateZ(0)' }}
       aria-hidden="true"
     />

@@ -6,6 +6,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Header from "./components/header";
 import FeatureHighlights from "./components/FeatureHighlights";
+import AccessoriesSection from "./components/AccessoriesSection";
 import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
 import SafeProductImage from "./components/SafeProductImage";
@@ -215,6 +216,7 @@ export default function Home() {
 
       {/* Other sections */}
       <FeatureHighlights />
+      <AccessoriesSection />
       <ProductColumns />
       <Footer />
     </div>
