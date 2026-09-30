@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /* Hide default native cursor on desktop completely */
 @media (min-width: 768px) {
   html,
@@ -16,12 +15,54 @@
   }
 }
 
-
 :root {
   --bg-darkest: #020612;
   --bg-glow: #0a1628;
   --bg-glow-subtle: #0c1e33;
   --text-cream: #E8DCC8;
+}
+
+/* ================= GLOBAL FONT ARCHITECTURE ================= */
+/* 1. Default text font har jagah: Plus Jakarta Sans */
+html,
+body,
+p,
+span,
+a,
+button,
+input,
+textarea,
+ul,
+li,
+td,
+th {
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. Headings ka font har jagah: Outfit */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-heading), sans-serif !important;
+}
+
+/* ================= EQUAL WEIGHT GRADIENT FIX ================= */
+/* Headings ke andar jo blue gradient spans hain, unko parent heading ka exact weight aur optical sharpness force karega */
+h1 span,
+h2 span,
+h3 span,
+.font-heading span {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  letter-spacing: inherit !important;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -33,7 +74,6 @@ body {
     radial-gradient(circle at 50% 15%, #0c1e33 0%, #0a1628 35%, #050b1a 65%, #020612 100%);
   background-attachment: fixed;
   color: var(--text-cream);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 

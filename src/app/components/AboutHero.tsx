@@ -1,131 +1,191 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
-interface FeatureCard {
-  title: string;
-  desc: string;
-  iconSrc: string;
-  isFeatured?: boolean;
-}
-
-const CARDS: FeatureCard[] = [
-  {
-    title: "How is Taglus different?",
-    desc: "For several years, Taglus has been a trusted brand for its reliability and cutting edge technologies. We offer a wide variety of products that are user-friendly and highly durable, giving it the stamp of approval on the global market.",
-    iconSrc: "/about-icon1.png",
-    isFeatured: false,
-  },
-  {
-    title: "Why you want to switch Taglus ?",
-    desc: "Taglus products are designed to meet your expectations while maintaining high standards of quality. You can be assured of the best results with efficient, fast workflows that can shorten your production time.",
-    iconSrc: "/about-icon2.png",
-    isFeatured: true,
-  },
-  {
-    title: "The right material for Teens and Adults",
-    desc: "At Taglus, we have spent considerable time engineering optically clear sheets with superior properties can be used to offer customised clear aligner treatments across different age groups.",
-    iconSrc: "/about-icon3.png",
-    isFeatured: false,
-  },
-];
+import { 
+  Sparkles, 
+  ArrowRight, 
+  CheckCircle2, 
+  Layers, 
+  ShieldCheck, 
+  Cpu, 
+  Printer, 
+  Package 
+} from "lucide-react";
 
 export default function AboutHero() {
   return (
-    <section className="w-full relative pb-20 select-none">
+    <section className="relative w-full pt-28 sm:pt-36 pb-24 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto select-none">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[800px] h-[450px] bg-sky-500/10 blur-[150px] pointer-events-none -z-10" />
 
-      {/* ================= FULL BLEED TOP HERO (Behind Header) ================= */}
-      <div className="relative w-full h-[580px] sm:h-[640px] lg:h-[680px] overflow-hidden rounded-none">
-        {/* Background Image: keyhole-bg.webp */}
-        <Image
-          src="/keyhole-bg.webp"
-          alt="Taglus Clinical Environment"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+      {/* ================= TOP SECTION: LEFT-ALIGNED ================= */}
+      <div className="max-w-4xl text-left space-y-5 mb-14">
+        {/* Category Pill */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs font-semibold tracking-widest uppercase backdrop-blur-md">
+          <span>About Taglus</span>
+        </div>
 
-        {/* Soft Vignette Overlay for Crisp Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/30 to-transparent" />
+        {/* 1-Line Headline */}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] whitespace-nowrap">
+          Your Complete Digital Orthodontic Partner
+        </h1>
 
-        <div className="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-8 pt-10 sm:pt-14 flex items-center">
-  <div className="w-full max-w-[480px] p-5 sm:p-6 rounded-none bg-slate-950/50 backdrop-blur-xl border border-white/20 shadow-2xl text-white">
-    <span className="inline-block text-[11px] uppercase tracking-widest text-cyan-300 font-semibold mb-1">
-      About Taglus Global
-    </span>
+        {/* 2-Line Subheading */}
+        <p className="text-base sm:text-lg text-sky-300/90 font-mono font-medium leading-relaxed max-w-2xl">
+          One partner for the full digital aligner and retainer workflow: <br className="hidden sm:inline" />
+          materials, machines, resins and accessories.
+        </p>
 
-    <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-2">
-      Pioneering Tomorrow's Orthodontic Solutions
-    </h1>
+        {/* Body Text */}
+        <div className="space-y-4 pt-1 text-base sm:text-lg text-[#E8DCC8] font-normal leading-relaxed max-w-3xl">
+          <p>
+            Taglus is an ISO 13485:2016 certified manufacturer of digital orthodontic consumables and equipment, trusted by clinics, labs and distributors in 70+ countries. We began by making advanced thermoplastic aligner and retainer sheets. Today our range covers every step of the digital workflow, from printing the model to delivering the finished appliance.
+          </p>
+          <p>
+            Every product is engineered to work together, so our partners get consistent results, a simpler supply chain and one team to call for support.
+          </p>
+        </div>
+      </div>
 
-    <p className="text-slate-200 text-xs sm:text-sm leading-relaxed mb-4 font-light">
-      Engineering world-class thermoplastic aligner sheets and clinical dental materials that empower practitioners across 50+ countries.
-    </p>
+      {/* ================= HORIZONTAL TOP LINE ================= */}
+      <div className="w-full h-px bg-[#E8DCC8]/20" />
 
-            {/* Ocean Gradient Contact Button */}
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] text-white font-semibold text-xs tracking-wider uppercase shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105"
-            >
-              <span>CONTACT US</span>
-              <ArrowRight size={14} />
-            </Link>
+      {/* ================= 2-COLUMN SPLIT WITH FLUSH VERTICAL T-LINE ================= */}
+      <div className="relative pt-10">
+        {/* Vertical center divider line touching the horizontal line above */}
+        <div className="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-[#E8DCC8]/20" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+          {/* Left Column: What We Make */}
+          <div className="space-y-6 lg:pr-8">
+            <div className="flex items-center gap-3">
+              <Layers size={24} className="text-sky-400" />
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                What We Make
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              {/* Item 1 */}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <ShieldCheck size={18} className="text-sky-400 shrink-0" />
+                  <h3 className="text-base font-bold uppercase tracking-wider text-sky-300">
+                    Aligner &amp; Retainer Materials
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                  Our high-performance thermoplastic sheets include Ultra multilayer aligner material and TUFF retainer material. They are engineered for flexibility, strength and clarity.
+                </p>
+              </div>
+
+              {/* Item 2 */}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Cpu size={18} className="text-sky-400 shrink-0" />
+                  <h3 className="text-base font-bold uppercase tracking-wider text-sky-300">
+                    Thermoforming Machines
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                  Duoform delivers fast, precise pressure forming with a sub-one-second heat-up and intuitive touchscreen control.
+                </p>
+              </div>
+
+              {/* Item 3 */}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Printer size={18} className="text-sky-400 shrink-0" />
+                  <h3 className="text-base font-bold uppercase tracking-wider text-sky-300">
+                    3D Printing Resins
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                  High-accuracy model resins for printing dental models ready for thermoforming.
+                </p>
+              </div>
+
+              {/* Item 4 */}
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Package size={18} className="text-sky-400 shrink-0" />
+                  <h3 className="text-base font-bold uppercase tracking-wider text-sky-300">
+                    Orthodontic Accessories
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                  Retainer Boxes, Chewies, Removal Tool, Membrane Boxes and more, to finish and deliver every case professionally.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Why Choose Taglus */}
+          <div className="space-y-6 lg:pl-8">
+            <div className="flex items-center gap-3">
+              <CheckCircle2 size={24} className="text-sky-400" />
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                Why Choose Taglus
+              </h2>
+            </div>
+
+            <div className="space-y-5">
+              {[
+                {
+                  label: "Complete Workflow",
+                  detail: "Print, form, finish and package with one trusted supplier.",
+                },
+                {
+                  label: "Engineered Materials",
+                  detail: "Science-led materials built for consistent clinical performance and patient comfort.",
+                },
+                {
+                  label: "Certified Quality",
+                  detail: "ISO 13485:2016 manufacturing, with CE, UKCA, TGA and ANVISA approvals.",
+                },
+                {
+                  label: "Global Reach",
+                  detail: "Available in 70+ countries through a growing distributor network.",
+                },
+                {
+                  label: "Easy to Use",
+                  detail: "Products designed to save chairside and lab time.",
+                },
+                {
+                  label: "Great Value",
+                  detail: "Premium quality at a price that grows with your practice or lab.",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3.5 text-sm sm:text-base">
+                  <CheckCircle2 size={19} className="text-sky-400 shrink-0 mt-1" />
+                  <p className="text-[#E8DCC8]/85 font-light leading-relaxed">
+                    <strong className="text-sky-300 font-bold">{item.label}:</strong> {item.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 -mt-16 sm:-mt-20 relative z-20">
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {CARDS.map((card) => {
-            const isBlue = card.isFeatured;
+      {/* ================= CENTERED BUTTONS (NO TOP BORDER LINE) ================= */}
+      <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Link
+          href="/#products"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-8 rounded-full border border-[#E8DCC8]/30 hover:border-sky-400 bg-white/[0.03] hover:bg-gradient-to-r hover:from-[#0052cc] hover:to-[#00d4ff] text-[#E8DCC8] hover:text-white font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md"
+        >
+          <span>Explore Our Products</span>
+          <ArrowRight size={14} />
+        </Link>
 
-            return (
-              <div
-                key={card.title}
-                className={`rounded-none p-7 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-xl ${
-                  isBlue
-                    ? "bg-gradient-to-b from-[#1053d4] via-[#0c40a8] to-[#082a74] text-white border border-blue-300/30 shadow-blue-900/20"
-                    : "bg-white/95 backdrop-blur-md text-slate-900 border border-white/80 shadow-[0_15px_35px_-10px_rgba(0,102,204,0.1)]"
-                }`}
-              >
-                <div className="flex flex-col items-center">
-                  {/* Top Icon — centered, no background badge */}
-                  <div className="w-14 h-14 mb-6 flex items-center justify-center mx-auto">
-                    <Image
-                      src={card.iconSrc}
-                      alt={card.title}
-                      width={44}
-                      height={44}
-                      className="object-contain max-h-10 w-auto"
-                    />
-                  </div>
-
-                  {/* Card Title */}
-                  <h3
-                    className={`text-xl font-bold tracking-tight mb-3 ${
-                      isBlue ? "text-white" : "text-slate-950"
-                    }`}
-                  >
-                    {card.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p
-                    className={`text-xs sm:text-sm leading-relaxed font-normal ${
-                      isBlue ? "text-blue-100/90" : "text-slate-600"
-                    }`}
-                  >
-                    {card.desc}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <Link
+          href="/contact"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-8 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] hover:opacity-95 text-white font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-sky-500/20"
+        >
+          <span>Become a Distributor</span>
+          <ArrowRight size={14} />
+        </Link>
       </div>
-
     </section>
   );
 }

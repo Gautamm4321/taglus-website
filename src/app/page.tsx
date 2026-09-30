@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, animate, useInView } from "framer-motion";
+import { useEffect } from "react";
 import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Header from "./components/header";
 import FeatureHighlights from "./components/FeatureHighlights";
@@ -10,6 +11,41 @@ import AccessoriesSection from "./components/AccessoriesSection";
 import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
 import SafeProductImage from "./components/SafeProductImage";
+
+function CounterNumber({
+  value,
+  suffix = "",
+  className = "",
+}: {
+  value: number;
+  suffix?: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (!isInView || !ref.current) return;
+
+    const controls = animate(0, value, {
+      duration: 2.2,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (latest) => {
+        if (ref.current) {
+          ref.current.textContent = `${Math.floor(latest)}${suffix}`;
+        }
+      },
+    });
+
+    return () => controls.stop();
+  }, [isInView, value, suffix]);
+
+  return (
+    <span ref={ref} className={className}>
+      0{suffix}
+    </span>
+  );
+}
 
 export default function Home() {
   // 3D Mouse Movement Physics
@@ -195,19 +231,34 @@ export default function Home() {
         {/* ================= GLOBAL REACH METRICS STRIP ================= */}
         <div className="w-full mt-20 pt-10 border-t border-[#E8DCC8]/15 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl font-black text-sky-400">6</span>
+            <CounterNumber
+              value={6}
+              className="text-3xl sm:text-4xl font-black text-sky-400"
+            />
             <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Continents Reached</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl font-black text-[#E8DCC8]">70+</span>
+            <CounterNumber
+              value={70}
+              suffix="+"
+              className="text-3xl sm:text-4xl font-black text-[#E8DCC8]"
+            />
             <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Global Distributors</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl font-black text-sky-400">500+</span>
+            <CounterNumber
+              value={500}
+              suffix="+"
+              className="text-3xl sm:text-4xl font-black text-sky-400"
+            />
             <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Aligner Labs Served</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="text-3xl sm:text-4xl font-black text-[#E8DCC8]">100%</span>
+            <CounterNumber
+              value={100}
+              suffix="%"
+              className="text-3xl sm:text-4xl font-black text-[#E8DCC8]"
+            />
             <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Medical Grade Quality</span>
           </div>
         </div>

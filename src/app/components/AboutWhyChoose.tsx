@@ -24,26 +24,26 @@ export default function AboutWhyChoose() {
           className="lg:col-span-7 flex flex-col justify-center"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 border border-white/90 text-blue-900 text-xs font-semibold uppercase tracking-wider w-fit mb-5 shadow-sm">
-            <Sparkles size={14} className="text-blue-600" />
-            <span>Why Choose Us</span>
-          </div>
+<div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-5 backdrop-blur-md w-fit">
+  <Sparkles size={15} className="text-sky-400" />
+  <span>Why Choose Us</span>
+</div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#E8DCC8] leading-[1.15] mb-6">
             Engineered For Precision,{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-sky-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
               Trusted Worldwide
             </span>
           </h2>
 
           {/* Body Text */}
-          <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-normal mb-8">
+          <p className="text-[#E8DCC8]/80 text-base sm:text-lg leading-relaxed font-normal mb-8">
             Taglus is one of the recognized digital consumable manufacturer and has established itself as a distinguished brand as the most preferred thermoplastic aligner and retainer sheet manufacturer. Taglus clear aligner materials are engineered specifically for aligners and retainers to provide a best-in-class combination of flexibility, strength and clarity. Our material advantages, ease-of-use and affordability make Taglus the superior choice for clear aligners and retainers worldwide.
           </p>
 
           {/* Value Points */}
-          <div className="space-y-3.5 pt-2 border-t border-slate-900/10">
+          <div className="space-y-3.5 pt-2 border-t border-white/10">
             {HIGHLIGHTS.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -51,9 +51,9 @@ export default function AboutWhyChoose() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.15 }}
-                className="flex items-start gap-3 text-slate-800 text-sm sm:text-base font-medium"
+                className="flex items-start gap-3 text-[#E8DCC8]/90 text-sm sm:text-base font-medium"
               >
-                <CheckCircle2 size={20} className="text-blue-600 shrink-0 mt-0.5" />
+                <CheckCircle2 size={20} className="text-sky-400 shrink-0 mt-0.5" />
                 <span>{item}</span>
               </motion.div>
             ))}

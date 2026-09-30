@@ -1,6 +1,5 @@
 import Header from "../components/header";
 import AboutHero from "../components/AboutHero";
-import AboutWhyChoose from "../components/AboutWhyChoose";
 import Footer from "../components/Footer";
 
 export default function AboutPage() {
@@ -12,7 +11,6 @@ export default function AboutPage() {
       {/* Main Content Area */}
       <main className="flex-1">
         <AboutHero />
-        <AboutWhyChoose />
       </main>
 
       {/* Reusable Footer */}

@@ -1,21 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// 1. Headings ke liye clean bold geometric font
+const fontHeading = Outfit({
+  variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// 2. Body, buttons, badges, aur normal text ke liye
+const fontBody = Plus_Jakarta_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Taglus — The Invisible Architecture of Smiles | Next-Gen Aligner Polymers",
-  description: "Taglus manufactures world-class clear aligner thermoforming sheets, retainer materials, and 3D dental resins. Engineered for precision orthodontics and global aligner laboratories.",
+  description:
+    "Taglus manufactures world-class clear aligner thermoforming sheets, retainer materials, and 3D dental resins. Engineered for precision orthodontics and global aligner laboratories.",
 };
 
 export default function RootLayout({
@@ -26,9 +33,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      className={`${fontHeading.variable} ${fontBody.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#020612] text-[#E8DCC8] font-sans">
+      <body className="min-h-full flex flex-col bg-[#020612] text-[#E8DCC8] overflow-x-hidden">
         <CustomCursor />
         {children}
       </body>

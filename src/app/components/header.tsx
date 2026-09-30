@@ -93,17 +93,19 @@ export default function Header() {
               <div className="absolute top-full left-0 mt-3 w-84 rounded-2xl bg-[#030919]/95 backdrop-blur-2xl border border-[#E8DCC8]/20 p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="space-y-2.5">
                   {[
-                    { title: "Instructions for Use (IFU)", desc: "Forming parameters by machine" },
-                    { title: "Safety Data Sheets (MSDS)", desc: "Download by product" },
-                    { title: "Product Catalogue", desc: "Full portfolio, PDF" },
-                    { title: "Machine Compatibility Guide", desc: "Heating settings for common thermoformers" },
-                    { title: "Case Studies", desc: "Real cases, real workflows" },
-                    { title: "Blog & News", desc: "Material science, made practical" },
-                    { title: "Videos", desc: "How-to and product demos" },
+                    { title: "Instructions for Use (IFU)", desc: "Forming parameters by machine", href: "#resources" },
+                    { title: "Safety Data Sheets (MSDS)", desc: "Download by product", href: "#resources" },
+                    { title: "Product Catalogue", desc: "Full portfolio, PDF", href: "/Taglus-Product-Catalogue.pdf", isPdf: true },
+                    { title: "Machine Compatibility Guide", desc: "Heating settings for common thermoformers", href: "#resources" },
+                    { title: "Case Studies", desc: "Real cases, real workflows", href: "/case-studies" },
+                    { title: "Blog & News", desc: "Material science, made practical", href: "#resources" },
+                    { title: "Videos", desc: "How-to and product demos", href: "#resources" },
                   ].map((item) => (
                     <Link
                       key={item.title}
-                      href="#resources"
+                      href={item.href}
+                      target={item.isPdf ? "_blank" : undefined}
+                      rel={item.isPdf ? "noopener noreferrer" : undefined}
                       className="block p-2 rounded-xl hover:bg-white/[0.06] transition group"
                     >
                       <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-sky-300 transition-colors">
@@ -134,7 +136,7 @@ export default function Header() {
                 <div className="space-y-2.5">
                   {[
                     { title: "About Taglus", desc: "Who we are and how we manufacture", href: "/about" },
-                    { title: "Quality & Certifications", desc: "ISO 13485:2016, CE, UKCA, TGA, ANVISA", href: "#certifications" },
+                    { title: "Quality & Certifications", desc: "ISO 13485:2016, CE, UKCA, TGA, ANVISA", href: "/certifications" },
                     { title: "Events", desc: "Meet us at IDS 2027 and other shows", href: "#events" },
                     { title: "Become a Distributor", desc: "Grow with a 70+ country network", href: "#distributor" },
                   ].map((item) => (
