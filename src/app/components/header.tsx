@@ -198,12 +198,12 @@ export default function Header() {
               </h4>
               <div className="space-y-3">
                 {[
-                  { name: "Taglus Ultra", desc: "Multilayer aligner material" },
-                  { name: "Taglus PU Flex", desc: "Polyurethane for demanding cases" },
-                  { name: "Taglus Premium", desc: "High-clarity PET-G" },
-                  { name: "Taglus Standard", desc: "Value choice for high-volume labs" },
+                  { name: "Taglus Ultra", desc: "Multilayer aligner material", href: "#product" },
+                  { name: "Taglus PU Flex", desc: "Polyurethane for demanding cases", href: "/products/taglus-pu-flex" },
+                  { name: "Taglus Premium", desc: "High-clarity PET-G", href: "/products/taglus-premium" },
+                  { name: "Taglus Standard", desc: "Value choice for high-volume labs", href: "#product" },
                 ].map((item) => (
-                  <Link key={item.name} href="#product" className="block group">
+                  <Link key={item.name} href={item.href} className="block group">
                     <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">{item.name}</p>
                     <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">{item.desc}</p>
                   </Link>
@@ -218,11 +218,11 @@ export default function Header() {
               </h4>
               <div className="space-y-3">
                 {[
-                  { name: "Taglus TUFF", desc: "Break-resistant retainer sheet" },
-                  { name: "Taglus Hard & Soft", desc: "Dual-laminate splints and guards" },
-                  { name: "Taglus Soft", desc: "Flexible sheets for comfort appliances" },
+                  { name: "Taglus TUFF", desc: "Break-resistant retainer sheet", href: "/products/taglus-tuff" },
+                  { name: "Taglus Hard & Soft", desc: "Dual-laminate splints and guards", href: "#product" },
+                  { name: "Taglus Soft", desc: "Flexible sheets for comfort appliances", href: "#product" },
                 ].map((item) => (
-                  <Link key={item.name} href="#product" className="block group">
+                  <Link key={item.name} href={item.href} className="block group">
                     <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">{item.name}</p>
                     <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">{item.desc}</p>
                   </Link>
@@ -236,7 +236,7 @@ export default function Header() {
                 Aesthetic & Interim
               </h4>
               <div className="space-y-3">
-                <Link href="#product" className="block group">
+                <Link href="/products/taglus-smiles" className="block group">
                   <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">Taglus Smiles</p>
                   <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">Direct-to-patient aligner system</p>
                   <span className="inline-block mt-1 text-[9px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/30">
