@@ -5,6 +5,8 @@ import Footer from "../../components/Footer";
 import SheetProductTemplate from "../../components/SheetProductTemplate";
 import { prisma } from "../../lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {
