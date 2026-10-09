@@ -3,13 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "../../components/header";
 import Footer from "../../components/Footer";
 import SheetProductTemplate from "../../components/SheetProductTemplate";
-import { SHEETS_DATA } from "../../data/sheetsData";
-
-export async function generateStaticParams() {
-  return Object.keys(SHEETS_DATA).map((slug) => ({
-    slug,
-  }));
-}
+import { prisma } from "../../lib/prisma";
 
 export async function generateMetadata({
   params,
@@ -17,7 +11,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = SHEETS_DATA[slug];
+
+  const product = await prisma.product.findUnique({
+    where: { slug },
+    select: { name: true, overview: true },
+  });
 
   if (!product) {
     return {
@@ -37,16 +35,34 @@ export default async function ProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = SHEETS_DATA[slug];
 
+  // 1. Fetch live product from MySQL database
+  const product = await prisma.product.findUnique({
+    where: { slug },
+  });
+
+  // 2. Return 404 if product does not exist
   if (!product) {
     notFound();
   }
 
+  // 3. Format JSON columns to match component prop expectations
+  const formattedProduct = {
+    ...product,
+    features: (product.features as Array<{ title: string; description: string }>) || [],
+    propertiesList: (product.propertiesList as Array<{ label: string; value: string }>) || [],
+    sizes: (product.sizes as {
+      roundDimensions: string[];
+      squareDimensions: string[];
+      thicknesses: string[];
+    }) || null,
+    faqs: (product.faqs as Array<{ question: string; answer: string }>) || [],
+  };
+
   return (
     <main className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] relative overflow-x-hidden">
       <Header />
-      <SheetProductTemplate product={product} />
+      <SheetProductTemplate product={formattedProduct} />
       <Footer />
     </main>
   );
