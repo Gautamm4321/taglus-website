@@ -138,7 +138,7 @@ export default function ProductForm({ initialData }: ProductFormProps) {
           value={imagePath}
           onChange={(e) => setImagePath(e.target.value)}
           className="w-full bg-[#101b38] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#D4AF37]"
-          placeholder="/products/premium-box.png"
+          placeholder="/premium-img-box.png"
         />
       </div>
 

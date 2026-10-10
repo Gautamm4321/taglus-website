@@ -54,17 +54,17 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { 
         title: "Model Resin", 
         subtitle: "High Precision Models", 
-        imagePath: "/print-1-img.jpeg" 
+        imagePath: "/Taglus Model Resin Bottle with Golden Splash-Photoroom.png" 
       },
       { 
         title: "Water-Washable", 
         subtitle: "Simplified Cleaning", 
-        imagePath: "/print-2-img.jpeg" 
+        imagePath: "/Taglus Water Washable Resin Bottle Splash-Photoroom.png" 
       },
       { 
         title: "Low-Odor Resin", 
         subtitle: "Lab Comfort", 
-        imagePath: "/print-3-img.jpeg" 
+        imagePath: "/Taglus Model Resin Splash Bottle.png" 
       }
     ]
   },

@@ -26,7 +26,7 @@ const PRODUCTS: ProductItem[] = [
     category: "sheets",
     badge: "Flagship Aligner",
     tagline: "Multilayer engineering engineered for continuous orthodontic tooth moving force.",
-    imagePath: "/taglus premium.jpeg",
+    imagePath: "/taglus_premium-removebg-preview.png",
     specs: [
       { label: "Material Class", value: "PET-G / PU Hybrid" },
       { label: "Clarity Index", value: "92% Transmission" },
@@ -40,7 +40,7 @@ const PRODUCTS: ProductItem[] = [
     category: "sheets",
     badge: "Maximum Clarity",
     tagline: "Ultra-clear single-layer thermoplastic sheets with exceptional crack resistance.",
-    imagePath: "/taglus-ultra.jpeg",
+    imagePath: "/taglus-ultra-removebg-preview.png",
     specs: [
       { label: "Material Class", value: "High-Purity Copolymer" },
       { label: "Transparency", value: "Ultra Crystal Clear" },
@@ -54,7 +54,7 @@ const PRODUCTS: ProductItem[] = [
     category: "sheets",
     badge: "Severe Cases",
     tagline: "High-flex elastomeric polyurethane for extreme rotations and complex anchorage cases.",
-    imagePath: "/taglus-pulfex.jpeg",
+    imagePath: "/taglus-pulfex-removebg-preview.png",
     specs: [
       { label: "Material Class", value: "Thermoplastic Polyurethane" },
       { label: "Elastic Range", value: "Ultra-Wide Vector Recovery" },
@@ -68,7 +68,7 @@ const PRODUCTS: ProductItem[] = [
     category: "retainers",
     badge: "Long-Term Retention",
     tagline: "Rigid retention thermoforming material engineered to withstand nocturnal bruxism and wear.",
-    imagePath: "/taglus-puff.jpeg",
+    imagePath: "/taglus-puff-removebg-preview.png",
     specs: [
       { label: "Material Class", value: "Modified Polycarbonate" },
       { label: "Durability", value: "Extreme Wear Resistance" },
@@ -82,7 +82,7 @@ const PRODUCTS: ProductItem[] = [
     category: "resins",
     badge: "Additive Chemistry",
     tagline: "High heat-deflection resin for thermoforming models with sub-micron detail.",
-    imagePath: "/print-1-img.jpeg",
+    imagePath: "/taglus-model-risen-btl.png",
     specs: [
       { label: "Wavelength", value: "385nm & 405nm" },
       { label: "Heat Deflection (HDT)", value: "> 85°C Stable" },
@@ -96,7 +96,7 @@ const PRODUCTS: ProductItem[] = [
     category: "resins",
     badge: "Eco Lab Workflow",
     tagline: "Simplified cleaning protocol rinsed directly with water, eliminating toxic solvent baths.",
-    imagePath: "/products/taglus-water-washable-resin.jpg",
+    imagePath: "/taglus-washable-bottle.png",
     specs: [
       { label: "Solvent Needed", value: "100% Water Washable" },
       { label: "Viscosity", value: "Low Pour Resistance" },
@@ -110,7 +110,7 @@ const PRODUCTS: ProductItem[] = [
     category: "machines",
     badge: "Hardware Precision",
     tagline: "Automated sub-second rapid heat-up pressure thermoforming unit with digital sensor controls.",
-    imagePath: "/trim-1.png",
+    imagePath: "/taglusduoform-2.png",
     specs: [
       { label: "Heating Cycle", value: "Sub-Second Quartz Lamp" },
       { label: "Pressure Range", value: "Up to 6.0 Bar Positive" },
@@ -124,7 +124,7 @@ const PRODUCTS: ProductItem[] = [
     category: "machines",
     badge: "Robotic Automation",
     tagline: "Contactless automated CO2 laser trimming and multi-axis milling for high-throughput labs.",
-    imagePath: "/trim-2.png",
+    imagePath: "/lac-removebg-preview.png",
     specs: [
       { label: "Trimming Speed", value: "< 25 Sec / Aligner" },
       { label: "Edge Consistency", value: "Gingival Scallop Laser" },
