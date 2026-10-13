@@ -291,7 +291,7 @@ export default function Header() {
                 3D Printing
               </h4>
               <div className="space-y-3">
-                <Link href="#product" className="block group">
+                <Link href="/products/taglus-model-resin" className="block group">
                   <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">Model Resin</p>
                   <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">Accurate dental models for thermoforming</p>
                 </Link>

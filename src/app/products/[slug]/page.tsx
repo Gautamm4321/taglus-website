@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "../../components/header";
 import Footer from "../../components/Footer";
 import SheetProductTemplate from "../../components/SheetProductTemplate";
+import ResinProductTemplate from "../../components/ResinProductTemplate";
 import { prisma } from "../../lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -61,10 +62,19 @@ export default async function ProductPage({
     faqs: (product.faqs as Array<{ question: string; answer: string }>) || [],
   };
 
+  // 4. Routing condition: Resin products vs Sheet products
+  const isResinProduct =
+    formattedProduct.slug.includes("resin") ||
+    formattedProduct.category?.toLowerCase().includes("resin");
+
   return (
     <main className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] relative overflow-x-hidden">
       <Header />
-      <SheetProductTemplate product={formattedProduct} />
+      {isResinProduct ? (
+        <ResinProductTemplate product={formattedProduct} />
+      ) : (
+        <SheetProductTemplate product={formattedProduct} />
+      )}
       <Footer />
     </main>
   );

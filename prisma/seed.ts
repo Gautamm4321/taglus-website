@@ -157,6 +157,68 @@ const products = [
       },
     ],
   },
+  {
+    slug: "taglus-model-resin",
+    name: "TAGLUS 3D PRINT MODEL RESIN",
+    tagline: "High-precision DLP/LCD 3D printing resin with smooth matte finish for dental models",
+    category: "3D PRINTING DENTAL RESIN",
+    overview:
+      "Taglus Model Resin is engineered for high-precision, high-accuracy digital dental model making. Featuring high form and break stability, it offers superior resistance to abrasion, moisture, and light, making it the ideal choice for aligner, orthodontic, and crown & bridge models.",
+    imagePath: "/taglus-model-risen-btl.png",
+    propertiesIntro:
+      "Formulated for open DLP, LCD, and SLA printers operating between 385nm and 405nm. Delivers crisp margins, non-brittle toughness, and optimal thermal resistance during thermoforming.",
+    testingNote:
+      "Benchmarked and tested for rigorous orthodontic workflows and high-speed thermoforming protocols.",
+    features: [
+      {
+        title: "LIQUID & LOW VISCOSITY",
+        description: "Easy to clean with low viscosity, enabling faster tank resets and smooth resin flow.",
+      },
+      {
+        title: "ODOURLESS & SAFE",
+        description: "No irritating fumes or volatile monomers. Safe and comfortable laboratory working environment.",
+      },
+      {
+        title: "MINIMAL SHRINKAGE",
+        description: "Exceptional dimensional accuracy with minimal shrinkage post-curing for exact orthodontic fits.",
+      },
+      {
+        title: "HARD BUT TOUGH",
+        description: "Not brittle. Easily withstands high thermoforming pressures, high impact forces, and drills.",
+      },
+      {
+        title: "HEAT & MOISTURE RESISTANT",
+        description: "Maintains high structural integrity and zero deformation under aligner pressure thermoforming.",
+      },
+      {
+        title: "COST EFFECTIVE",
+        description: "Affordable digital dental production solution designed for commercial labs and clinical workflows.",
+      },
+    ],
+    propertiesList: [
+      { label: "Hardness", value: "105 on R Scale" },
+      { label: "Flexural Modulus of Elasticity", value: "10,433 KGF/CM²" },
+      { label: "Tensile Strength", value: "205 KGF/CM²" },
+      { label: "Viscosity", value: "300 mPa.s" },
+      { label: "Technology", value: "DLP / LCD / SLA (385nm - 405nm)" },
+      { label: "Volume / Net Weight", value: "1000g (1 Kg)" },
+    ],
+    sizes: {
+      roundDimensions: ["1000g Bottle"],
+      squareDimensions: ["1 Kg Pack"],
+      thicknesses: ["Standard Viscosity"],
+    },
+    faqs: [
+      {
+        question: "Which 3D printers are compatible with Taglus Model Resin?",
+        answer: "Taglus Model Resin works seamlessly with standard open-material DLP, LCD, and SLA 3D printers operating at 385nm to 405nm wavelengths.",
+      },
+      {
+        question: "Can Taglus printed models withstand aligner thermoforming?",
+        answer: "Yes, it is specially formulated with high heat and pressure resistance so models won't warp or deform during vacuum and pressure forming.",
+      },
+    ],
+  },
 ];
 
 async function main() {
@@ -170,7 +232,7 @@ async function main() {
     });
   }
 
-  console.log("Done! All 3 products updated with full features, FAQs, and image paths.");
+  console.log("Done! All 4 products updated with full features, FAQs, and image paths.");
 }
 
 main()
