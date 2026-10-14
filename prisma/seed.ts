@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const products = [
+const products: Prisma.ProductCreateInput[] = [
   {
     slug: "taglus-premium",
     name: "TAGLUS PREMIUM",
@@ -219,6 +219,83 @@ const products = [
       },
     ],
   },
+  {
+    slug: "taglus-autoform-roll",
+    name: "TAGLUS AUTOMATED THERMOFORMING MACHINE ROLL",
+    tagline: "Increase production capacity while reducing material cost up to 73%",
+    category: "THERMOFORMING EQUIPMENT & ROLLS",
+    overview:
+      "Taglus aligner and retainer rolls are engineered specifically for automated high-speed thermoforming machines. Validated by industry-leading equipment including HAMER and ALVY Systems, they deliver consistent optical clarity, zero-stress thermoforming, and precision clinical adaptation across large-scale aligner production lines.",
+    imagePath: "/trim-1.png",
+    propertiesIntro:
+      "Engineered to withstand rigorous automated feed cycles and high-pressure forming without thinning or thermal stress fractures.",
+    testingNote:
+      "Validated and certified by HAMER and ALVY Systems for automated thermoforming operations.",
+    features: [
+      {
+        title: "INTERNATIONALLY CERTIFIED MATERIAL",
+        description:
+          "Manufactured under ISO 13485:2016 standards with global biocompatibility approvals for aligner manufacturing.",
+      },
+      {
+        title: "AVAILABLE IN PU & PETG",
+        description:
+          "Offered across our entire material science portfolio including Taglus PU Flex, Premium, Standard, and TUFF formulations.",
+      },
+      {
+        title: "HIGH-PRESSURE OPTIMIZATION",
+        description:
+          "Engineered specifically to produce uniform wall thickness and crisp margins under positive pressure forming systems.",
+      },
+      {
+        title: "UP TO 73% COST REDUCTION",
+        description:
+          "Continuous roll-fed automation eliminates individual sheet handling, maximizing operational yield and drastically cutting per-aligner material waste.",
+      },
+    ],
+    propertiesList: [
+      { label: "Validated Systems", value: "HAMER & ALVY Systems" },
+      { label: "Thickness Options", value: "0.76 mm, 0.80 mm, 1.02 mm" },
+      { label: "Material Variants", value: "PU Flex, Premium, Standard, TUFF" },
+      { label: "Feed System", value: "Automated Continuous Web-Roll" },
+    ],
+    sizes: {
+      roundDimensions: ["Continuous Web Roll"],
+      squareDimensions: ["Custom Roll Diameters"],
+      thicknesses: ["0.76 mm", "0.80 mm", "1.02 mm"],
+    },
+    faqs: [
+      {
+        question: "Which automated thermoforming machines are compatible with Taglus rolls?",
+        answer:
+          "Taglus Automated Thermoforming Rolls are officially validated and optimized for HAMER, ALVY Systems, and other high-volume automated pressure forming equipment.",
+      },
+      {
+        question: "What material formulations are available in roll format?",
+        answer:
+          "Rolls are available in Taglus PU Flex (0.76 mm & 1.02 mm), Taglus Premium (0.76 mm & 1.02 mm), Taglus Standard (0.76 mm & 1.02 mm), and Taglus TUFF (0.80 mm).",
+      },
+    ],
+  },
+  {
+    slug: "taglus-orthodontic-accessories",
+    name: "TAGLUS ORTHODONTIC ACCESSORIES & CONSUMABLES",
+    tagline: "Essential chairside tools, branded packaging, and dental lab accessories",
+    category: "ORTHODONTIC ACCESSORIES",
+    overview:
+      "A complete suite of orthodontic delivery essentials and chairside accessories: Retainer Boxes, Aligner Chewies, Removal Tools, Pillow Boxes, and Articulators.",
+    imagePath: "/acesories-1.jpeg",
+    propertiesIntro: "Medical-grade polymers and precision engineering for orthodontic clinics.",
+    testingNote: "Biocompatible and clinically evaluated.",
+    features: [],
+    propertiesList: [],
+    sizes: {
+      roundDimensions: [],
+      squareDimensions: [],
+      thicknesses: [],
+    },
+    faqs: [],
+  },
 ];
 
 async function main() {
@@ -227,12 +304,12 @@ async function main() {
   for (const item of products) {
     await prisma.product.upsert({
       where: { slug: item.slug },
-      update: item,
-      create: item,
+      update: item as Prisma.ProductUpdateInput,
+      create: item as Prisma.ProductCreateInput,
     });
   }
 
-  console.log("Done! All 4 products updated with full features, FAQs, and image paths.");
+  console.log("Done! All 6 products updated with full features, FAQs, and image paths.");
 }
 
 main()

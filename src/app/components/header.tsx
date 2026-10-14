@@ -253,11 +253,11 @@ export default function Header() {
               </h4>
               <div className="space-y-3">
                 {[
-                  { name: "Taglus Duoform", desc: "Pressure former, sub-second heat-up" },
-                  { name: "Taglus Autoform", desc: "Automated sheet forming" },
-                  { name: "Taglus Autoform Roll", desc: "Roll-fed forming for production volume" },
+                  { name: "Taglus Duoform", desc: "Pressure former, sub-second heat-up", href: "#product" },
+                  { name: "Taglus Autoform", desc: "Automated sheet forming", href: "#product" },
+                  { name: "Taglus Autoform Roll", desc: "Roll-fed forming for production volume", href: "/products/taglus-autoform-roll" },
                 ].map((item) => (
-                  <Link key={item.name} href="#product" className="block group">
+                  <Link key={item.name} href={item.href} className="block group">
                     <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">{item.name}</p>
                     <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">{item.desc}</p>
                   </Link>
@@ -305,13 +305,13 @@ export default function Header() {
               </h4>
               <div className="space-y-3">
                 {[
-                  { name: "Impression Tray", desc: "Trays for dental impressions" },
-                  { name: "Retainer Box", desc: "Protective retainer case" },
-                  { name: "Membrane Box", desc: "Smart aligner packaging" },
-                  { name: "Orthodontic Accessories", desc: "Chairside and lab essentials" },
-                  { name: "Titanium Blanks", desc: "Titanium blanks for milling" },
+                  { name: "Retainer Box", desc: "Protective retainer case", href: "/products/taglus-orthodontic-accessories#retainer-box" },
+                  { name: "Orthodontic Accessories", desc: "Chewies & removal tools", href: "/products/taglus-orthodontic-accessories#chewies" },
+                  { name: "Membrane / Pillow Box", desc: "Smart aligner packaging", href: "/products/taglus-orthodontic-accessories#pillow-box" },
+                  { name: "Articulator", desc: "Dental model articulator", href: "/products/taglus-orthodontic-accessories#articulator" },
+                  { name: "Impression Tray", desc: "Trays for dental impressions", href: "/products/taglus-orthodontic-accessories#impression-tray" },
                 ].map((item) => (
-                  <Link key={item.name} href="#product" className="block group">
+                  <Link key={item.name} href={item.href} className="block group">
                     <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">{item.name}</p>
                     <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">{item.desc}</p>
                   </Link>

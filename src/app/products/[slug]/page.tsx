@@ -4,6 +4,8 @@ import Header from "../../components/header";
 import Footer from "../../components/Footer";
 import SheetProductTemplate from "../../components/SheetProductTemplate";
 import ResinProductTemplate from "../../components/ResinProductTemplate";
+import RollProductTemplate from "../../components/RollProductTemplate";
+import AccessoriesShowcaseTemplate from "../../components/AccessoriesShowcaseTemplate";
 import { prisma } from "../../lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -62,16 +64,26 @@ export default async function ProductPage({
     faqs: (product.faqs as Array<{ question: string; answer: string }>) || [],
   };
 
-  // 4. Routing condition: Resin products vs Sheet products
+  // 4. Routing condition: Resin vs Roll vs Accessories vs Sheet products
   const isResinProduct =
     formattedProduct.slug.includes("resin") ||
     formattedProduct.category?.toLowerCase().includes("resin");
+
+  const isRollProduct =
+    formattedProduct.slug.includes("roll");
+
+  const isAccessories =
+    formattedProduct.slug.includes("accessories");
 
   return (
     <main className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] relative overflow-x-hidden">
       <Header />
       {isResinProduct ? (
         <ResinProductTemplate product={formattedProduct} />
+      ) : isRollProduct ? (
+        <RollProductTemplate product={formattedProduct} />
+      ) : isAccessories ? (
+        <AccessoriesShowcaseTemplate />
       ) : (
         <SheetProductTemplate product={formattedProduct} />
       )}
