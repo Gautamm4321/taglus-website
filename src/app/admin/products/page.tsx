@@ -1,90 +1,101 @@
 import Link from "next/link";
 import { prisma } from "../../lib/prisma";
-import { deleteProduct } from "../../actions/productActions";
+import { requireAdminPage } from "../../lib/auth";
+import { deleteProduct, duplicateProduct } from "../../actions/productActions";
+import { TEMPLATE_LABELS } from "../../lib/validation";
+import { DeleteButton, DuplicateButton } from "../components/RowActions";
+import { buttonPrimary, PageHeader, StatusBadge } from "../components/ui";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminDashboard() {
+export default async function ProductsAdminPage() {
+  await requireAdminPage();
+
   const products = await prisma.product.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      category: true,
+      template: true,
+      imagePath: true,
+      published: true,
+      updatedAt: true,
+    },
   });
 
   return (
-    <div className="min-h-screen bg-[#050B17] text-white p-8 sm:p-12">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-[#E8DCC8]">Taglus CMS Dashboard</h1>
-            <p className="text-sm text-gray-400 mt-1">Manage database records directly for live display.</p>
-          </div>
-          <Link
-            href="/admin/products/new"
-            className="px-5 py-2.5 bg-[#D4AF37] hover:bg-[#c29f2f] text-black font-semibold rounded-lg transition-colors text-sm shadow-md"
-          >
+    <div className="space-y-8">
+      <PageHeader
+        title="Products"
+        description="Add, edit or hide products. Changes appear on the website immediately."
+        action={
+          <Link href="/admin/products/new" className={buttonPrimary}>
             + Add New Product
           </Link>
-        </div>
+        }
+      />
 
-        {/* Product Table */}
-        <div className="bg-[#0b1329] border border-white/10 rounded-xl overflow-hidden shadow-xl">
-          <div className="px-6 py-4 border-b border-white/10 flex justify-between items-center">
-            <h2 className="text-lg font-semibold text-white">Products ({products.length})</h2>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm text-gray-300">
-              <thead className="bg-[#101b38] text-xs uppercase tracking-wider text-gray-400 border-b border-white/10">
-                <tr>
-                  <th className="px-6 py-3">ID</th>
-                  <th className="px-6 py-3">Name</th>
-                  <th className="px-6 py-3">Slug</th>
-                  <th className="px-6 py-3">Category</th>
-                  <th className="px-6 py-3 text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {products.map((p) => (
-                  <tr key={p.id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="px-6 py-4 font-mono text-gray-400">{p.id}</td>
-                    <td className="px-6 py-4 font-medium text-white">{p.name}</td>
-                    <td className="px-6 py-4 font-mono text-gray-400">/products/{p.slug}</td>
-                    <td className="px-6 py-4">{p.category}</td>
-                    <td className="px-6 py-4 text-right space-x-3">
-                      <Link
-                        href={`/products/${p.slug}`}
-                        target="_blank"
-                        className="text-xs text-blue-400 hover:underline"
-                      >
-                        View Live
+      <div className="bg-[#0b1329] border border-white/10 rounded-xl overflow-hidden shadow-xl">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm text-gray-300">
+            <thead className="bg-[#101b38] text-xs uppercase tracking-wider text-gray-400 border-b border-white/10">
+              <tr>
+                <th className="px-5 py-3">Product</th>
+                <th className="px-5 py-3">Layout</th>
+                <th className="px-5 py-3">Category</th>
+                <th className="px-5 py-3">Status</th>
+                <th className="px-5 py-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {products.map((p) => (
+                <tr key={p.id} className="hover:bg-white/[0.02] transition-colors">
+                  <td className="px-5 py-3">
+                    <div className="flex items-center gap-3">
+                      <div className="h-10 w-10 shrink-0 rounded-md bg-[#101b38] overflow-hidden">
+                        {p.imagePath && (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={p.imagePath} alt="" className="h-full w-full object-contain" />
+                        )}
+                      </div>
+                      <div>
+                        <Link href={`/admin/products/${p.id}/edit`} className="font-medium text-white hover:text-[#D4AF37]">
+                          {p.name}
+                        </Link>
+                        <div className="font-mono text-xs text-gray-500">/products/{p.slug}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-5 py-3 text-xs">{TEMPLATE_LABELS[p.template]}</td>
+                  <td className="px-5 py-3 text-xs">{p.category}</td>
+                  <td className="px-5 py-3">
+                    <StatusBadge published={p.published} />
+                  </td>
+                  <td className="px-5 py-3 text-right whitespace-nowrap space-x-3">
+                    <Link href={`/admin/products/${p.id}/edit`} className="text-xs text-[#D4AF37] hover:underline">
+                      Edit
+                    </Link>
+                    {p.published && (
+                      <Link href={`/products/${p.slug}`} target="_blank" className="text-xs text-blue-400 hover:underline">
+                        View
                       </Link>
-                      <form
-                        action={async () => {
-                          "use server";
-                          await deleteProduct(p.id);
-                        }}
-                        className="inline-block"
-                      >
-                        <button
-                          type="submit"
-                          className="text-xs text-red-400 hover:underline"
-                        >
-                          Delete
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                ))}
-                {products.length === 0 && (
-                  <tr>
-                    <td colSpan={5} className="text-center py-8 text-gray-500">
-                      No products found. Click "+ Add New Product" to create one.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+                    )}
+                    <DuplicateButton id={p.id} action={duplicateProduct} editBasePath="/admin/products" />
+                    <DeleteButton id={p.id} itemName={p.name} action={deleteProduct} />
+                  </td>
+                </tr>
+              ))}
+              {products.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="text-center py-10 text-gray-500">
+                    No products yet. Click “+ Add New Product” to create one.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

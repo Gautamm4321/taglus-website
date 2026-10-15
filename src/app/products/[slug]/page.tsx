@@ -7,95 +7,62 @@ import ResinProductTemplate from "../../components/ResinProductTemplate";
 import RollProductTemplate from "../../components/RollProductTemplate";
 import AccessoriesShowcaseTemplate from "../../components/AccessoriesShowcaseTemplate";
 import MachineProductTemplate from "../../components/MachineProductTemplate";
-import { prisma } from "../../lib/prisma";
+import { getProductBySlug, getPublishedSlugs, type ProductView } from "../../lib/products";
 
-export const dynamic = "force-dynamic";
+// Pages are cached (fast) and refreshed instantly whenever the CMS saves (revalidatePath).
+// The hourly revalidate is just a safety net.
+export const revalidate = 3600;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-
-  const product = await prisma.product.findUnique({
-    where: { slug },
-    select: { name: true, overview: true },
-  });
-
-  if (!product) {
-    return {
-      title: "Product Not Found | Taglus",
-    };
+export async function generateStaticParams() {
+  try {
+    return (await getPublishedSlugs()).map((slug) => ({ slug }));
+  } catch {
+    return []; // DB unreachable at build time → pages are rendered on first visit instead
   }
+}
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+  if (!product) return { title: "Product Not Found | Taglus" };
+
+  const title = product.metaTitle || `${product.name} | Taglus`;
+  const description = product.metaDescription || product.overview.slice(0, 160);
   return {
-    title: `${product.name} — Superior Aligner & Retainer Polymers | Taglus`,
-    description: product.overview,
+    title,
+    description,
+    openGraph: { title, description, images: product.imagePath ? [product.imagePath] : [] },
   };
 }
 
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-
-  // 1. Fetch live product from MySQL database
-  const product = await prisma.product.findUnique({
-    where: { slug },
-  });
-
-  // 2. Return 404 if product does not exist
-  if (!product) {
-    notFound();
+function ProductTemplate({ product }: { product: ProductView }) {
+  switch (product.template) {
+    case "RESIN":
+      return <ResinProductTemplate product={product} />;
+    case "ROLL":
+      return <RollProductTemplate product={product} />;
+    case "MACHINE":
+      return <MachineProductTemplate product={product} />;
+    case "ACCESSORIES":
+      // TODO: make AccessoriesShowcaseTemplate accept `product` and render its
+      // fields — right now it is hardcoded, so CMS edits don't show up there.
+      return <AccessoriesShowcaseTemplate />;
+    case "SHEET":
+    default:
+      // SheetProductTemplate expects `sizes` to be undefined (not null) when missing
+      return <SheetProductTemplate product={{ ...product, sizes: product.sizes ?? undefined }} />;
   }
+}
 
-  // 3. Format JSON columns to match component prop expectations
-  const formattedProduct = {
-    ...product,
-    features: (product.features as Array<{ title: string; description: string }>) || [],
-    propertiesList: (product.propertiesList as Array<{ label: string; value: string }>) || [],
-    sizes: (product.sizes as {
-      roundDimensions: string[];
-      squareDimensions: string[];
-      thicknesses: string[];
-    }) || null,
-    faqs: (product.faqs as Array<{ question: string; answer: string }>) || [],
-  };
-
-  // 4. Routing condition: Resin vs Roll vs Accessories vs Sheet products
-  const isResinProduct =
-    formattedProduct.slug.includes("resin") ||
-    formattedProduct.category?.toLowerCase().includes("resin");
-
-  const isRollProduct =
-    formattedProduct.slug.includes("roll");
-
-  const isAccessories =
-    formattedProduct.slug.includes("accessories");
-
-  const isMachine =
-    formattedProduct.slug.includes("duoform") ||
-    formattedProduct.slug.includes("autoform") ||
-    formattedProduct.slug.includes("cutter") ||
-    formattedProduct.slug.includes("trimming");
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug); // same cached call as generateMetadata → 1 DB query
+  if (!product) notFound(); // also hides Draft products
 
   return (
     <main className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] relative overflow-x-hidden">
       <Header />
-      {isResinProduct ? (
-        <ResinProductTemplate product={formattedProduct} />
-      ) : isRollProduct ? (
-        <RollProductTemplate product={formattedProduct} />
-      ) : isAccessories ? (
-        <AccessoriesShowcaseTemplate />
-      ) : isMachine ? (
-        <MachineProductTemplate product={formattedProduct} />
-      ) : (
-        <SheetProductTemplate product={formattedProduct} />
-      )}
+      <ProductTemplate product={product} />
       <Footer />
     </main>
   );

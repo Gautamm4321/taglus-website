@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 const products: Prisma.ProductCreateInput[] = [
   {
     slug: "taglus-premium",
+    template: "SHEET",
     name: "TAGLUS PREMIUM",
     tagline: "Superior material properties and enhanced esthetics",
     category: "ALIGNER & RETAINER MATERIAL",
@@ -57,6 +58,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     slug: "taglus-pu-flex",
+    template: "SHEET",
     name: "TAGLUS® PU FLEX",
     tagline: "Smartest material properties and enhanced esthetics",
     category: "POLYURETHANE ALIGNER & RETAINER MATERIAL",
@@ -108,6 +110,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     slug: "taglus-tuff",
+    template: "SHEET",
     name: "TAGLUS® TUFF",
     tagline: "Revolutionary engineered plastic for Retainers",
     category: "BREAK-RESISTANT RETAINER MATERIAL",
@@ -159,6 +162,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     slug: "taglus-model-resin",
+    template: "RESIN",
     name: "TAGLUS 3D PRINT MODEL RESIN",
     tagline: "High-precision DLP/LCD 3D printing resin with smooth matte finish for dental models",
     category: "3D PRINTING DENTAL RESIN",
@@ -221,6 +225,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     slug: "taglus-autoform-roll",
+    template: "ROLL",
     name: "TAGLUS AUTOMATED THERMOFORMING MACHINE ROLL",
     tagline: "Increase production capacity while reducing material cost up to 73%",
     category: "THERMOFORMING EQUIPMENT & ROLLS",
@@ -279,6 +284,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     slug: "taglus-orthodontic-accessories",
+    template: "ACCESSORIES",
     name: "TAGLUS ORTHODONTIC ACCESSORIES & CONSUMABLES",
     tagline: "Essential chairside tools, branded packaging, and dental lab accessories",
     category: "ORTHODONTIC ACCESSORIES",
@@ -299,6 +305,7 @@ const products: Prisma.ProductCreateInput[] = [
 
 {
     slug: "taglus-duoform",
+    template: "MACHINE",
     name: "TAGLUS DUOFORM THERMOFORMING MACHINE",
     tagline: "Innovative pressure moulding with sub-second heating & touchscreen control",
     category: "THERMOFORMING EQUIPMENT",
@@ -352,6 +359,7 @@ const products: Prisma.ProductCreateInput[] = [
 
 {
     slug: "taglus-autoform",
+    template: "MACHINE",
     name: "TAGLUS AUTOFORM THERMOFORMING MACHINE",
     tagline: "High-yield automated sheet thermoforming producing up to 120-140 aligners/hour",
     category: "THERMOFORMING EQUIPMENT",
@@ -420,7 +428,7 @@ async function main() {
   for (const item of products) {
     await prisma.product.upsert({
       where: { slug: item.slug },
-      update: item as Prisma.ProductUpdateInput,
+      update: {}, // never overwrite edits the client made in the CMS
       create: item as Prisma.ProductCreateInput,
     });
   }

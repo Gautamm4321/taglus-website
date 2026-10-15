@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id              Int      @id @default(autoincrement())
+  slug            String   @unique
+  name            String
+  tagline         String
+  category        String
+  overview        String   @db.Text
+  imagePath       String
+  propertiesIntro String   @db.Text
+  testingNote     String
+  features        Json     // Stores [{ title, description }]
+  propertiesList  Json     // Stores [{ label, value }]
+  sizes           Json?    // Stores { roundDimensions, squareDimensions, thicknesses }
+  faqs            Json     // Stores [{ question, answer }]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  date        String
+  location    String
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  content   String   @db.LongText
+  imagePath String?
+  createdAt DateTime @default(now())
+}
