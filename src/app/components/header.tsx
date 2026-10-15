@@ -253,31 +253,11 @@ export default function Header() {
               </h4>
               <div className="space-y-3">
                 {[
-                  { name: "Taglus Duoform", desc: "Pressure former, sub-second heat-up", href: "#product" },
-                  { name: "Taglus Autoform", desc: "Automated sheet forming", href: "#product" },
+                  { name: "Taglus Duoform", desc: "Pressure former, sub-second heat-up", href: "/products/taglus-duoform" },
+                  { name: "Taglus Autoform", desc: "Automated sheet forming", href: "/products/taglus-autoform" },
                   { name: "Taglus Autoform Roll", desc: "Roll-fed forming for production volume", href: "/products/taglus-autoform-roll" },
                 ].map((item) => (
                   <Link key={item.name} href={item.href} className="block group">
-                    <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">{item.name}</p>
-                    <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">{item.desc}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 5: Laser Trimming (LAC) */}
-            <div className="space-y-4">
-              <h4 className="text-[11px] font-bold text-sky-400 uppercase tracking-widest border-b border-white/10 pb-2">
-                Laser Trimming
-              </h4>
-              <div className="space-y-3">
-                {[
-                  { name: "Laser Aligner Cutter", desc: "Automated aligner trimming" },
-                  { name: "Trimline Generator", desc: "Software for trim paths" },
-                  { name: "LAC Separator", desc: "Model separation" },
-                  { name: "LAC Suction Unit", desc: "Fume and debris extraction" },
-                ].map((item) => (
-                  <Link key={item.name} href="#product" className="block group">
                     <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-white transition-colors">{item.name}</p>
                     <p className="text-[10px] text-[#E8DCC8]/60 font-light leading-snug">{item.desc}</p>
                   </Link>

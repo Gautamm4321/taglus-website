@@ -6,6 +6,7 @@ import SheetProductTemplate from "../../components/SheetProductTemplate";
 import ResinProductTemplate from "../../components/ResinProductTemplate";
 import RollProductTemplate from "../../components/RollProductTemplate";
 import AccessoriesShowcaseTemplate from "../../components/AccessoriesShowcaseTemplate";
+import MachineProductTemplate from "../../components/MachineProductTemplate";
 import { prisma } from "../../lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -75,6 +76,12 @@ export default async function ProductPage({
   const isAccessories =
     formattedProduct.slug.includes("accessories");
 
+  const isMachine =
+    formattedProduct.slug.includes("duoform") ||
+    formattedProduct.slug.includes("autoform") ||
+    formattedProduct.slug.includes("cutter") ||
+    formattedProduct.slug.includes("trimming");
+
   return (
     <main className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] relative overflow-x-hidden">
       <Header />
@@ -84,6 +91,8 @@ export default async function ProductPage({
         <RollProductTemplate product={formattedProduct} />
       ) : isAccessories ? (
         <AccessoriesShowcaseTemplate />
+      ) : isMachine ? (
+        <MachineProductTemplate product={formattedProduct} />
       ) : (
         <SheetProductTemplate product={formattedProduct} />
       )}

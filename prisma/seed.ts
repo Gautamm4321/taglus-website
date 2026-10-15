@@ -296,6 +296,122 @@ const products: Prisma.ProductCreateInput[] = [
     },
     faqs: [],
   },
+
+{
+    slug: "taglus-duoform",
+    name: "TAGLUS DUOFORM THERMOFORMING MACHINE",
+    tagline: "Innovative pressure moulding with sub-second heating & touchscreen control",
+    category: "THERMOFORMING EQUIPMENT",
+    overview:
+      "Taglus Duoform is a cutting-edge machine specially designed for thermoforming. It offers a high-tech thermoforming experience to Dental Practices & Laboratories through its innovative pressure moulding techniques, instant heating capacity, and compatibility with 125 mm diameter round sheets.",
+    imagePath: "/taglusduoform.product.png",
+    propertiesIntro:
+      "Precision positive air pressure technology paired with shortwave infrared emitters for high-definition aligner adaptation.",
+    testingNote: "Engineered and certified under medical electrical device quality regulations.",
+    features: [
+      {
+        title: "Working Temperature within 1 Second",
+        description: "Instant heating with shortwave infrared heaters reaching optimal forming temperature within 1 second.",
+      },
+      {
+        title: "4 Bar Forming Pressure",
+        description: "Consistent 60 PSI / 4 BAR positive air pressure ensures precise margin adaptation.",
+      },
+      {
+        title: "4.3-inch Touchscreen Display",
+        description: "Clearly structured digital display with real-time feedback for temperature, time, and pressure.",
+      },
+      {
+        title: "Acoustically & Optically Assisted Guidance",
+        description: "Operator guidance system ensures predictable and intuitive clinical thermoforming cycles.",
+      },
+      {
+        title: "Peaceful Clinic Experience",
+        description: "Quiet pneumatic mechanics minimize disturbance in dental offices and clinic labs.",
+      },
+      {
+        title: "Effortless Maintenance",
+        description: "Easy-to-clean medical surfaces simplify daily maintenance and sanitation routines.",
+      },
+    ],
+    propertiesList: [
+      { label: "Voltage", value: "110V / 220V (AC) – 50/60 Hz" },
+      { label: "Power", value: "750 W" },
+      { label: "Pressure", value: "60 PSI / 4 BAR" },
+      { label: "Dimensions (W*D*H)", value: "395 mm * 390 mm * 225 mm" },
+      { label: "Weight", value: "15 kgs" },
+      { label: "Sheet Compatibility", value: "125 mm Round Sheets" },
+    ],
+    sizes: {
+      roundDimensions: ["125 mm"],
+      squareDimensions: [],
+      thicknesses: ["0.5 mm - 5.0 mm"],
+    },
+    faqs: [],
+  },
+
+{
+    slug: "taglus-autoform",
+    name: "TAGLUS AUTOFORM THERMOFORMING MACHINE",
+    tagline: "High-yield automated sheet thermoforming producing up to 120-140 aligners/hour",
+    category: "THERMOFORMING EQUIPMENT",
+    overview:
+      "Taglus Autoform is an all-in-one industrial thermoforming machine operable with round sheets of 125 mm diameter and thickness ranging from 0.5 mm to 5 mm. With its versatile engineering, it forms Retainers, Aligners, Mouth Guards, Night Guards, and Bleaching trays with a high throughput of 120-140 aligners per hour.",
+    imagePath: "/autoform.png",
+    propertiesIntro:
+      "High-pressure pneumatic automation driven by precision electric tables for commercial aligner manufacturing lines.",
+    testingNote: "Certified under industrial medical electrical equipment standards.",
+    features: [
+      {
+        title: "Fast Heating Calibration",
+        description:
+          "Heating system specifically calibrated to reach optimal forming temperatures within seconds, protecting delicate polymer bonds.",
+      },
+      {
+        title: "High Production Speed",
+        description:
+          "Optimized fast cycle times capable of yielding 120 to 140 thermoformed aligners per hour for commercial labs.",
+      },
+      {
+        title: "Versatile Application Range",
+        description:
+          "Compatible with 0.5 mm to 5.0 mm sheet thicknesses to produce aligners, retainers, night guards, and bleaching trays.",
+      },
+      {
+        title: "Electric Drive Forming Tables",
+        description:
+          "Forming tables driven by precision electric drive mechanisms under 4-5 bar maximum pressure.",
+      },
+      {
+        title: "Intuitive Operation",
+        description:
+          "User-friendly digital controls and clear instructions designed for operators of varying lab experience levels.",
+      },
+      {
+        title: "Effortless Maintenance",
+        description:
+          "Industrial smooth surfaces designed for rapid cleaning, simplified maintenance, and cleanroom hygiene.",
+      },
+    ],
+    propertiesList: [
+      { label: "Forming Height above Film Line (MAX)", value: "30 mm" },
+      { label: "Forming Pressure (MAX)", value: "4-5 bar" },
+      { label: "Heating Power", value: "750 W" },
+      { label: "Forming Tables Driven by", value: "Electric drive" },
+      { label: "Total Installed Power", value: "2.5 kW" },
+      { label: "Power Supply", value: "110 V + G 50 Hz" },
+      { label: "Machine Weight", value: "380 kgs" },
+      { label: "Dimensions (H x L x W)", value: "1296 mm x 1145 mm x 690 mm" },
+      { label: "Sheet Compatibility", value: "125 mm Round Sheets (0.5 mm - 5 mm)" },
+    ],
+    sizes: {
+      roundDimensions: ["125 mm"],
+      squareDimensions: [],
+      thicknesses: ["0.5 mm - 5.0 mm"],
+    },
+    faqs: [],
+  },
+
 ];
 
 async function main() {
