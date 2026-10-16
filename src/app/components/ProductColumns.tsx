@@ -15,6 +15,7 @@ interface ProductItem {
   badge: string;
   tagline: string;
   imagePath: string;
+    imageScale?: number; // optional: >1 makes this product's image bigger
   specs: { label: string; value: string }[];
   highlight: string;
 }
@@ -111,6 +112,7 @@ const PRODUCTS: ProductItem[] = [
     badge: "Hardware Precision",
     tagline: "Automated sub-second rapid heat-up pressure thermoforming unit with digital sensor controls.",
     imagePath: "/taglusduoform-2.png",
+        imageScale: 1.2,
     specs: [
       { label: "Heating Cycle", value: "Sub-Second Quartz Lamp" },
       { label: "Pressure Range", value: "Up to 6.0 Bar Positive" },
@@ -125,6 +127,7 @@ const PRODUCTS: ProductItem[] = [
     badge: "Robotic Automation",
     tagline: "Contactless automated CO2 laser trimming and multi-axis milling for high-throughput labs.",
     imagePath: "/lac-removebg-preview.png",
+        imageScale: 1.45,
     specs: [
       { label: "Trimming Speed", value: "< 25 Sec / Aligner" },
       { label: "Edge Consistency", value: "Gingival Scallop Laser" },
@@ -152,7 +155,7 @@ export default function ProductColumns() {
 
   return (
     <section id="products" className="relative w-full py-28 sm:py-36 px-4 sm:px-8 max-w-7xl mx-auto">
-      
+
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-sky-500/10 blur-[140px] pointer-events-none -z-10" />
 
@@ -165,25 +168,24 @@ export default function ProductColumns() {
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#E8DCC8]">
           Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">Portfolio</span>
         </h2>
-        <p className="mt-5 text-base sm:text-lg text-[#E8DCC8]/80 font-light leading-relaxed">
+        <p className="mt-5 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed">
           High-performance thermoplastic sheets, dimensionally stable photopolymer resins, and robotic automation engineered for modern orthodontic practices.
         </p>
       </div>
 
       {/* Category Tabs */}
       <div className="w-full flex items-center justify-center mb-16 overflow-x-auto pb-2 scrollbar-none">
-        <div className="inline-flex items-center gap-2 p-1.5 bg-[#030919]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl rounded-2xl">
-  {CATEGORIES.map((tab) => {
-    const isSelected = selectedCategory === tab.key;
-    return (
-      <button
-        key={tab.key}
-        onClick={() => setSelectedCategory(tab.key as ProductCategory)}
-        className={`px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer rounded-xl ${
-                  isSelected
-                    ? "bg-gradient-to-r from-sky-500/25 to-blue-600/35 border border-sky-400/60 text-white shadow-[0_0_20px_rgba(0,180,255,0.25)]"
-                    : "text-[#E8DCC8]/65 hover:text-[#E8DCC8] hover:bg-white/[0.04]"
-                }`}
+        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-[#030919]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl rounded-2xl">
+          {CATEGORIES.map((tab) => {
+            const isSelected = selectedCategory === tab.key;
+            return (
+              <button
+                key={tab.key}
+                onClick={() => setSelectedCategory(tab.key as ProductCategory)}
+                className={`px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer rounded-xl ${isSelected
+                  ? "bg-gradient-to-r from-sky-500/25 to-blue-600/35 border border-sky-400/60 text-white shadow-[0_0_20px_rgba(0,180,255,0.25)]"
+                  : "text-[#E8DCC8] hover:text-[#E8DCC8] hover:bg-white/[0.04]"
+                  }`}
               >
                 {tab.label}
               </button>
@@ -193,7 +195,7 @@ export default function ProductColumns() {
       </div>
 
       {/* 3-Column Grid with Pointed Corners (Artisun Spec) */}
-      <motion.div 
+      <motion.div
         layout
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
       >
@@ -209,15 +211,18 @@ export default function ProductColumns() {
               className="group relative flex flex-col justify-between bg-[#030919]/90 border border-[#E8DCC8]/20 hover:border-sky-400/60 transition-all duration-300 shadow-xl overflow-hidden rounded-none"
             >
               <div>
-                {/* 50% Top Frame: Edge-to-Edge Image (No Padding, Full Cover) */}
-<div className="relative w-full h-[280px] sm:h-[320px] md:h-[360px] border-b border-[#E8DCC8]/15 overflow-hidden">
-  <SafeProductImage
-    src={product.imagePath}
-    alt={product.name}
-    label={product.name}
-    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out select-none"
-  />
-</div>
+                {/* Top Frame: product shown whole, centered, with breathing room */}
+                <div className="relative w-full h-[280px] sm:h-[300px] md:h-[320px] border-b border-[#E8DCC8]/15 overflow-hidden bg-gradient-to-b from-white/[0.04] to-transparent">
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 h-2/3 rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
+                  <div className="absolute inset-3 sm:inset-4" style={{ transform: `scale(${product.imageScale ?? 1})` }}>
+                    <SafeProductImage
+                      src={product.imagePath}
+                      alt={product.name}
+                      label={product.name}
+                      className="object-contain object-center drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] group-hover:scale-[1.04] transition-transform duration-500 ease-out select-none"
+                    />
+                  </div>
+                </div>
 
                 {/* 50% Bottom Frame: Content Body */}
                 <div className="p-6 sm:p-7 flex flex-col justify-between">
@@ -226,13 +231,13 @@ export default function ProductColumns() {
                       <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-[#E8DCC8] group-hover:text-white transition-colors">
                         {product.name}
                       </h3>
-                      <div className="flex items-center gap-1 text-[11px] text-[#E8DCC8]/70 shrink-0">
+                      <div className="flex items-center gap-1 text-[11px] text-[#E8DCC8] shrink-0">
                         <ShieldCheck size={14} className="text-sky-400" />
                         <span>MDR IIa</span>
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[#E8DCC8]/75 font-light leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed line-clamp-2">
                       {product.tagline}
                     </p>
 
@@ -240,7 +245,7 @@ export default function ProductColumns() {
                     <div className="mt-5 pt-4 border-t border-white/[0.08] space-y-2.5">
                       {product.specs.map((sp, idx) => (
                         <div key={idx} className="flex items-center justify-between text-xs">
-                          <span className="text-[#E8DCC8]/60 font-light">{sp.label}</span>
+                          <span className="text-[#E8DCC8] font-light">{sp.label}</span>
                           <span className="font-mono text-sky-300 font-medium">{sp.value}</span>
                         </div>
                       ))}
@@ -281,7 +286,7 @@ export default function ProductColumns() {
             <h4 className="text-base sm:text-lg font-bold uppercase tracking-wider text-[#E8DCC8]">
               Comprehensive Technical Data Sheets (TDS)
             </h4>
-            <p className="text-xs sm:text-sm text-[#E8DCC8]/70 font-light mt-1">
+            <p className="text-xs sm:text-sm text-[#E8DCC8] font-light mt-1">
               Download complete stress retention curves, biocompatibility compliance, and thermoforming parameters.
             </p>
           </div>

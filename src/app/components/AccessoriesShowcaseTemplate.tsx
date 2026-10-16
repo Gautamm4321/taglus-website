@@ -186,7 +186,7 @@ export default function AccessoriesShowcaseTemplate() {
                     </h2>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                       {item.description}
                     </p>
 
@@ -195,7 +195,7 @@ export default function AccessoriesShowcaseTemplate() {
                       {item.bullets.map((bullet, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-3 text-xs sm:text-sm text-[#E8DCC8]/90 font-light"
+                          className="flex items-start gap-3 text-xs sm:text-sm text-[#E8DCC8] font-light"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0 mt-2" />
                           <span>{bullet}</span>
@@ -226,10 +226,10 @@ export default function AccessoriesShowcaseTemplate() {
           BOTTOM WORKFLOW CALL TO ACTION
       ======================================================== */}
       <section className="relative py-16 px-6 sm:px-12 max-w-6xl mx-auto text-center space-y-4">
-        <h3 className="text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] whitespace-nowrap">
+        <h3 className="text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
           Looking to Build a Custom Aligner Delivery Kit?
         </h3>
-        <p className="text-sm sm:text-base text-[#E8DCC8]/75 font-light max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-[#E8DCC8] font-light max-w-2xl mx-auto">
           We offer custom logo printing, packaging boxes, and clinical tool sets for aligner brands and regional distribution partners.
         </p>
         <div className="pt-2">

@@ -89,7 +89,7 @@ export default function CertificationsSection() {
             Regulatory Compliance
           </span>
         </h1>
-        <p className="mt-5 text-base sm:text-lg text-[#E8DCC8]/85 font-light leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-5 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed max-w-2xl mx-auto">
           Our manufacturing processes are governed by internationally recognized quality standards and supported by market-specific regulatory requirements.
         </p>
       </div>
@@ -121,7 +121,7 @@ export default function CertificationsSection() {
                   <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-bold">
                     {cert.badge}
                   </span>
-                  <span className="text-xs sm:text-sm text-[#E8DCC8]/70 font-medium">
+                  <span className="text-xs sm:text-sm text-[#E8DCC8] font-medium">
                     {cert.territory}
                   </span>
                 </div>
@@ -130,11 +130,11 @@ export default function CertificationsSection() {
                   {cert.name}
                 </h3>
 
-                <p className="mt-3 text-sm sm:text-base text-[#E8DCC8]/90 font-normal leading-relaxed">
+                <p className="mt-3 text-sm sm:text-base text-[#E8DCC8] font-normal leading-relaxed">
                   {cert.shortDesc}
                 </p>
 
-                <p className="mt-2 text-xs sm:text-sm text-[#E8DCC8]/70 font-light leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed">
                   {cert.complianceDetail}
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function CertificationsSection() {
                   <CheckCircle2 size={16} className="text-sky-400" />
                   <span>Audited &amp; Active</span>
                 </span>
-                <span className="text-[11px] font-mono text-[#E8DCC8]/50 uppercase tracking-wider">
+                <span className="text-[11px] font-mono text-[#E8DCC8] uppercase tracking-wider">
                   Classified
                 </span>
               </div>
@@ -163,7 +163,7 @@ export default function CertificationsSection() {
             <h4 className="text-base sm:text-lg font-bold uppercase text-[#E8DCC8] tracking-wider">
               Request Full Regulatory Dossier
             </h4>
-            <p className="text-xs sm:text-sm text-[#E8DCC8]/70 font-light mt-1">
+            <p className="text-xs sm:text-sm text-[#E8DCC8] font-light mt-1">
               Download CE declarations of conformity, biocompatibility reports, and authorized supplier audit packets.
             </p>
           </div>

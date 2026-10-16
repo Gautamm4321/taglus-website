@@ -65,7 +65,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                             Designed to scale volume while reducing material costs up to 73%.
                         </p>
 
-                        <p className="text-base sm:text-lg text-[#E8DCC8]/85 font-normal leading-relaxed max-w-2xl">
+                        <p className="text-base sm:text-lg text-[#E8DCC8] font-normal leading-relaxed max-w-2xl">
                             Taglus aligner and retainer rolls are the optimal high-speed choice for industrial thermoforming equipment. Available in an extensive range of thicknesses, dimensions, and proprietary polymer alloys tailored specifically to commercial clear aligner manufacturing facilities.
                         </p>
 
@@ -135,7 +135,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
                             Internationally Certified
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                             Certified under ISO 13485:2016 and compliant with stringent global regulatory medical standards.
                         </p>
                     </div>
@@ -147,7 +147,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
                             PU &amp; PETG Materials
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                             Available in both high-elasticity polyurethane and crystal-clear glycol-modified polyethylene options.
                         </p>
                     </div>
@@ -159,7 +159,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
                             High-Pressure Precision
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                             Engineered to produce exact, defect-free adaptations under high pneumatic pressure chambers.
                         </p>
                     </div>
@@ -171,7 +171,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
                             Up to 73% Cost Savings
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                             Continuous-feed rolls significantly decrease per-tray material scrap and optimize automation speeds.
                         </p>
                     </div>
@@ -229,14 +229,14 @@ export default function RollProductTemplate({ product }: { product: any }) {
                                             ))}
                                         </div>
                                     </div>
-                                    <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+                                    <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                                         {item.desc}
                                     </p>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="pt-2 flex items-center gap-3 text-sm text-[#E8DCC8]/70">
+                        <div className="pt-2 flex items-center gap-3 text-sm text-[#E8DCC8]">
                             <CheckCircle2 size={18} className="text-sky-400 shrink-0" />
                             <span>Full machine validation documentation and heating parameters provided upon request.</span>
                         </div>

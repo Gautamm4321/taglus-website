@@ -192,14 +192,14 @@ export default function FeatureHighlights() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
           The 4-Step Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-indigo-300">Orthodontic Workflow</span>
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-[#E8DCC8]/70 font-light leading-relaxed">
+        <p className="mt-4 text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
           From 3D model printing to final patient packaging. Taglus supplies every critical layer of material science, 3D resin chemistry, and automated fabrication machinery.
         </p>
       </div>
 
       {/* Progress Bar (Now 4 Steps) */}
       <div className="w-full mb-12 flex justify-center">
-        <div className="w-full max-w-3xl flex items-center justify-between bg-[#030919]/90 border border-[#E8DCC8]/20 rounded-2xl p-2 backdrop-blur-2xl shadow-xl">
+        <div className="w-full max-w-3xl grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-between bg-[#030919]/90 border border-[#E8DCC8]/20 rounded-2xl p-2 backdrop-blur-2xl shadow-xl">
           {WORKFLOW_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isActive = idx === activeStepIndex;
@@ -207,14 +207,14 @@ export default function FeatureHighlights() {
               <button
                 key={step.id}
                 onClick={() => setActiveStepIndex(idx)}
-                className={`flex-1 flex items-center justify-center gap-2.5 py-3 px-3 rounded-xl transition-all duration-300 cursor-pointer text-left ${
+                className={`min-w-0 flex-1 flex items-center justify-start sm:justify-center gap-2.5 py-3 px-3 rounded-xl transition-all duration-300 cursor-pointer text-left ${
                   isActive 
                     ? "bg-gradient-to-r from-sky-500/25 to-blue-600/35 border border-sky-400/60 shadow-[0_0_20px_rgba(0,180,255,0.25)] text-white" 
-                    : "text-[#E8DCC8]/60 hover:text-[#E8DCC8] hover:bg-white/[0.04]"
+                    : "text-[#E8DCC8] hover:text-[#E8DCC8] hover:bg-white/[0.04]"
                 }`}
               >
                 <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                  isActive ? "bg-sky-400 text-slate-950 font-bold" : "bg-white/[0.06] text-[#E8DCC8]/70"
+                  isActive ? "bg-sky-400 text-slate-950 font-bold" : "bg-white/[0.06] text-[#E8DCC8]"
                 }`}>
                   <Icon size={14} />
                 </div>
@@ -254,13 +254,13 @@ export default function FeatureHighlights() {
                   {currentStep.title} — {currentStep.shortDesc}
                 </h3>
 
-                <p className="mt-4 text-sm sm:text-base text-[#E8DCC8]/75 font-light leading-relaxed">
+                <p className="mt-4 text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                   {currentStep.fullDesc}
                 </p>
 
                 <div className="mt-6 space-y-2.5">
                   {currentStep.bulletPoints.map((pt, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-[#E8DCC8]/85 font-light">
+                    <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-[#E8DCC8] font-light">
                       <CheckCircle2 size={16} className="text-sky-400 shrink-0" />
                       <span>{pt}</span>
                     </div>
@@ -281,7 +281,7 @@ export default function FeatureHighlights() {
                           {prod.tag}
                         </span>
                       </div>
-                      <p className="text-[11px] text-[#E8DCC8]/60 font-light mt-1 leading-snug">
+                      <p className="text-[11px] text-[#E8DCC8] font-light mt-1 leading-snug">
                         {prod.desc}
                       </p>
                     </div>
@@ -302,7 +302,7 @@ export default function FeatureHighlights() {
               <div className="absolute w-64 h-64 rounded-full bg-sky-500/15 blur-[80px] pointer-events-none" />
 
               <div className="w-full relative z-10">
-                <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8]/60 text-center mb-6">
+                <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] text-center mb-6">
                   {currentStep.mediaLabel}
                 </p>
 
@@ -398,7 +398,7 @@ export default function FeatureHighlights() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-[#E8DCC8]">
               Workflow Lineage Summary
             </h4>
-            <p className="text-xs text-[#E8DCC8]/60 font-light mt-0.5">
+            <p className="text-xs text-[#E8DCC8] font-light mt-0.5">
               Taglus Resins → 3D Printed Models → Taglus Sheets → Thermoforming → LAC / 5X Trimmer → Finishing → Final Aligner
             </p>
           </div>
@@ -412,7 +412,7 @@ export default function FeatureHighlights() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-[#E8DCC8]/80 border-collapse">
+          <table className="w-full text-left text-xs text-[#E8DCC8] border-collapse">
             <thead>
               <tr className="border-b border-white/[0.1] text-sky-400 uppercase tracking-widest text-[10px]">
                 <th className="py-3 px-4 font-semibold">Stage</th>
@@ -424,22 +424,22 @@ export default function FeatureHighlights() {
               <tr>
                 <td className="py-3 px-4 font-bold text-white">01. PRINT</td>
                 <td className="py-3 px-4">Taglus Resins (Model resin, Odorless model resin, Water-washable)</td>
-                <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Dimensionally stable 3D dental model</td>
+                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Dimensionally stable 3D dental model</td>
               </tr>
               <tr>
                 <td className="py-3 px-4 font-bold text-white">02. FORM</td>
                 <td className="py-3 px-4">Taglus Sheets (Standard, Premium, PU Flex, Ultra, Hard & Soft)</td>
-                <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Thermoformed clear aligner shell</td>
+                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Thermoformed clear aligner shell</td>
               </tr>
               <tr>
                 <td className="py-3 px-4 font-bold text-white">03. TRIM</td>
                 <td className="py-3 px-4">LAC (Laser Aligner Cutter) & 5X Trimming Machine</td>
-                <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Clean, consistent scalloped gingival margin</td>
+                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Clean, consistent scalloped gingival margin</td>
               </tr>
               <tr>
                 <td className="py-3 px-4 font-bold text-white">04. FINISH</td>
                 <td className="py-3 px-4">Finishing Solutions & Orthodontic Accessories</td>
-                <td className="py-3 px-4 text-[#E8DCC8]/60 hidden md:table-cell">Polished patient-ready clear aligner appliance</td>
+                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Polished patient-ready clear aligner appliance</td>
               </tr>
             </tbody>
           </table>

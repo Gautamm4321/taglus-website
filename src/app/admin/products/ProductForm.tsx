@@ -10,6 +10,10 @@ import {
   slugify,
   type ProductInput,
   type ProductTemplateName,
+  type MenuGroupName,
+  DEFAULT_MENU_GROUP,
+  MENU_GROUPS,
+  MENU_GROUP_LABELS,
 } from "../../lib/validation";
 import { buttonPrimary, buttonSecondary, ErrorBanner, Field, inputClass, Section } from "../components/ui";
 import RepeaterField from "../components/RepeaterField";
@@ -35,6 +39,9 @@ const EMPTY_PRODUCT: ProductInput = {
   metaDescription: "",
   published: true,
   sortOrder: 0,
+  menuGroup: DEFAULT_MENU_GROUP.SHEET,
+  menuTitle: "",
+  menuDescription: "",
 };
 
 const EMPTY_SIZES = { roundDimensions: [], squareDimensions: [], thicknesses: [] };
@@ -53,6 +60,7 @@ export default function ProductForm({
 
   const [data, setData] = useState<ProductInput>(initialData ?? EMPTY_PRODUCT);
   const [slugEdited, setSlugEdited] = useState(isEdit);
+  const [menuGroupEdited, setMenuGroupEdited] = useState(isEdit);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -124,7 +132,15 @@ export default function ProductForm({
           <Field label="Page layout" required error={fe.template} hint="Controls which design the product page uses.">
             <select
               value={data.template}
-              onChange={(e) => set("template", e.target.value as ProductTemplateName)}
+              onChange={(e) => {
+                const template = e.target.value as ProductTemplateName;
+                // New product: suggest a matching menu column until the user picks one
+                setData((d) => ({
+                  ...d,
+                  template,
+                  menuGroup: menuGroupEdited ? d.menuGroup : DEFAULT_MENU_GROUP[template],
+                }));
+              }}
               className={inputClass}
             >
               {PRODUCT_TEMPLATES.map((t) => (
@@ -288,6 +304,46 @@ export default function ProductForm({
       </Section>
 
       {/* ---------- SEO & visibility ---------- */}
+            {/* ---------- Website menu ---------- */}
+      <Section title="Website menu" description="Where this product appears in the Products menu at the top of the website.">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <Field label="Menu column" error={fe.menuGroup}>
+            <select
+              value={data.menuGroup ?? ""}
+              onChange={(e) => {
+                setMenuGroupEdited(true);
+                set("menuGroup", e.target.value === "" ? null : (e.target.value as MenuGroupName));
+              }}
+              className={inputClass}
+            >
+              <option value="">— Don&apos;t show in menu —</option>
+              {MENU_GROUPS.map((g) => (
+                <option key={g} value={g}>
+                  {MENU_GROUP_LABELS[g]}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Name in menu" error={fe.menuTitle} hint="Optional. Short name, e.g. “Taglus Premium”.">
+            <input
+              type="text"
+              value={data.menuTitle ?? ""}
+              onChange={(e) => set("menuTitle", e.target.value)}
+              className={inputClass}
+              placeholder={data.name || "Taglus Premium"}
+            />
+          </Field>
+          <Field label="Short description in menu" error={fe.menuDescription} hint="Optional. A few words, e.g. “High-clarity PET-G”.">
+            <input
+              type="text"
+              value={data.menuDescription ?? ""}
+              onChange={(e) => set("menuDescription", e.target.value)}
+              className={inputClass}
+              placeholder={data.tagline ? data.tagline.slice(0, 40) : "High-clarity PET-G"}
+            />
+          </Field>
+        </div>
+      </Section>
       <Section title="SEO & visibility">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Field label="SEO title" error={fe.metaTitle} hint="Optional. Shown in Google results and the browser tab.">

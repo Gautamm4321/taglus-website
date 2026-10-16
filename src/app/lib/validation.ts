@@ -76,6 +76,27 @@ export const TEMPLATE_LABELS: Record<ProductTemplateName, string> = {
   ACCESSORIES: "Accessories showcase",
 };
 
+export const MENU_GROUPS = ["ALIGNER", "RETAINER", "AESTHETIC", "THERMOFORMING", "PRINTING", "ACCESSORIES"] as const;
+export type MenuGroupName = (typeof MENU_GROUPS)[number];
+
+export const MENU_GROUP_LABELS: Record<MenuGroupName, string> = {
+  ALIGNER: "Aligner Materials",
+  RETAINER: "Retainer & Splint",
+  AESTHETIC: "Aesthetic & Interim",
+  THERMOFORMING: "Thermoforming",
+  PRINTING: "3D Printing",
+  ACCESSORIES: "Accessories & Packaging",
+};
+
+/** Sensible menu column for a page layout, used to pre-fill new products. */
+export const DEFAULT_MENU_GROUP: Record<ProductTemplateName, MenuGroupName> = {
+  SHEET: "ALIGNER",
+  RESIN: "PRINTING",
+  ROLL: "THERMOFORMING",
+  MACHINE: "THERMOFORMING",
+  ACCESSORIES: "ACCESSORIES",
+};
+
 const stringList = z.array(z.string().trim().min(1).max(100)).max(50);
 
 export const productSchema = z.object({
@@ -122,6 +143,9 @@ export const productSchema = z.object({
   metaTitle: optionalText("SEO title", 191),
   metaDescription: optionalText("SEO description", 500),
   published: z.boolean(),
+  menuGroup: z.enum(MENU_GROUPS).nullable(),
+  menuTitle: optionalText("Menu name", 100),
+  menuDescription: optionalText("Menu description", 160),
   sortOrder: z.number().int().min(0).max(100000),
 });
 

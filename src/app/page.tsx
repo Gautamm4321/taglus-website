@@ -111,7 +111,7 @@ export default function Home() {
             </h1>
 
             {/* Sub-text */}
-            <p className="mt-6 text-base sm:text-lg text-[#E8DCC8]/75 font-light leading-relaxed max-w-xl">
+            <p className="mt-6 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed max-w-xl">
               From advanced multilayer thermoplastic sheets and precision 3D printing resins to automated laser trimming ecosystems. Purpose-built for orthodontic laboratories and clinical practices worldwide.
             </p>
 
@@ -135,7 +135,7 @@ export default function Home() {
             </div>
 
             {/* Clinical Certifications */}
-            <div className="mt-12 pt-6 border-t border-[#E8DCC8]/15 flex items-center gap-6 text-xs text-[#E8DCC8]/70 font-light">
+            <div className="mt-12 pt-6 border-t border-[#E8DCC8]/15 flex items-center gap-6 text-xs text-[#E8DCC8] font-light">
               <div className="flex items-center gap-2">
                 <ShieldCheck size={16} className="text-sky-400" />
                 <span>ISO 13485:2016</span>
@@ -215,7 +215,7 @@ export default function Home() {
             {/* Floating Glass Spec Pill (Bottom) */}
             <div className="absolute bottom-2 inset-x-6 sm:inset-x-12 z-20 flex items-center justify-between px-5 py-3 rounded-2xl bg-[#030919]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-[#E8DCC8]/60 font-medium">Flagship Material</p>
+                <p className="text-[10px] uppercase tracking-widest text-[#E8DCC8] font-medium">Flagship Material</p>
                 <p className="text-xs sm:text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
                   Taglus Premium™ Aligner Sheet
                 </p>
@@ -235,7 +235,7 @@ export default function Home() {
               value={6}
               className="text-3xl sm:text-4xl font-black text-sky-400"
             />
-            <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Continents Reached</span>
+            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Continents Reached</span>
           </div>
           <div className="flex flex-col items-center">
             <CounterNumber
@@ -243,7 +243,7 @@ export default function Home() {
               suffix="+"
               className="text-3xl sm:text-4xl font-black text-[#E8DCC8]"
             />
-            <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Global Distributors</span>
+            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Global Distributors</span>
           </div>
           <div className="flex flex-col items-center">
             <CounterNumber
@@ -251,7 +251,7 @@ export default function Home() {
               suffix="+"
               className="text-3xl sm:text-4xl font-black text-sky-400"
             />
-            <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Aligner Labs Served</span>
+            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Aligner Labs Served</span>
           </div>
           <div className="flex flex-col items-center">
             <CounterNumber
@@ -259,7 +259,7 @@ export default function Home() {
               suffix="%"
               className="text-3xl sm:text-4xl font-black text-[#E8DCC8]"
             />
-            <span className="text-xs font-light text-[#E8DCC8]/70 mt-1 uppercase tracking-wider">Medical Grade Quality</span>
+            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Medical Grade Quality</span>
           </div>
         </div>
 

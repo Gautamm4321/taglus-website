@@ -38,7 +38,7 @@ export default function AboutWhyChoose() {
           </h2>
 
           {/* Body Text */}
-          <p className="text-[#E8DCC8]/80 text-base sm:text-lg leading-relaxed font-normal mb-8">
+          <p className="text-[#E8DCC8] text-base sm:text-lg leading-relaxed font-normal mb-8">
             Taglus is one of the recognized digital consumable manufacturer and has established itself as a distinguished brand as the most preferred thermoplastic aligner and retainer sheet manufacturer. Taglus clear aligner materials are engineered specifically for aligners and retainers to provide a best-in-class combination of flexibility, strength and clarity. Our material advantages, ease-of-use and affordability make Taglus the superior choice for clear aligners and retainers worldwide.
           </p>
 
@@ -51,7 +51,7 @@ export default function AboutWhyChoose() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.15 }}
-                className="flex items-start gap-3 text-[#E8DCC8]/90 text-sm sm:text-base font-medium"
+                className="flex items-start gap-3 text-[#E8DCC8] text-sm sm:text-base font-medium"
               >
                 <CheckCircle2 size={20} className="text-sky-400 shrink-0 mt-0.5" />
                 <span>{item}</span>

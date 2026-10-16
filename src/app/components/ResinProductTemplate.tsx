@@ -92,15 +92,15 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                         </div>
 
                         <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[1.08]">
-                            <span className="block text-[#E8DCC8] whitespace-nowrap">
+                            <span className="block text-[#E8DCC8] lg:whitespace-nowrap">
                                 TAGLUS 3D PRINT
                             </span>
-                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300 whitespace-nowrap">
+                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300 lg:whitespace-nowrap">
                                 MODEL RESIN
                             </span>
                         </h1>
 
-                        <p className="text-lg sm:text-xl text-[#E8DCC8]/85 font-normal leading-relaxed max-w-xl">
+                        <p className="text-lg sm:text-xl text-[#E8DCC8] font-normal leading-relaxed max-w-xl">
                             Engineered exclusively for high-accuracy dental aligner model manufacturing.
                             Delivers extreme dimensional stability, high heat endurance during thermoforming,
                             and a glare-free matte surface for effortless optical inspection.
@@ -152,7 +152,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                                 <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-3">
                                     {item.title}
                                 </h3>
-                                <p className="text-sm sm:text-base text-[#E8DCC8]/85 font-normal leading-relaxed">
+                                <p className="text-sm sm:text-base text-[#E8DCC8] font-normal leading-relaxed">
                                     {item.desc}
                                 </p>
                             </div>
@@ -195,10 +195,10 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
                                 TAGLUS ODOURLESS RESIN
                             </h3>
-                            <p className="text-base sm:text-lg text-[#E8DCC8]/85 leading-snug font-normal">
+                            <p className="text-base sm:text-lg text-[#E8DCC8] leading-snug font-normal">
                                 Engineered with high tensile yield strength and break resilience.
                             </p>
-                            <p className="text-base sm:text-lg text-[#E8DCC8]/85 leading-snug font-normal">
+                            <p className="text-base sm:text-lg text-[#E8DCC8] leading-snug font-normal">
                                 Virtually odourless photopolymer minimizing irritating laboratory fumes.
                             </p>
                             <p className="text-sm sm:text-base text-sky-300 font-medium">
@@ -216,10 +216,10 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
                                 TAGLUS WATER WASHABLE RESIN
                             </h3>
-                            <p className="text-base sm:text-lg text-[#E8DCC8]/85 leading-snug font-normal">
+                            <p className="text-base sm:text-lg text-[#E8DCC8] leading-snug font-normal">
                                 Cleans completely with tap water, eliminating expensive IPA alcohol baths.
                             </p>
-                            <p className="text-base sm:text-lg text-[#E8DCC8]/85 leading-snug font-normal">
+                            <p className="text-base sm:text-lg text-[#E8DCC8] leading-snug font-normal">
                                 Retains razor-sharp tooth contour accuracy with ultra-low surface shrinkage.
                             </p>
                             <p className="text-sm sm:text-base text-sky-300 font-medium">
@@ -256,10 +256,10 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                     <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                         Real Lab Output
                     </p>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] whitespace-nowrap">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
                         Precision 3D Printed Teeth Arches
                     </h2>
-                    <p className="mt-3 text-base sm:text-lg text-[#E8DCC8]/85 font-normal">
+                    <p className="mt-3 text-base sm:text-lg text-[#E8DCC8] font-normal">
                         Hover over any model to inspect clinical print details
                     </p>
                 </div>
@@ -292,7 +292,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                                     <h4 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-tight">
                                         {item.title}
                                     </h4>
-                                    <p className="text-sm sm:text-base text-[#E8DCC8]/85 leading-relaxed font-normal">
+                                    <p className="text-sm sm:text-base text-[#E8DCC8] leading-relaxed font-normal">
                                         {item.desc}
                                     </p>
                                 </div>

@@ -41,7 +41,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
               {product.tagline}
             </p>
 
-            <p className="text-base sm:text-lg text-[#E8DCC8]/85 font-normal leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-[#E8DCC8] font-normal leading-relaxed max-w-2xl">
               {product.overview}
             </p>
 
@@ -110,7 +110,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
               Sub-Second Heating
             </h3>
-            <p className="text-sm text-[#E8DCC8]/80 font-light leading-relaxed">
+            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
               Equipped with shortwave infrared heaters reaching optimal forming temperature within 1 second.
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
               4 BAR Positive Pressure
             </h3>
-            <p className="text-sm text-[#E8DCC8]/80 font-light leading-relaxed">
+            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
               Provides constant 60 PSI forming pressure for precision adaptation into interproximal dental areas.
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
               4.3″ Touchscreen UI
             </h3>
-            <p className="text-sm text-[#E8DCC8]/80 font-light leading-relaxed">
+            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
               Clearly structured display with real-time feedback for temperature, time, and pneumatic controls.
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
               Whisper-Quiet Operation
             </h3>
-            <p className="text-sm text-[#E8DCC8]/80 font-light leading-relaxed">
+            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
               Engineered with sound-dampened mechanics for non-disruptive chairside and office dental usage.
             </p>
           </div>
@@ -179,7 +179,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
                       <p className="text-sm font-bold text-[#E8DCC8] tracking-wide uppercase">
                         {feature.title}
                       </p>
-                      <p className="text-xs sm:text-[13px] text-[#E8DCC8]/70 font-light leading-relaxed">
+                      <p className="text-xs sm:text-[13px] text-[#E8DCC8] font-light leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -204,7 +204,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
               <div className="divide-y divide-[#E8DCC8]/10 pt-2">
                 {specs.map((spec: { label: string; value: string }, i: number) => (
                   <div key={i} className="py-3.5 first:pt-0 last:pb-0 flex items-center justify-between gap-4 text-xs sm:text-sm">
-                    <span className="font-medium text-[#E8DCC8]/80">
+                    <span className="font-medium text-[#E8DCC8]">
                       {spec.label}
                     </span>
                     <span className="font-mono font-semibold text-sky-300 text-right">

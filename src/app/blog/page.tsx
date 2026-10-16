@@ -20,7 +20,7 @@ export default async function BlogPage() {
       <div className="flex-1 max-w-6xl w-full mx-auto px-6 py-24 space-y-10">
         <h1 className="text-4xl font-bold">Blog</h1>
         {posts.length === 0 ? (
-          <p className="text-gray-400">No posts yet.</p>
+          <p className="text-[#E8DCC8]">No posts yet.</p>
         ) : (
           <div className="grid gap-6 md:grid-cols-3">
             {posts.map((p) => (
@@ -34,9 +34,9 @@ export default async function BlogPage() {
                   <img src={p.imagePath} alt="" className="h-44 w-full object-cover" />
                 )}
                 <div className="p-5 space-y-2">
-                  <p className="text-xs text-gray-500">{formatPostDate(p.publishedAt)}</p>
-                  <h2 className="text-lg font-semibold text-white group-hover:text-[#D4AF37]">{p.title}</h2>
-                  {p.excerpt && <p className="text-sm text-gray-400 line-clamp-3">{p.excerpt}</p>}
+                  <p className="text-xs text-[#E8DCC8]">{formatPostDate(p.publishedAt)}</p>
+                  <h2 className="text-lg font-semibold text-[#E8DCC8] group-hover:text-[#D4AF37]">{p.title}</h2>
+                  {p.excerpt && <p className="text-sm text-[#E8DCC8] line-clamp-3">{p.excerpt}</p>}
                 </div>
               </Link>
             ))}

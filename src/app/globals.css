@@ -116,3 +116,33 @@ nextjs-portal,
 .animate-marquee-slow:hover {
   animation-play-state: paused;
 }
+
+/* ================= TYPOGRAPHY: JUSTIFIED BODY TEXT ================= */
+/* Client request: paragraphs read as clean, evenly aligned blocks across the site.
+   In @layer base, so any Tailwind class on an element (text-left, text-center…) still wins. */
+@layer base {
+  /* Justify only on tablet/desktop — phone screens are too narrow (big word gaps) */
+  @media (min-width: 768px) {
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      text-wrap: pretty;
+    }
+  }
+
+  /* Sections designed as centered / right-aligned keep their alignment */
+  .text-center p,
+  .text-right p {
+    text-align: inherit;
+  }
+
+  /* Menus (header dropdowns) and footer keep normal left alignment */
+  header p,
+  footer p {
+    text-align: inherit;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+  }
+}

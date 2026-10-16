@@ -40,7 +40,7 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name */}
               <div>
-                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8]/70 mb-2">
+                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8] mb-2">
                   Name
                 </label>
                 <input
@@ -56,7 +56,7 @@ export default function ContactSection() {
 
               {/* Email */}
               <div>
-                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8]/70 mb-2">
+                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8] mb-2">
                   Email
                 </label>
                 <input
@@ -72,7 +72,7 @@ export default function ContactSection() {
 
               {/* Subject */}
               <div>
-                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8]/70 mb-2">
+                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8] mb-2">
                   Subject
                 </label>
                 <input
@@ -88,7 +88,7 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8]/70 mb-2">
+                <label className="block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8] mb-2">
                   Message
                 </label>
                 <textarea
@@ -119,7 +119,7 @@ export default function ContactSection() {
         <div className="lg:col-span-6 flex flex-col justify-between h-full pt-1">
           
           {/* Paragraph / Intro Text */}
-          <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed mb-6">
+          <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed mb-6">
             In tempus nisl turpis, at ultricies dui eleifend a. Quisque et quam vel nunc consectetur pharetra euismod et elit. Morbi nibh tortor, ullamcorper id purus eu, rhoncus consequat velit.
           </p>
 
@@ -134,7 +134,7 @@ export default function ContactSection() {
               <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
                 Phone Number
               </h4>
-              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8]/75 mt-1">
+              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1">
                 +6282 4032 567
               </p>
             </div>
@@ -147,7 +147,7 @@ export default function ContactSection() {
               <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
                 Email Address
               </h4>
-              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8]/75 mt-1">
+              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1">
                 Example@Email.Com
               </p>
             </div>
@@ -171,7 +171,7 @@ export default function ContactSection() {
               <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
                 Whatsapp
               </h4>
-              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8]/75 mt-1">
+              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1">
                 082-245-7253
               </p>
             </div>
@@ -184,7 +184,7 @@ export default function ContactSection() {
               <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
                 Our Office
               </h4>
-              <p className="text-xs sm:text-sm text-[#E8DCC8]/75 mt-1 max-w-[210px] leading-snug">
+              <p className="text-xs sm:text-sm text-[#E8DCC8] mt-1 max-w-[210px] leading-snug">
                 2443 Oak Ridge Omaha, QA 45065
               </p>
             </div>

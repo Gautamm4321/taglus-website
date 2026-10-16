@@ -16,7 +16,7 @@ export default function AboutHero() {
   return (
     <section className="relative w-full pt-28 sm:pt-36 pb-24 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto select-none">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[800px] h-[450px] bg-sky-500/10 blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[70vw] xl:w-[800px] h-[450px] bg-sky-500/10 blur-[150px] pointer-events-none -z-10" />
 
       {/* ================= TOP SECTION: LEFT-ALIGNED ================= */}
       <div className="max-w-4xl text-left space-y-5 mb-14">
@@ -26,7 +26,7 @@ export default function AboutHero() {
         </div>
 
         {/* 1-Line Headline */}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] whitespace-nowrap">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] xl:whitespace-nowrap">
           Your Complete Digital Orthodontic Partner
         </h1>
 
@@ -74,7 +74,7 @@ export default function AboutHero() {
                     Aligner &amp; Retainer Materials
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed pl-6">
                   Our high-performance thermoplastic sheets include Ultra multilayer aligner material and TUFF retainer material. They are engineered for flexibility, strength and clarity.
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function AboutHero() {
                     Thermoforming Machines
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed pl-6">
                   Duoform delivers fast, precise pressure forming with a sub-one-second heat-up and intuitive touchscreen control.
                 </p>
               </div>
@@ -100,7 +100,7 @@ export default function AboutHero() {
                     3D Printing Resins
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed pl-6">
                   High-accuracy model resins for printing dental models ready for thermoforming.
                 </p>
               </div>
@@ -113,7 +113,7 @@ export default function AboutHero() {
                     Orthodontic Accessories
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed pl-6">
+                <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed pl-6">
                   Retainer Boxes, Chewies, Removal Tool, Membrane Boxes and more, to finish and deliver every case professionally.
                 </p>
               </div>
@@ -158,7 +158,7 @@ export default function AboutHero() {
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3.5 text-sm sm:text-base">
                   <CheckCircle2 size={19} className="text-sky-400 shrink-0 mt-1" />
-                  <p className="text-[#E8DCC8]/85 font-light leading-relaxed">
+                  <p className="text-[#E8DCC8] font-light leading-relaxed">
                     <strong className="text-sky-300 font-bold">{item.label}:</strong> {item.detail}
                   </p>
                 </div>

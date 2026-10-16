@@ -56,6 +56,9 @@ export function toProductInput(p: Product): ProductInput {
     faqs: v.faqs,
     metaTitle: v.metaTitle ?? "",
     metaDescription: v.metaDescription ?? "",
+    menuGroup: v.menuGroup,
+    menuTitle: v.menuTitle ?? "",
+    menuDescription: v.menuDescription ?? "",
     published: v.published,
     sortOrder: v.sortOrder,
   };
@@ -91,3 +94,25 @@ export async function getCategories() {
   return rows.map((r) => r.category);
 }
 
+
+/** Products for the header menu. Never throws, so the site still loads if the DB is down. */
+export async function getMenuProducts() {
+  try {
+    const rows = await prisma.product.findMany({
+      where: { published: true, menuGroup: { not: null } },
+      orderBy: [{ sortOrder: "asc" }, { name: "asc" }],
+      select: { slug: true, name: true, tagline: true, menuGroup: true, menuTitle: true, menuDescription: true },
+    });
+    return rows.map((r) => ({
+      slug: r.slug,
+      group: r.menuGroup!,
+      title: r.menuTitle || r.name,
+      description: r.menuDescription || r.tagline,
+    }));
+  } catch (e) {
+    console.error("getMenuProducts failed:", e);
+    return [];
+  }
+}
+
+export type MenuProduct = Awaited<ReturnType<typeof getMenuProducts>>[number];

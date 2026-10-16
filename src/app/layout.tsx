@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
+import { MenuProvider } from "./components/MenuProvider";
+import { getMenuProducts } from "./lib/products";
 
 // 1. Headings ke liye clean bold geometric font
 const fontHeading = Outfit({
@@ -25,11 +27,14 @@ export const metadata: Metadata = {
     "Taglus manufactures world-class clear aligner thermoforming sheets, retainer materials, and 3D dental resins. Engineered for precision orthodontics and global aligner laboratories.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Products for the header menu (managed in the CMS). Refreshed whenever the CMS saves.
+  const menuProducts = await getMenuProducts();
+
   return (
     <html
       lang="en"
@@ -37,7 +42,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#020612] text-[#E8DCC8] overflow-x-hidden">
         <CustomCursor />
-        {children}
+        <MenuProvider products={menuProducts}>{children}</MenuProvider>
       </body>
     </html>
   );

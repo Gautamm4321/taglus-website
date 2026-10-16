@@ -17,6 +17,16 @@ enum ProductTemplate {
   ACCESSORIES
 }
 
+// Which column of the website's Products menu a product appears in (empty = not in menu)
+enum MenuGroup {
+  ALIGNER
+  RETAINER
+  AESTHETIC
+  THERMOFORMING
+  PRINTING
+  ACCESSORIES
+}
+
 model Product {
   id              Int             @id @default(autoincrement())
   slug            String          @unique
@@ -35,6 +45,9 @@ model Product {
   metaTitle       String?
   metaDescription String?         @db.Text
   published       Boolean         @default(true)
+  menuGroup       MenuGroup?
+  menuTitle       String?
+  menuDescription String?
   sortOrder       Int             @default(0)
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt

@@ -42,7 +42,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
               {product.tagline}
             </p>
 
-            <p className="text-sm sm:text-base text-[#E8DCC8]/85 font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
               {product.overview}
             </p>
 
@@ -95,7 +95,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 <h3 className="text-base sm:text-lg font-bold uppercase text-[#E8DCC8] tracking-tight mb-2">
                   {feat.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#E8DCC8]/75 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed">
                   {feat.description}
                 </p>
               </div>
@@ -115,7 +115,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
             <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
               Mechanical &amp; Optical Properties
             </h2>
-            <p className="text-sm sm:text-base text-[#E8DCC8]/85 font-light leading-relaxed pt-1">
+            <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed pt-1">
               {product.propertiesIntro}
             </p>
             <div className="pt-2 flex items-center gap-2.5 text-xs text-sky-300 font-medium">
@@ -161,7 +161,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
             <div className="p-6 sm:p-8 grid grid-cols-2 gap-8 items-start">
               {/* Left: Dimensions */}
               <div>
-                <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8]/60 mb-4 pb-2 border-b border-[#E8DCC8]/10">
+                <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] mb-4 pb-2 border-b border-[#E8DCC8]/10">
                   Dimensions
                 </p>
                 <div className="space-y-3 font-mono text-sm sm:text-base text-[#E8DCC8]">
@@ -182,7 +182,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
 
               {/* Right: Thickness */}
               <div>
-                <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8]/60 mb-4 pb-2 border-b border-[#E8DCC8]/10">
+                <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] mb-4 pb-2 border-b border-[#E8DCC8]/10">
                   Thickness (mm)
                 </p>
                 <div className="space-y-2.5 font-mono text-sm sm:text-base text-sky-300 font-semibold">
@@ -223,13 +223,13 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                   <span className="text-base sm:text-lg font-medium text-[#E8DCC8]">
                     {faq.question}
                   </span>
-                  <div className="text-[#E8DCC8]/70 shrink-0 ml-2">
+                  <div className="text-[#E8DCC8] shrink-0 ml-2">
                     {isOpen ? <Minus size={18} /> : <Plus size={18} />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="pb-6 sm:pb-7 pr-8 text-base sm:text-lg text-[#E8DCC8]/90 font-light leading-relaxed animate-in fade-in duration-300">
+                  <div className="pb-6 sm:pb-7 pr-8 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed animate-in fade-in duration-300">
                     {faq.answer}
                   </div>
                 )}

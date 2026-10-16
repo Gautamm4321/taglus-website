@@ -22,7 +22,7 @@ export default function SafeProductImage({ src, alt, label, className }: SafePro
 
   if (failed) {
     return (
-      <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#E8DCC8]/40 bg-white/[0.02] rounded-xl">
+      <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[#E8DCC8] bg-white/[0.02] rounded-xl">
         <ImageOff size={28} strokeWidth={1.5} />
         <span className="text-[10px] font-mono uppercase tracking-widest text-center px-3">
           {label ?? alt} — photo pending

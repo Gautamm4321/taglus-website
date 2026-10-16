@@ -36,13 +36,13 @@ export default function CaseStudyDetail() {
             </span>
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 text-xs sm:text-sm font-mono text-[#E8DCC8]/80">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 text-xs sm:text-sm font-mono text-[#E8DCC8]">
             <span className="flex items-center gap-1.5 text-sky-400">
               <Globe size={15} />
               Client: Dental Distributor | South America (Peru)
             </span>
             <span className="hidden sm:inline text-white/30">•</span>
-            <span className="flex items-center gap-1.5 text-[#E8DCC8]/70">
+            <span className="flex items-center gap-1.5 text-[#E8DCC8]">
               <ShieldCheck size={15} className="text-sky-400" />
               ISO 13485:2016 Certified Partner
             </span>
@@ -63,13 +63,13 @@ export default function CaseStudyDetail() {
               <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-[#E8DCC8] border-b border-[#E8DCC8]/15 pb-3">
                 About the Client & Partnership
               </h2>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 Founded in 2011, this certified dental distributor has grown into one of the most reliable names in South America’s dental industry. Built on the philosophy of “leadership by results,” the company serves a broad professional network that includes orthodontists, research laboratories, and regional dental practices spanning private clinics, universities, and commercial dental centers across the region.
               </p>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 With a strong reputation for clinical credibility, the distributor consistently evaluates only suppliers who meet and exceed stringent world-class medical device regulatory and quality standards.
               </p>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 Together, they support dental professionals with materials and technologies designed for both premier in-office workflows and high-volume commercial production environments.
               </p>
             </section>
@@ -79,7 +79,7 @@ export default function CaseStudyDetail() {
               <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-[#E8DCC8] border-b border-[#E8DCC8]/15 pb-3">
                 The Challenge: Meeting Rising Aligner Expectations
               </h2>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 As aligner adoption expanded in the South American market, the distributor began observing key challenges with conventional aligner sheets and thermoforming products, particularly in meeting growing expectations around:
               </p>
               <ul className="space-y-2.5 pt-1">
@@ -89,7 +89,7 @@ export default function CaseStudyDetail() {
                   "Consistency in thermoforming adaptation",
                   "Scalability for higher production volumes without margin slippage",
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-xs sm:text-sm text-[#E8DCC8]/90 font-medium">
+                  <li key={idx} className="flex items-center gap-3 text-xs sm:text-sm text-[#E8DCC8] font-medium">
                     <CheckCircle2 size={16} className="text-sky-400 shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -113,7 +113,7 @@ export default function CaseStudyDetail() {
               <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-[#E8DCC8] border-b border-[#E8DCC8]/15 pb-3">
                 The Solution: Partnering with Taglus
               </h2>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 In 2023, the distributor transitioned to Taglus, introducing engineering-focused thermoforming sheets into their commercial offerings. The impact was immediate across clinical and orthodontic labs.
               </p>
               <div className="space-y-3 pt-2">
@@ -135,7 +135,7 @@ export default function CaseStudyDetail() {
                     <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-sky-300">
                       {sol.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#E8DCC8]/75 font-light mt-1">
+                    <p className="text-xs sm:text-sm text-[#E8DCC8] font-light mt-1">
                       {sol.desc}
                     </p>
                   </div>
@@ -148,10 +148,10 @@ export default function CaseStudyDetail() {
               <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-[#E8DCC8] border-b border-[#E8DCC8]/15 pb-3">
                 Customer Response & Market Expansion
               </h2>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 Feedback from regional labs was overwhelmingly positive. Practices reported lower aligner failure rates, reduced retreatment cycles, and higher intraoral comfort scores from patients.
               </p>
-              <p className="text-sm sm:text-base text-[#E8DCC8]/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                 Looking ahead, the partnership continues to expand into photopolymer 3D printing resins, custom finishing systems, and laser automation ecosystems across Latin America.
               </p>
             </section>
@@ -176,7 +176,7 @@ export default function CaseStudyDetail() {
                 <span className="text-xs sm:text-sm font-mono uppercase text-sky-400 font-semibold block mb-1.5 tracking-wider">
                   Validated Clinical Workflow
                 </span>
-                <p className="text-sm sm:text-base text-[#E8DCC8]/90 font-light leading-relaxed">
+                <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
                   Continuous multi-axis stress retention &amp; crystal-clear intraoral aesthetics across Latin America.
                 </p>
               </div>
@@ -190,15 +190,15 @@ export default function CaseStudyDetail() {
               
               <div className="divide-y divide-white/[0.1] space-y-1">
                 <div className="py-3.5 flex items-center justify-between text-sm sm:text-base">
-                  <span className="text-[#E8DCC8]/70">Region</span>
+                  <span className="text-[#E8DCC8]">Region</span>
                   <span className="text-[#E8DCC8] font-bold text-base">South America (Peru)</span>
                 </div>
                 <div className="py-3.5 flex items-center justify-between text-sm sm:text-base">
-                  <span className="text-[#E8DCC8]/70">Key Materials</span>
+                  <span className="text-[#E8DCC8]">Key Materials</span>
                   <span className="text-[#E8DCC8] font-bold text-base">Premium™ &amp; PU Flex™</span>
                 </div>
                 <div className="py-3.5 flex items-center justify-between text-sm sm:text-base">
-                  <span className="text-[#E8DCC8]/70">Impact</span>
+                  <span className="text-[#E8DCC8]">Impact</span>
                   <span className="text-sky-300 font-bold text-base sm:text-lg">&gt; 40% Growth in Aligner Labs</span>
                 </div>
               </div>
