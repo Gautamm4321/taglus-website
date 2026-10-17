@@ -120,41 +120,41 @@ export default function ContactSection() {
           
           {/* Paragraph / Intro Text */}
           <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed mb-6">
-            In tempus nisl turpis, at ultricies dui eleifend a. Quisque et quam vel nunc consectetur pharetra euismod et elit. Morbi nibh tortor, ullamcorper id purus eu, rhoncus consequat velit.
+            Have a question about our aligner sheets, resins or thermoforming machines? Our team is here to help with product enquiries, distributor partnerships and clinical support. Call, email or WhatsApp us, or send a message using the form.
           </p>
 
           {/* 2x2 Centered Contact Matrix (Larger Icons) */}
           <div className="grid grid-cols-2 gap-6 my-auto text-center py-4">
             
             {/* Phone */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2">
+            <a href="tel:+919930905047" className="group flex flex-col items-center justify-center cursor-pointer">
+              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2 transition-transform duration-300 group-hover:scale-110">
                 <Phone size={38} strokeWidth={1.5} />
               </div>
-              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
+              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide transition-colors group-hover:text-sky-400">
                 Phone Number
               </h4>
-              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1">
-                +6282 4032 567
-              </p>
-            </div>
+              <span className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1 transition-colors group-hover:text-sky-400">
+                +91 99309 05047
+              </span>
+            </a>
 
             {/* Email */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2">
+            <a href="mailto:info@taglus.com" className="group flex flex-col items-center justify-center cursor-pointer">
+              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2 transition-transform duration-300 group-hover:scale-110">
                 <Mail size={38} strokeWidth={1.5} />
               </div>
-              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
+              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide transition-colors group-hover:text-sky-400">
                 Email Address
               </h4>
-              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1">
-                Example@Email.Com
-              </p>
-            </div>
+              <span className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1 transition-colors group-hover:text-sky-400">
+                info@taglus.com
+              </span>
+            </a>
 
             {/* WhatsApp */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2">
+            <a href="https://wa.me/919930905047" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center cursor-pointer">
+              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2 transition-transform duration-300 group-hover:scale-110">
                 <svg
                   viewBox="0 0 24 24"
                   className="w-10 h-10"
@@ -168,26 +168,26 @@ export default function ContactSection() {
                   <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
                 </svg>
               </div>
-              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
+              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide transition-colors group-hover:text-sky-400">
                 Whatsapp
               </h4>
-              <p className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1">
-                082-245-7253
-              </p>
-            </div>
+              <span className="text-xs sm:text-sm font-mono text-[#E8DCC8] mt-1 transition-colors group-hover:text-sky-400">
+                +91 99309 05047
+              </span>
+            </a>
 
             {/* Office */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2">
+            <a href="https://www.google.com/maps/search/?api=1&query=19.127491,72.832881" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center cursor-pointer">
+              <div className="w-14 h-14 flex items-center justify-center text-sky-400 mb-2 transition-transform duration-300 group-hover:scale-110">
                 <MapPin size={38} strokeWidth={1.5} />
               </div>
-              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide">
+              <h4 className="text-base font-bold text-[#E8DCC8] uppercase tracking-wide transition-colors group-hover:text-sky-400">
                 Our Office
               </h4>
-              <p className="text-xs sm:text-sm text-[#E8DCC8] mt-1 max-w-[210px] leading-snug">
-                2443 Oak Ridge Omaha, QA 45065
-              </p>
-            </div>
+              <span className="text-xs sm:text-sm text-[#E8DCC8] mt-1 max-w-[230px] leading-snug text-center transition-colors group-hover:text-sky-400">
+                103, Akruti Arcade, J.P. Road, Andheri (West), Mumbai 400053
+              </span>
+            </a>
 
           </div>
 
@@ -195,7 +195,7 @@ export default function ContactSection() {
           <div className="w-full h-[220px] sm:h-[250px] lg:h-[260px] rounded-none overflow-hidden border border-[#E8DCC8]/20 bg-black/50 shadow-xl relative mt-4">
             <iframe
               title="Taglus Office Location Map"
-              src="https://maps.google.com/maps?q=London%20Eye,%20London&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=19.127491,72.832881&t=&z=16&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

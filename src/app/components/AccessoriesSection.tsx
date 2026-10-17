@@ -3,10 +3,69 @@
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
 
+type Accessory = {
+  label: string;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  /** Dark products (e.g. the black articulator) get a thin light outline that follows the product's shape, so they stay visible on the dark card */
+  glow?: boolean;
+  /** Cropped images (tight, no empty space) sit with a bit more padding so all 5 products look the same size */
+  cropped?: boolean;
+};
+
+const ACCESSORIES: Accessory[] = [
+  {
+    label: "Chairside Delivery",
+    title: "Ortho Chewies",
+    description:
+      "Medical-grade cylindrical chewies that remove air gaps and help every aligner seat fully and evenly across the arch.",
+    image: "/accessories/ortho-chewies.png",
+    alt: "Taglus Ortho Chewies",
+    cropped: true,
+  },
+  {
+    label: "Patient Comfort",
+    title: "Removal Tool",
+    description:
+      "Ergonomic, hygienic tool for painless aligner removal, avoiding fingernail pressure and protecting attachments from damage.",
+    image: "/accessories/removal-tool.png",
+    alt: "Aligner Removal Tool",
+    cropped: true,
+  },
+  {
+    label: "Smart Storage",
+    title: "Aligner Case",
+    description:
+      "Impact-resistant slim case with a secure snap lid, designed for clean everyday aligner storage at home and on the go.",
+    image: "/accessories/aligner-case.png",
+    alt: "Clear Aligner Storage Case",
+    cropped: true,
+  },
+  {
+    label: "Daily Protection",
+    title: "Retainer Box",
+    description:
+      "Compact round case with a built-in mirror and ventilated tray, keeping retainers clean, protected and easy to carry.",
+    image: "/retainer_box-removebg-preview.png",
+    alt: "Taglus Retainer Box with Mirror",
+  },
+  {
+    label: "Lab Essentials",
+    title: "Articulator",
+    description:
+      "Lightweight articulator that holds upper and lower models in a stable bite for accurate trimming and case checks.",
+    image: "/articulator-removebg-preview.png",
+    alt: "Dental Model Articulator",
+    glow: true,
+  },
+];
+
 export default function AccessoriesSection() {
   return (
     <section id="accessories" className="relative w-full py-24 sm:py-32 px-4 sm:px-8 lg:px-12">
-      
+
       {/* Section Header */}
       <div className="text-center max-w-4xl mx-auto mb-16">
         <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-5 backdrop-blur-md">
@@ -21,113 +80,39 @@ export default function AccessoriesSection() {
         </p>
       </div>
 
-      {/* 4-Column Layout: Equal Height & Width */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-        
-        {/* ================= CARD 1: Ortho Chewies ================= */}
-        <div className="glass-box rounded-[2.5rem] p-4 sm:p-5 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300">
-          <div className="relative w-full min-h-[300px] h-[340px] rounded-[2rem] overflow-hidden shrink-0">
-            <Image
-              src="/finish-4-removebg-preview.png"
-              alt="Taglus Ortho Chewies"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="p-4 sm:p-5 flex flex-col flex-1 justify-start">
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold text-left">
-              Chairside Delivery
-            </p>
-            <div className="mt-1.5">
-              <h3 className="text-2xl lg:text-[1.7rem] font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.1]">
-                Ortho Chewies
-              </h3>
+      {/* 5 cards: 1 per row on mobile → 2 → 3 → all 5 in one line on desktop (xl) */}
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 items-stretch">
+        {ACCESSORIES.map((item) => (
+          <div
+            key={item.title}
+            className="glass-box rounded-[2rem] p-3 sm:p-4 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300"
+          >
+            <div className="relative w-full h-[260px] xl:h-[220px] 2xl:h-[250px] rounded-[1.5rem] overflow-hidden shrink-0">
+              <div className={`absolute ${item.cropped ? "inset-6" : "inset-4"}`}>
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-contain"
+                  style={item.glow ? { filter: "drop-shadow(0 0 1px rgba(232,220,200,0.6)) drop-shadow(0 0 6px rgba(232,220,200,0.25))" } : undefined}
+                />
+              </div>
             </div>
-            <p className="mt-3 text-[15px] sm:text-base text-[#E8DCC8] font-normal leading-relaxed text-left hyphens-none">
-              Medical-grade cylindrical chewies engineered to eliminate microscopic air gaps and ensure proper aligner tray seating across dental arches.
-            </p>
-          </div>
-        </div>
 
-        {/* ================= CARD 2: Impression Tray ================= */}
-        <div className="glass-box rounded-[2.5rem] p-4 sm:p-5 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300">
-          <div className="relative w-full min-h-[300px] h-[340px] rounded-[2rem] overflow-hidden  shrink-0">
-            <Image
-              src="/finish-1-removebg-preview.png"
-              alt="Orthodontic Impression Tray"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="p-4 sm:p-5 flex flex-col flex-1 justify-start">
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold text-left">
-              Clinical Arch Capture
-            </p>
-            <div className="mt-1.5">
-              <h3 className="text-2xl lg:text-[1.7rem] font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.1]">
-                Impression Tray
+            <div className="p-3 sm:p-4 flex flex-col flex-1 justify-start">
+              <p className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold text-left">
+                {item.label}
+              </p>
+              <h3 className="mt-1.5 text-2xl xl:text-[1.35rem] 2xl:text-[1.6rem] font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.1]">
+                {item.title}
               </h3>
+              <p className="mt-3 text-[15px] xl:text-sm 2xl:text-[15px] text-[#E8DCC8] font-normal leading-relaxed text-left hyphens-none [text-wrap:pretty]">
+                {item.description}
+              </p>
             </div>
-            <p className="mt-3 text-[15px] sm:text-base text-[#E8DCC8] font-normal leading-relaxed text-left hyphens-none">
-              Rigid anatomical trays engineered for distortion-free alginate and silicone impression holding, ensuring accurate master model replication.
-            </p>
           </div>
-        </div>
-
-        {/* ================= CARD 3: Removal Tool ================= */}
-        <div className="glass-box rounded-[2.5rem] p-4 sm:p-5 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300">
-          <div className="relative w-full min-h-[300px] h-[340px] rounded-[2rem] overflow-hidden shrink-0">
-            <Image
-              src="/finish4img-removebg-preview.png"
-              alt="Aligner Removal Tool"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="p-4 sm:p-5 flex flex-col flex-1 justify-start">
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold text-left">
-              Patient Comfort
-            </p>
-            <div className="mt-1.5">
-              <h3 className="text-2xl lg:text-[1.7rem] font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.1]">
-                Removal Tool
-              </h3>
-            </div>
-            <p className="mt-3 text-[15px] sm:text-base text-[#E8DCC8] font-normal leading-relaxed text-left hyphens-none">
-              Ergonomic hygienic instruments crafted for painless aligner disengagement, preventing direct fingernail pressure and attachment fractures.
-            </p>
-          </div>
-        </div>
-
-        {/* ================= CARD 4: Retainer Box ================= */}
-        <div className="glass-box rounded-[2.5rem] p-4 sm:p-5 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300">
-          <div className="relative w-full min-h-[300px] h-[340px] rounded-[2rem] overflow-hidden shrink-0">
-            <Image
-              src="/finish-2-removebg-preview.png"
-              alt="Retainer Storage Box"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="p-4 sm:p-5 flex flex-col flex-1 justify-start">
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold text-left">
-              Smart Storage
-            </p>
-            <div className="mt-1.5">
-              <h3 className="text-2xl lg:text-[1.7rem] font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.1]">
-                Retainer Box
-              </h3>
-            </div>
-            <p className="mt-3 text-[15px] sm:text-base text-[#E8DCC8] font-normal leading-relaxed text-left hyphens-none">
-              Impact-resistant slim protective cases with magnetic enclosure and anti-microbial lining designed for clean everyday aligner preservation.
-            </p>
-          </div>
-        </div>
-
+        ))}
       </div>
 
     </section>

@@ -70,13 +70,10 @@ const SOLUTIONS_LINKS: NavLink[] = [
 ];
 
 const RESOURCES_LINKS: NavLink[] = [
-  { title: "Instructions for Use (IFU)", desc: "Forming parameters by machine", href: "#resources" },
-  { title: "Safety Data Sheets (MSDS)", desc: "Download by product", href: "#resources" },
   { title: "Product Catalogue", desc: "Full portfolio, PDF", href: "/Taglus-Product-Catalogue.pdf", isPdf: true },
   { title: "Machine Compatibility Guide", desc: "Heating settings for common thermoformers", href: "#resources" },
   { title: "Case Studies", desc: "Real cases, real workflows", href: "/case-studies" },
   { title: "Blog & News", desc: "Material science, made practical", href: "/blog" },
-  { title: "Videos", desc: "How-to and product demos", href: "#resources" },
 ];
 
 const COMPANY_LINKS: NavLink[] = [
