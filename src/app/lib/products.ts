@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { Product } from "@prisma/client";
 import { prisma } from "./prisma";
 import type { ProductInput } from "./validation";
+import { hasExtra, resolveExtra } from "./templateContent";
 
 // JSON columns are checked at runtime so one bad row can never crash a page.
 const featuresSchema = z.array(z.object({ title: z.string(), description: z.string().default("") }));
@@ -57,6 +58,8 @@ export function toProductInput(p: Product): ProductInput {
     sizes: v.sizes,
     faqs: v.faqs,
     audience: v.audience,
+    // Pre-filled with the current page content so the editor always starts from what the site shows
+    extra: hasExtra(v.template) ? resolveExtra(v.template, v.extra) : undefined,
     metaTitle: v.metaTitle ?? "",
     metaDescription: v.metaDescription ?? "",
     menuGroup: v.menuGroup,

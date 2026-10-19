@@ -1,75 +1,40 @@
-"use client";
-
-import { useRef } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { motion, animate, useInView } from "framer-motion";
-import { useEffect } from "react";
-import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
 import Header from "./components/header";
 import FeatureHighlights from "./components/FeatureHighlights";
 import AccessoriesSection from "./components/AccessoriesSection";
 import Testimonials from "./components/Testimonials";
 import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
-import HeroCube from "./components/HeroCube";
+import HeroCubeLazy from "./components/HeroCubeLazy";
+import CounterNumber from "./components/CounterNumber";
 
-function CounterNumber({
-  value,
-  suffix = "",
-  className = "",
-}: {
-  value: number;
-  suffix?: string;
-  className?: string;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (!isInView || !ref.current) return;
-
-    const controls = animate(0, value, {
-      duration: 2.2,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (latest) => {
-        if (ref.current) {
-          ref.current.textContent = `${Math.floor(latest)}${suffix}`;
-        }
-      },
-    });
-
-    return () => controls.stop();
-  }, [isInView, value, suffix]);
-
-  return (
-    <span ref={ref} className={className}>
-      0{suffix}
-    </span>
-  );
-}
+export const metadata: Metadata = {
+  title: { absolute: "Taglus | Aligner Sheets, 3D Printing Resins & Thermoforming Machines" },
+  description:
+    "ISO 13485:2016 certified maker of clear aligner and retainer sheets, 3D printing resins, thermoforming machines and orthodontic accessories, in 70+ countries.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-hidden">
       
       {/* Background Radial Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[750px] bg-gradient-to-b from-[#0c1e33]/50 via-[#0a1628]/25 to-transparent blur-[120px] pointer-events-none -z-10" />
+      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(1200px,100vw)] h-[750px] bg-gradient-to-b from-[#0c1e33]/50 via-[#0a1628]/25 to-transparent blur-[120px] pointer-events-none -z-10" />
 
       {/* 1. Header */}
       <Header />
 
+      <main id="main-content" className="flex flex-col">
       {/* 2. Full-Bleed Luxury Hero */}
       <section className="relative w-full pt-32 lg:pt-40 pb-20 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col items-center">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
           
           {/* ================= LEFT CONTENT ================= */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex flex-col justify-center text-left z-20"
-          >
+          <div className="lg:col-span-6 flex flex-col justify-center text-left z-20 animate-fade-up">
             {/* Clinical Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[#E8DCC8]/20 text-sky-300 text-[11px] font-semibold tracking-[0.2em] uppercase w-fit mb-6 shadow-sm backdrop-blur-md">
               <Sparkles size={13} className="text-sky-400" />
@@ -85,14 +50,14 @@ export default function Home() {
             </h1>
 
             {/* Sub-text */}
-            <p className="mt-6 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed max-w-xl">
+            <p className="mt-6 text-base sm:text-lg text-[#E8DCC8] font-normal leading-relaxed max-w-xl">
               From advanced multilayer thermoplastic sheets and precision 3D printing resins to automated laser trimming ecosystems. Purpose-built for orthodontic laboratories and clinical practices worldwide.
             </p>
 
             {/* Dual CTAs */}
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Link
-                href="#sample-kit"
+                href="/contact"
                 className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] hover:from-blue-600 hover:to-cyan-400 text-white text-sm font-semibold tracking-wide shadow-[0_0_30px_rgba(0,180,255,0.35)] hover:scale-[1.03] transition-all duration-300"
               >
                 <span>Become a Distributor</span>
@@ -109,7 +74,7 @@ export default function Home() {
             </div>
 
             {/* Clinical Certifications */}
-            <div className="mt-12 pt-6 border-t border-[#E8DCC8]/15 flex items-center gap-6 text-xs text-[#E8DCC8] font-light">
+            <div className="mt-12 pt-6 border-t border-[#E8DCC8]/15 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-[#E8DCC8]">
               <div className="flex items-center gap-2">
                 <ShieldCheck size={16} className="text-sky-400" />
                 <span>ISO 13485:2016</span>
@@ -119,11 +84,11 @@ export default function Home() {
                 <span>MDR / CE Certified</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-sky-400" />
-                <span>FDA Cleared</span>
+                <ShieldCheck size={16} className="text-sky-400" />
+                <span>TGA · ANVISA</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* ================= RIGHT 3D INTERACTIVE SHOWCASE ================= */}
           <div 
@@ -144,7 +109,7 @@ export default function Home() {
               </div>
 
               {/* 3D product cube: auto-rotates, drag / swipe / arrow keys to spin it */}
-              <HeroCube className="absolute inset-0" />
+              <HeroCubeLazy className="absolute inset-0" />
             </div>
 
             {/* Floating Glass Spec Pill (Bottom) */}
@@ -170,7 +135,7 @@ export default function Home() {
               value={6}
               className="text-3xl sm:text-4xl font-black text-sky-400"
             />
-            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Continents Reached</span>
+            <span className="text-xs text-[#E8DCC8] mt-1 uppercase tracking-wider">Continents Reached</span>
           </div>
           <div className="flex flex-col items-center">
             <CounterNumber
@@ -178,7 +143,7 @@ export default function Home() {
               suffix="+"
               className="text-3xl sm:text-4xl font-black text-[#E8DCC8]"
             />
-            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Global Distributors</span>
+            <span className="text-xs text-[#E8DCC8] mt-1 uppercase tracking-wider">Global Distributors</span>
           </div>
           <div className="flex flex-col items-center">
             <CounterNumber
@@ -186,7 +151,7 @@ export default function Home() {
               suffix="+"
               className="text-3xl sm:text-4xl font-black text-sky-400"
             />
-            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Aligner Labs Served</span>
+            <span className="text-xs text-[#E8DCC8] mt-1 uppercase tracking-wider">Aligner Labs Served</span>
           </div>
           <div className="flex flex-col items-center">
             <CounterNumber
@@ -194,7 +159,7 @@ export default function Home() {
               suffix="%"
               className="text-3xl sm:text-4xl font-black text-[#E8DCC8]"
             />
-            <span className="text-xs font-light text-[#E8DCC8] mt-1 uppercase tracking-wider">Medical Grade Quality</span>
+            <span className="text-xs text-[#E8DCC8] mt-1 uppercase tracking-wider">Medical Grade Quality</span>
           </div>
         </div>
 
@@ -205,6 +170,7 @@ export default function Home() {
       <AccessoriesSection />
       <Testimonials />
       <ProductColumns />
+      </main>
       <Footer />
     </div>
   );

@@ -43,6 +43,7 @@ model Product {
   sizes           Json? // { roundDimensions, squareDimensions, thicknesses }
   faqs            Json // [{ question, answer }]
   audience        Json? // [{ title, description }] — "Who it's for" cards (optional)
+  extra           Json? // Page content for the Resin / Roll / Accessories layouts (see lib/templateContent.ts)
   metaTitle       String?
   metaDescription String?         @db.Text
   published       Boolean         @default(true)
@@ -88,4 +89,19 @@ model Blog {
   updatedAt       DateTime  @default(now()) @updatedAt
 
   @@index([published, publishedAt])
+}
+
+// Enquiries sent from the website contact form (Admin → Messages)
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(120)
+  email     String   @db.VarChar(191)
+  subject   String   @db.VarChar(200)
+  message   String   @db.Text
+  ipHash    String?  @db.VarChar(64)
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([ipHash, createdAt])
 }

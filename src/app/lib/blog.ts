@@ -21,12 +21,32 @@ export const getPostBySlug = cache(async (slug: string) => {
   return post && post.published ? post : null;
 });
 
+/** Rough reading time for an article (≈200 words per minute, minimum 1). */
+export function readingMinutes(markdown: string) {
+  const words = markdown.replace(/!\[[^\]]*\]\([^)]*\)/g, " ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
 export async function getPublishedPosts() {
-  return prisma.blog.findMany({
+  const rows = await prisma.blog.findMany({
     where: { published: true },
     orderBy: { publishedAt: "desc" },
-    select: { id: true, slug: true, title: true, excerpt: true, imagePath: true, publishedAt: true },
+    select: { id: true, slug: true, title: true, excerpt: true, imagePath: true, publishedAt: true, content: true },
   });
+  return rows.map(({ content, ...post }) => ({ ...post, minutes: readingMinutes(content) }));
+}
+
+export type PostSummary = Awaited<ReturnType<typeof getPublishedPosts>>[number];
+
+/** Latest published posts other than the one being read. */
+export async function getRelatedPosts(excludeSlug: string, take = 3) {
+  const rows = await prisma.blog.findMany({
+    where: { published: true, slug: { not: excludeSlug } },
+    orderBy: { publishedAt: "desc" },
+    take,
+    select: { id: true, slug: true, title: true, excerpt: true, imagePath: true, publishedAt: true, content: true },
+  });
+  return rows.map(({ content, ...post }) => ({ ...post, minutes: readingMinutes(content) }));
 }
 
 export async function getPublishedPostSlugs() {

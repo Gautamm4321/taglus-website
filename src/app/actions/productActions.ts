@@ -5,6 +5,7 @@ import { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
 import { requireAdmin } from "../lib/auth";
 import { productSchema, zodToResult, type ActionResult, type ProductInput } from "../lib/validation";
+import { EXTRA_SCHEMAS, hasExtra } from "../lib/templateContent";
 
 const isPrismaError = (e: unknown, code: string) =>
   e instanceof Prisma.PrismaClientKnownRequestError && e.code === code;
@@ -20,8 +21,23 @@ export async function saveProduct(id: number | null, input: ProductInput): Promi
   const parsed = productSchema.safeParse(input);
   if (!parsed.success) return zodToResult(parsed.error);
 
-  const { sizes, ...rest } = parsed.data;
-  const data = { ...rest, sizes: sizes ?? Prisma.DbNull };
+  const { sizes, extra, ...rest } = parsed.data;
+
+  // Resin / Roll / Accessories pages keep their section content in `extra`
+  let extraValue: Prisma.InputJsonValue | typeof Prisma.DbNull = Prisma.DbNull;
+  if (hasExtra(rest.template)) {
+    const checked = EXTRA_SCHEMAS[rest.template].safeParse(extra);
+    if (!checked.success) {
+      const result = zodToResult(checked.error);
+      if (!result.ok && result.fieldErrors) {
+        result.fieldErrors = Object.fromEntries(Object.entries(result.fieldErrors).map(([k, v]) => [`extra.${k}`, v]));
+      }
+      return result;
+    }
+    extraValue = checked.data as Prisma.InputJsonValue;
+  }
+
+  const data = { ...rest, sizes: sizes ?? Prisma.DbNull, extra: extraValue };
 
   try {
     const saved = id
@@ -68,6 +84,7 @@ export async function duplicateProduct(id: number): Promise<ActionResult> {
     slug = `${original.slug}-copy-${i}`;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id: _id, createdAt: _c, updatedAt: _u, ...rest } = original;
   const copy = await prisma.product.create({
     data: {
@@ -80,6 +97,7 @@ export async function duplicateProduct(id: number): Promise<ActionResult> {
       faqs: rest.faqs as Prisma.InputJsonValue,
       audience: rest.audience === null ? Prisma.DbNull : (rest.audience as Prisma.InputJsonValue),
       sizes: rest.sizes === null ? Prisma.DbNull : (rest.sizes as Prisma.InputJsonValue),
+      extra: rest.extra === null ? Prisma.DbNull : (rest.extra as Prisma.InputJsonValue),
     },
   });
   refreshSite();

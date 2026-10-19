@@ -14,6 +14,7 @@ export default function CaseStudyDetail() {
           src="/case-studies1.png"
           alt="Elevating Orthodontic Excellence in South America"
           fill
+          sizes="100vw"
           priority
           className="object-cover object-center"
         />

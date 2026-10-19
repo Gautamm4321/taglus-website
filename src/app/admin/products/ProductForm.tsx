@@ -19,6 +19,11 @@ import { buttonPrimary, buttonSecondary, ErrorBanner, Field, inputClass, Section
 import RepeaterField from "../components/RepeaterField";
 import StringListField from "../components/StringListField";
 import ImageUpload from "../components/ImageUpload";
+import TemplateContentEditor from "./TemplateContentEditor";
+import { EXTRA_DEFAULTS, hasExtra, type ExtraContent } from "../../lib/templateContent";
+
+const defaultsFor = (template: ProductTemplateName) =>
+  hasExtra(template) ? (structuredClone(EXTRA_DEFAULTS[template]) as ExtraContent) : undefined;
 
 // New products start EMPTY — no sample FAQ / feature ever leaks onto the live site.
 const EMPTY_PRODUCT: ProductInput = {
@@ -60,6 +65,7 @@ export default function ProductForm({
   const isEdit = productId !== undefined;
 
   const [data, setData] = useState<ProductInput>(initialData ?? EMPTY_PRODUCT);
+  const usesPageContent = hasExtra(data.template);
   const [slugEdited, setSlugEdited] = useState(isEdit);
   const [menuGroupEdited, setMenuGroupEdited] = useState(isEdit);
   const [saving, setSaving] = useState(false);
@@ -140,6 +146,8 @@ export default function ProductForm({
                   ...d,
                   template,
                   menuGroup: menuGroupEdited ? d.menuGroup : DEFAULT_MENU_GROUP[template],
+                  // Each layout has its own page content: start from that layout's current content
+                  extra: d.template === template ? d.extra : defaultsFor(template),
                 }));
               }}
               className={inputClass}
@@ -179,6 +187,13 @@ export default function ProductForm({
           />
         </Field>
 
+        {usesPageContent && (
+          <p className="rounded-lg border border-[#D4AF37]/30 bg-[#D4AF37]/5 px-4 py-3 text-sm text-gray-300">
+            For this layout, the image and overview below are used for Google, product cards and the menu. The page itself is
+            edited in <strong className="text-[#E8DCC8]">Page content</strong> further down.
+          </p>
+        )}
+
         <Field label="Product image" required error={fe.imagePath}>
           <ImageUpload value={data.imagePath} onChange={(url) => set("imagePath", url)} folder="products" />
         </Field>
@@ -194,6 +209,19 @@ export default function ProductForm({
         </Field>
       </Section>
 
+      {/* ---------- Page content (Resin / Roll / Accessories layouts) ---------- */}
+      {usesPageContent && hasExtra(data.template) && (
+        <TemplateContentEditor
+          template={data.template}
+          value={(data.extra as ExtraContent | undefined) ?? defaultsFor(data.template)!}
+          onChange={(v) => set("extra", v)}
+          errors={fe}
+        />
+      )}
+
+      {/* The sections below are only used by the Sheet and Machine layouts */}
+      {!usesPageContent && (
+        <>
       {/* ---------- Features ---------- */}
       <Section title="Key features" description="The highlight cards on the product page.">
         <RepeaterField
@@ -320,6 +348,9 @@ export default function ProductForm({
           errorPrefix="faqs"
         />
       </Section>
+
+        </>
+      )}
 
       {/* ---------- SEO & visibility ---------- */}
             {/* ---------- Website menu ---------- */}

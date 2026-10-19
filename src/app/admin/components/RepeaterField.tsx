@@ -1,6 +1,7 @@
 "use client";
 
 import { inputClass } from "./ui";
+import ImageUpload from "./ImageUpload";
 
 type Row = Record<string, string>;
 
@@ -9,6 +10,10 @@ export interface RepeaterColumn<T extends Row> {
   label: string;
   multiline?: boolean;
   placeholder?: string;
+  /** Show an image uploader instead of a text box */
+  image?: boolean;
+  /** Small help text under the field */
+  hint?: string;
 }
 
 /**
@@ -88,7 +93,9 @@ export default function RepeaterField<T extends Row>({
               return (
                 <div key={col.key}>
                   <label className="block text-xs font-medium text-gray-400 mb-1">{col.label}</label>
-                  {col.multiline ? (
+                  {col.image ? (
+                    <ImageUpload value={item[col.key] ?? ""} onChange={(url) => update(index, col.key, url)} folder="products" />
+                  ) : col.multiline ? (
                     <textarea
                       rows={3}
                       value={item[col.key] ?? ""}
@@ -105,6 +112,7 @@ export default function RepeaterField<T extends Row>({
                       className={inputClass}
                     />
                   )}
+                  {col.hint && <p className="mt-1 text-xs text-gray-500">{col.hint}</p>}
                   {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
                 </div>
               );

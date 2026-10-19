@@ -18,7 +18,19 @@ interface ProductItem {
     imageScale?: number; // optional: >1 makes this product's image bigger
   specs: { label: string; value: string }[];
   highlight: string;
+  /** Product page on this site (cards without one link to the contact page) */
+  href?: string;
 }
+
+const PRODUCT_PAGES: Record<string, string> = {
+  "taglus-premium": "/products/taglus-premium",
+  "taglus-ultra": "/products/taglus-ultra",
+  "taglus-puflex": "/products/taglus-pu-flex",
+  "taglus-tuff": "/products/taglus-tuff",
+  "taglus-model-resin": "/products/taglus-model-resin",
+  "taglus-waterwash-resin": "/products/taglus-model-resin",
+  "taglus-duoform": "/products/taglus-duoform",
+};
 
 const PRODUCTS: ProductItem[] = [
   {
@@ -157,7 +169,7 @@ export default function ProductColumns() {
     <section id="products" className="relative w-full py-28 sm:py-36 px-4 sm:px-8 max-w-7xl mx-auto">
 
       {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-sky-500/10 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(1000px,100vw)] h-[600px] bg-sky-500/10 blur-[140px] pointer-events-none -z-10" />
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -180,6 +192,8 @@ export default function ProductColumns() {
             const isSelected = selectedCategory === tab.key;
             return (
               <button
+                type="button"
+                aria-pressed={isSelected}
                 key={tab.key}
                 onClick={() => setSelectedCategory(tab.key as ProductCategory)}
                 className={`px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer rounded-xl ${isSelected
@@ -229,7 +243,13 @@ export default function ProductColumns() {
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-[#E8DCC8] group-hover:text-white transition-colors">
-                        {product.name}
+                        {PRODUCT_PAGES[product.id] ? (
+                          <Link href={PRODUCT_PAGES[product.id]} className="hover:text-sky-300 transition-colors">
+                            {product.name}
+                          </Link>
+                        ) : (
+                          product.name
+                        )}
                       </h3>
                       <div className="flex items-center gap-1 text-[11px] text-[#E8DCC8] shrink-0">
                         <ShieldCheck size={14} className="text-sky-400" />
@@ -237,7 +257,7 @@ export default function ProductColumns() {
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed line-clamp-2">
+                    <p className="text-sm text-[#E8DCC8] font-normal leading-relaxed line-clamp-2">
                       {product.tagline}
                     </p>
 
@@ -264,10 +284,11 @@ export default function ProductColumns() {
                 </div>
 
                 <Link
-                  href="#sample-kit"
+                  href={PRODUCT_PAGES[product.id] ?? "/contact"}
+                  aria-label={PRODUCT_PAGES[product.id] ? `View ${product.name}` : `Request a sample of ${product.name}`}
                   className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-white/[0.05] hover:bg-gradient-to-r hover:from-[#0052cc] hover:to-[#00d4ff] text-[#E8DCC8] hover:text-white text-xs font-bold uppercase tracking-wider border border-[#E8DCC8]/25 hover:border-transparent transition-all duration-300 rounded-none shadow-sm"
                 >
-                  <span>Request Sample / Specs</span>
+                  <span>{PRODUCT_PAGES[product.id] ? "View Product & Specs" : "Request Sample / Specs"}</span>
                   <ArrowRight size={13} />
                 </Link>
               </div>
@@ -283,21 +304,23 @@ export default function ProductColumns() {
             <Download size={22} />
           </div>
           <div>
-            <h4 className="text-base sm:text-lg font-bold uppercase tracking-wider text-[#E8DCC8]">
-              Comprehensive Technical Data Sheets (TDS)
-            </h4>
+            <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-[#E8DCC8]">
+              Taglus Product Catalogue
+            </h3>
             <p className="text-xs sm:text-sm text-[#E8DCC8] font-light mt-1">
-              Download complete stress retention curves, biocompatibility compliance, and thermoforming parameters.
+              The full Taglus portfolio in one PDF: aligner and retainer sheets, resins, machines and accessories.
             </p>
           </div>
         </div>
-        <Link
-          href="#sample-kit"
+        <a
+          href="/Taglus-Product-Catalogue.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 text-sky-300 text-xs sm:text-sm font-bold tracking-wide transition-all rounded-full shadow-lg"
         >
-          <span>Download 2026 Material Catalog</span>
-          <ArrowRight size={15} />
-        </Link>
+          <span>Download Product Catalogue (PDF)</span>
+          <ArrowRight size={15} aria-hidden="true" />
+        </a>
       </div>
 
     </section>

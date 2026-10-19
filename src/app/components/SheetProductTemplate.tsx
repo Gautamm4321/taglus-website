@@ -85,6 +85,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 src={product.imagePath}
                 alt={product.name}
                 fill
+                sizes="(min-width: 1024px) 640px, 100vw"
                 priority
                 className="object-contain pointer-events-none select-none"
               />
@@ -95,6 +96,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
 
       {/* ================= 2. KEY FEATURES (4 TILES) ================= */}
       <section className="px-4 sm:px-8 max-w-7xl mx-auto mb-20 sm:mb-28">
+        <h2 className="sr-only">Key features of {product.name}</h2>
         <div className={`grid grid-cols-1 sm:grid-cols-2 ${featureCols} gap-6`}>
           {product.features.map((feat, idx) => (
             <div

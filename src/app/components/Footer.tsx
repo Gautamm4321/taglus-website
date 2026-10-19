@@ -109,7 +109,7 @@ export default function Footer() {
           {/* Link columns */}
           <div className="lg:col-span-6 grid grid-cols-2 gap-8 sm:gap-16 max-w-md">
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-[#E8DCC8]">Quick Links</h3>
+              <h2 className="text-lg sm:text-xl font-bold text-[#E8DCC8]">Quick Links</h2>
               <ul className="mt-4 space-y-2.5">
                 {QUICK_LINKS.map((l) => (
                   <FooterLink key={l.label} {...l} />
@@ -117,7 +117,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-[#E8DCC8]">Company</h3>
+              <h2 className="text-lg sm:text-xl font-bold text-[#E8DCC8]">Company</h2>
               <ul className="mt-4 space-y-2.5">
                 {COMPANY_LINKS.map((l) => (
                   <FooterLink key={l.label} {...l} />

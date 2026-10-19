@@ -150,6 +150,8 @@ export const productSchema = z.object({
     )
     .max(12)
     .default([]),
+  /** Page content for the Resin / Roll / Accessories layouts — checked per layout in saveProduct */
+  extra: z.unknown().optional(),
   metaTitle: optionalText("SEO title", 191),
   metaDescription: optionalText("SEO description", 500),
   published: z.boolean(),

@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { ProductView } from "../lib/products";
 import { 
   Sparkles, 
   Flame, 
   Gauge, 
   Monitor, 
   Volume2, 
-  ShieldCheck, 
   ArrowRight,
   Download
 } from "lucide-react";
 
-export default function MachineProductTemplate({ product }: { product: any }) {
+export default function MachineProductTemplate({ product }: { product: ProductView }) {
   const specs = product.propertiesList || [];
   const features = product.features || [];
 

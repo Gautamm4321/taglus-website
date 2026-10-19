@@ -1,21 +1,25 @@
+import type { Metadata } from "next";
 import Header from "../components/header";
 import AboutHero from "../components/AboutHero";
 import AboutScrollStory from "../components/AboutScrollStory";
 import Footer from "../components/Footer";
 
+export const metadata: Metadata = {
+  title: "About Us: Digital Orthodontic Materials & Equipment",
+  description:
+    "Taglus makes aligner and retainer sheets, thermoforming machines, 3D printing resins and orthodontic accessories: one partner for the full digital workflow.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
+};
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Reusable Header */}
       <Header />
-
-      {/* Main Content Area */}
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <AboutHero />
         <AboutScrollStory />
       </main>
-
-      {/* Reusable Footer */}
       <Footer />
     </div>
   );

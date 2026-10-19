@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
-/* Hide default native cursor on desktop completely */
-@media (min-width: 768px) {
-  html,
-  body,
-  body *,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  [role="button"] {
+/* Custom cursor: only on devices with a real mouse, and only once the cursor component is
+   mounted (html.has-custom-cursor), so touch tablets and no-JS visitors keep a normal pointer. */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor body *,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor [role="button"] {
     cursor: none !important;
   }
 }
@@ -72,7 +73,6 @@ body {
   background-color: #020612;
   background-image: 
     radial-gradient(circle at 50% 15%, #0c1e33 0%, #0a1628 35%, #050b1a 65%, #020612 100%);
-  background-attachment: fixed;
   color: var(--text-cream);
   overflow-x: hidden;
 }
@@ -93,13 +93,6 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(232, 220, 200, 0.15);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Hide Next.js DevTools Indicator */
-nextjs-portal,
-[data-nextjs-toast],
-[data-nextjs-dialog-overlay] {
-  display: none !important;
 }
 
 @keyframes marquee {
@@ -166,3 +159,50 @@ nextjs-portal,
     hyphens: manual;
   }
 }
+
+
+/* Fixed background only on large screens (on phones it causes scroll jank / repaints) */
+@media (min-width: 1024px) {
+  body { background-attachment: fixed; }
+}
+
+/* ================= ACCESSIBILITY ================= */
+/* Visible keyboard focus everywhere (mouse clicks don't show it) */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Hero entrance (CSS only, no JavaScript needed) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Respect "reduce motion" system setting */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link: hidden until focused with the keyboard */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100000;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  background: #0088ff;
+  color: #fff;
+  font-weight: 600;
+}
+.skip-link:focus { top: 1rem; }

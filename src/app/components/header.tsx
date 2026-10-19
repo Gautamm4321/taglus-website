@@ -63,7 +63,6 @@ type NavLink = { title: string; desc: string; href: string; isPdf?: boolean };
 // Shared by the desktop dropdowns and the mobile menu (edit links in one place)
 const RESOURCES_LINKS: NavLink[] = [
   { title: "Product Catalogue", desc: "Full portfolio, PDF", href: "/Taglus-Product-Catalogue.pdf", isPdf: true },
-  { title: "Machine Compatibility Guide", desc: "Heating settings for common thermoformers", href: "#resources" },
   { title: "Case Studies", desc: "Real cases, real workflows", href: "/case-studies" },
   { title: "Blog & News", desc: "Material science, made practical", href: "/blog" },
 ];
@@ -175,18 +174,26 @@ export default function Header() {
     return { ...col, items: [...(col.fixed ?? []), ...fromCms, ...upcoming] };
   }).filter((col) => col.items.length > 0);
 
+  // Esc closes an open desktop dropdown (keyboard users)
+  useEffect(() => {
+    if (!activeMenu) return;
+    const closeDesktopOnEsc = (e: KeyboardEvent) => e.key === "Escape" && setActiveMenu(null);
+    window.addEventListener("keydown", closeDesktopOnEsc);
+    return () => window.removeEventListener("keydown", closeDesktopOnEsc);
+  }, [activeMenu]);
+
   return (
     <header
       className="fixed top-0 inset-x-0 z-50 w-full bg-[#020612]/80 backdrop-blur-2xl border-b border-[#E8DCC8]/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all"
       onMouseLeave={() => setActiveMenu(null)}
     >
-      <nav className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
+      <nav aria-label="Main" className="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
 
         {/* Left: Taglus Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/logo-tuglas.png"
-            alt="Taglus Logo"
+            alt="Taglus home"
             width={130}
             height={34}
             priority
@@ -203,7 +210,12 @@ export default function Header() {
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("products")}
           >
-            <button className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={activeMenu === "products"}
+              onClick={() => setActiveMenu(activeMenu === "products" ? null : "products")}
+              className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
               <span>Products</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${activeMenu === "products" ? "rotate-180 text-sky-400" : "text-[#E8DCC8]"}`} />
             </button>
@@ -214,7 +226,12 @@ export default function Header() {
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("resources")}
           >
-            <button className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={activeMenu === "resources"}
+              onClick={() => setActiveMenu(activeMenu === "resources" ? null : "resources")}
+              className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
               <span>Resources</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${activeMenu === "resources" ? "rotate-180 text-sky-400" : "text-[#E8DCC8]"}`} />
             </button>
@@ -248,7 +265,12 @@ export default function Header() {
             className="relative py-2 cursor-pointer"
             onMouseEnter={() => setActiveMenu("company")}
           >
-            <button className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={activeMenu === "company"}
+              onClick={() => setActiveMenu(activeMenu === "company" ? null : "company")}
+              className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
               <span>Company</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${activeMenu === "company" ? "rotate-180 text-sky-400" : "text-[#E8DCC8]"}`} />
             </button>
@@ -287,7 +309,7 @@ export default function Header() {
         </ul>
 
         <Link
-          href="#distributor"
+          href="/contact"
           className="group hidden lg:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] hover:from-blue-600 hover:to-cyan-400 text-white text-xs sm:text-[13px] font-semibold tracking-wide shadow-md shadow-sky-500/20 hover:scale-[1.02] transition-all duration-200"
         >
           <span>Become a Distributor</span>

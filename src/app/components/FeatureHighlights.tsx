@@ -13,6 +13,7 @@ import {
   CheckCircle2, 
   Cpu
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface WorkflowStep {
   id: string;
@@ -21,7 +22,7 @@ interface WorkflowStep {
   category: string;
   shortDesc: string;
   fullDesc: string;
-  icon: any;
+  icon: LucideIcon;
   bulletPoints: string[];
   products: { name: string; tag: string; desc: string }[];
   mediaType: "single" | "grid-resins" | "grid-duo" | "grid-quad";
@@ -54,17 +55,17 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { 
         title: "Model Resin", 
         subtitle: "High Precision Models", 
-        imagePath: "/Taglus Model Resin Bottle with Golden Splash-Photoroom.png" 
+        imagePath: "/resin-model-golden-splash.webp" 
       },
       { 
         title: "Water-Washable", 
         subtitle: "Simplified Cleaning", 
-        imagePath: "/Taglus Water Washable Resin Bottle Splash-Photoroom.png" 
+        imagePath: "/resin-water-washable-splash.webp" 
       },
       { 
         title: "Low-Odor Resin", 
         subtitle: "Lab Comfort", 
-        imagePath: "/Taglus Model Resin Splash Bottle.png" 
+        imagePath: "/resin-model-splash.webp" 
       }
     ]
   },
@@ -123,12 +124,12 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { 
         title: "5X Trimming Machine", 
         subtitle: "Milling cutter follows margin contour", 
-        imagePath: "/trim-1.png" 
+        imagePath: "/trim-1.webp" 
       },
       { 
         title: "LAC Laser Cutter", 
         subtitle: "Contactless CO2 Laser Precision", 
-        imagePath: "/trim-2.png" 
+        imagePath: "/trim-2.webp" 
       }
     ]
   },
@@ -318,6 +319,7 @@ export default function FeatureHighlights() {
                           src={item.imagePath}
                           alt={item.title}
                           fill
+                          sizes="(min-width: 1024px) 25vw, 50vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
@@ -346,6 +348,7 @@ export default function FeatureHighlights() {
                           src={item.imagePath}
                           alt={item.title}
                           fill
+                          sizes="(min-width: 1024px) 25vw, 50vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
@@ -374,6 +377,7 @@ export default function FeatureHighlights() {
                           src={item.imagePath}
                           alt={item.title}
                           fill
+                          sizes="(min-width: 1024px) 25vw, 50vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
@@ -403,7 +407,7 @@ export default function FeatureHighlights() {
             </p>
           </div>
           <Link
-            href="#sample-kit"
+            href="/contact"
             className="inline-flex items-center gap-2 text-xs font-semibold text-sky-300 hover:text-white transition"
           >
             <span>Request Full Workflow Specifications</span>

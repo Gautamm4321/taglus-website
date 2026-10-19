@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* Hide default native cursor on desktop completely */
+@media (min-width: 768px) {
+  html,
+  body,
+  body *,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
+
+:root {
+  --bg-darkest: #020612;
+  --bg-glow: #0a1628;
+  --bg-glow-subtle: #0c1e33;
+  --text-cream: #E8DCC8;
+}
+
+/* ================= GLOBAL FONT ARCHITECTURE ================= */
+/* 1. Default text font har jagah: Plus Jakarta Sans */
+html,
+body,
+p,
+span,
+a,
+button,
+input,
+textarea,
+ul,
+li,
+td,
+th {
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. Headings ka font har jagah: Outfit */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-heading), sans-serif !important;
+}
+
+/* ================= EQUAL WEIGHT GRADIENT FIX ================= */
+/* Headings ke andar jo blue gradient spans hain, unko parent heading ka exact weight aur optical sharpness force karega */
+h1 span,
+h2 span,
+h3 span,
+.font-heading span {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  letter-spacing: inherit !important;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #020612;
+  background-image: 
+    radial-gradient(circle at 50% 15%, #0c1e33 0%, #0a1628 35%, #050b1a 65%, #020612 100%);
+  background-attachment: fixed;
+  color: var(--text-cream);
+  overflow-x: hidden;
+}
+
+/* Luxury Dark Frosted Glass */
+.glass-box {
+  background: rgba(10, 22, 40, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(232, 220, 200, 0.12);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.glass-nav {
+  background: rgba(2, 6, 18, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(232, 220, 200, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Hide Next.js DevTools Indicator */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay] {
+  display: none !important;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}
+
+/* ================= TYPOGRAPHY: JUSTIFIED BODY TEXT ================= */
+/* Client request: paragraphs read as clean, evenly aligned blocks across the site.
+   In @layer base, so any Tailwind class on an element (text-left, text-center…) still wins. */
+@layer base {
+  /* Justify only on tablet/desktop — phone screens are too narrow (big word gaps) */
+  @media (min-width: 768px) {
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      text-wrap: pretty;
+    }
+  }
+
+  /* Sections designed as centered / right-aligned keep their alignment */
+  .text-center p,
+  .text-right p {
+    text-align: inherit;
+  }
+
+  /* Menus (header dropdowns) and footer keep normal left alignment */
+  header p,
+  footer p {
+    text-align: inherit;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+  }
+}
+
+
+/* One type system everywhere: "font-mono" labels (spec values, eyebrows, badges) use the site's
+   body font instead of the browser's monospace (Consolas/Courier looked like a different font). */
+.font-mono {
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Card text is never justified: in narrow columns justify creates big word gaps.
+   (Long paragraphs outside cards keep the justified style on md+ screens.) */
+@layer base {
+  [class*="rounded-2xl"] p,
+  [class*="rounded-3xl"] p,
+  [class*="rounded-[2"] p,
+  [class*="rounded-xl"] p {
+    text-align: left;
+    hyphens: manual;
+  }
+}
