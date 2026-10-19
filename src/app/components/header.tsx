@@ -21,23 +21,22 @@ const MENU_COLUMNS: { group: MenuGroupName; title: string; upcoming?: MenuItem[]
     group: "ALIGNER",
     title: "Aligner Materials",
     upcoming: [
-      { name: "Taglus Ultra", desc: "Multilayer aligner material", href: "#product" },
-      { name: "Taglus Standard", desc: "Value choice for high-volume labs", href: "#product" },
+      { name: "Taglus Ultra", desc: "High-force aligner sheet", href: "/products/taglus-ultra" },
     ],
   },
   {
     group: "RETAINER",
     title: "Retainer & Splint",
     upcoming: [
-      { name: "Taglus Hard & Soft", desc: "Dual-laminate splints and guards", href: "#product" },
-      { name: "Taglus Soft", desc: "Flexible sheets for comfort appliances", href: "#product" },
+      { name: "Taglus Hard & Soft", desc: "Bilayer sheet: rigid outside, soft inside", href: "/products/taglus-hard-and-soft" },
+      { name: "Taglus Soft", desc: "Flexible EVA for guards & trays", href: "/products/taglus-soft" },
     ],
   },
   {
     group: "AESTHETIC",
     title: "Aesthetic & Interim",
     upcoming: [
-      { name: "Taglus Smiles", desc: "Direct-to-patient aligner system", href: "/products/taglus-smiles", badge: "Shades: A1 & A2" },
+      { name: "Taglus Smiles", desc: "Shaded sheets for pontics & interims", href: "/products/taglus-smiles", badge: "Shades: A1, A2 & A3" },
     ],
   },
   { group: "THERMOFORMING", title: "Thermoforming" },
@@ -62,13 +61,6 @@ const normalizeName = (s: string) =>
 type NavLink = { title: string; desc: string; href: string; isPdf?: boolean };
 
 // Shared by the desktop dropdowns and the mobile menu (edit links in one place)
-const SOLUTIONS_LINKS: NavLink[] = [
-  { title: "Aligner Manufacturers", desc: "Materials and automation that scale with your case volume", href: "#solutions" },
-  { title: "Dental Labs", desc: "Print, form, trim and pack in one workflow", href: "#solutions" },
-  { title: "Orthodontists & Clinics", desc: "In-office aligners, retainers and splints", href: "#solutions" },
-  { title: "Distributors", desc: "Partner with Taglus in your region", href: "#solutions" },
-];
-
 const RESOURCES_LINKS: NavLink[] = [
   { title: "Product Catalogue", desc: "Full portfolio, PDF", href: "/Taglus-Product-Catalogue.pdf", isPdf: true },
   { title: "Machine Compatibility Guide", desc: "Heating settings for common thermoformers", href: "#resources" },
@@ -80,7 +72,6 @@ const COMPANY_LINKS: NavLink[] = [
   { title: "About Taglus", desc: "Who we are and how we manufacture", href: "/about" },
   { title: "Quality & Certifications", desc: "ISO 13485:2016, CE, UKCA, TGA, ANVISA", href: "/certifications" },
   { title: "Events", desc: "Meet us at IDS 2027 and other shows", href: "/events" },
-  { title: "Become a Distributor", desc: "Grow with a 70+ country network", href: "#distributor" },
 ];
 
 /* ---------- Mobile menu building blocks ---------- */
@@ -218,38 +209,6 @@ export default function Header() {
             </button>
           </li>
 
-          {/* 2. Solutions Dropdown */}
-          <li
-            className="relative py-2 cursor-pointer"
-            onMouseEnter={() => setActiveMenu("solutions")}
-          >
-            <button className="flex items-center gap-1.5 text-[#E8DCC8] hover:text-white transition-colors">
-              <span>Solutions</span>
-              <ChevronDown size={14} className={`transition-transform duration-200 ${activeMenu === "solutions" ? "rotate-180 text-sky-400" : "text-[#E8DCC8]"}`} />
-            </button>
-
-            {activeMenu === "solutions" && (
-              <div className="absolute top-full left-0 mt-3 w-80 rounded-2xl bg-[#030919]/95 backdrop-blur-2xl border border-[#E8DCC8]/20 p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="space-y-3">
-                  {SOLUTIONS_LINKS.map((item) => (
-                    <Link
-                      key={item.title}
-                      href={item.href}
-                      className="block p-2.5 rounded-xl hover:bg-white/[0.06] transition group"
-                    >
-                      <p className="text-xs font-semibold text-[#E8DCC8] group-hover:text-sky-300 transition-colors">
-                        {item.title}
-                      </p>
-                      <p className="text-[11px] text-[#E8DCC8] font-light leading-relaxed mt-0.5">
-                        {item.desc}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </li>
-
           {/* 3. Resources Dropdown */}
           <li
             className="relative py-2 cursor-pointer"
@@ -369,12 +328,6 @@ export default function Header() {
                   </div>
                 ))}
               </div>
-            </MobileGroup>
-
-            <MobileGroup title="Solutions" open={mobileSection === "solutions"} onToggle={() => toggleSection("solutions")}>
-              {SOLUTIONS_LINKS.map((l) => (
-                <MobileLink key={l.title} href={l.href} title={l.title} desc={l.desc} onNavigate={closeMobile} />
-              ))}
             </MobileGroup>
 
             <MobileGroup title="Resources" open={mobileSection === "resources"} onToggle={() => toggleSection("resources")}>

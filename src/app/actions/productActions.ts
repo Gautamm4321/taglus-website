@@ -78,6 +78,7 @@ export async function duplicateProduct(id: number): Promise<ActionResult> {
       features: rest.features as Prisma.InputJsonValue,
       propertiesList: rest.propertiesList as Prisma.InputJsonValue,
       faqs: rest.faqs as Prisma.InputJsonValue,
+      audience: rest.audience === null ? Prisma.DbNull : (rest.audience as Prisma.InputJsonValue),
       sizes: rest.sizes === null ? Prisma.DbNull : (rest.sizes as Prisma.InputJsonValue),
     },
   });

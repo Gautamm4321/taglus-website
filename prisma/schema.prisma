@@ -42,6 +42,7 @@ model Product {
   propertiesList  Json // [{ label, value }]
   sizes           Json? // { roundDimensions, squareDimensions, thicknesses }
   faqs            Json // [{ question, answer }]
+  audience        Json? // [{ title, description }] — "Who it's for" cards (optional)
   metaTitle       String?
   metaDescription String?         @db.Text
   published       Boolean         @default(true)

@@ -21,7 +21,7 @@ function EventCard({ event, past }: { event: Event; past?: boolean }) {
   return (
     <article
       id={event.slug}
-      className="flex flex-col rounded-2xl border border-[#E8DCC8]/15 bg-[#0b1329] overflow-hidden hover:border-sky-400/40 transition-colors"
+      className="scroll-mt-28 flex flex-col rounded-2xl border border-[#E8DCC8]/15 bg-[#0b1329] overflow-hidden hover:border-sky-400/40 transition-colors"
     >
       {event.imagePath && (
         // Full image, never cropped: natural height, width fills the card

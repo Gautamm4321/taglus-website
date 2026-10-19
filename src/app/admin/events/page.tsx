@@ -59,6 +59,11 @@ export default async function EventsAdminPage() {
                       <Link href={`/admin/events/${ev.id}/edit`} className="text-xs text-[#D4AF37] hover:underline">
                         Edit
                       </Link>
+                      {ev.published && (
+                        <Link href={`/events#${ev.slug}`} target="_blank" className="text-xs text-blue-400 hover:underline">
+                          View
+                        </Link>
+                      )}
                       <DeleteButton id={ev.id} itemName={ev.title} action={deleteEvent} />
                     </td>
                   </tr>

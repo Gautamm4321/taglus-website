@@ -9,7 +9,8 @@ import {
   ShieldCheck, 
   ChevronDown, 
   Plus, 
-  Minus 
+  Minus,
+  Users,
 } from "lucide-react";
 import { SheetProduct } from "../data/sheetsData";
 
@@ -19,6 +20,16 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
   const toggleFaq = (index: number) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
   };
+
+  const audience = product.audience ?? [];
+  const hasProperties = product.propertiesList.length > 0;
+  const dims = product.sizes ? [...product.sizes.roundDimensions, ...product.sizes.squareDimensions] : [];
+  const thicknesses = product.sizes?.thicknesses ?? [];
+
+  // Grid columns follow the number of cards so 3 cards never leave an empty 4th slot
+  const featureCols = product.features.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4";
+  const audienceCols =
+    audience.length === 4 ? "lg:grid-cols-4" : audience.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3";
 
   return (
     <article className="w-full select-none pt-28 sm:pt-36 pb-28">
@@ -55,13 +66,15 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 <span>Request Sample Kit</span>
                 <ArrowRight size={14} />
               </Link>
-              <Link
-                href="#specs"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#E8DCC8]/30 hover:border-sky-400 bg-white/[0.03] text-[#E8DCC8] hover:text-white font-semibold text-xs uppercase tracking-widest transition"
-              >
-                <span>Technical Properties</span>
-                <ChevronDown size={14} className="text-sky-400" />
-              </Link>
+              {hasProperties && (
+                <Link
+                  href="#specs"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#E8DCC8]/30 hover:border-sky-400 bg-white/[0.03] text-[#E8DCC8] hover:text-white font-semibold text-xs uppercase tracking-widest transition"
+                >
+                  <span>Technical Properties</span>
+                  <ChevronDown size={14} className="text-sky-400" />
+                </Link>
+              )}
             </div>
           </div>
 
@@ -82,7 +95,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
 
       {/* ================= 2. KEY FEATURES (4 TILES) ================= */}
       <section className="px-4 sm:px-8 max-w-7xl mx-auto mb-20 sm:mb-28">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${featureCols} gap-6`}>
           {product.features.map((feat, idx) => (
             <div
               key={idx}
@@ -104,7 +117,40 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
         </div>
       </section>
 
+      {/* ================= 2.5 WHO IT'S FOR (only when the CMS has audience cards) ================= */}
+      {audience.length > 0 && (
+        <section className="px-4 sm:px-8 max-w-7xl mx-auto mb-20 sm:mb-28">
+          <div className="mb-10">
+            <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold block mb-2">
+              Who It&apos;s For
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
+              Built For Your Workflow
+            </h2>
+          </div>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 ${audienceCols} gap-6`}>
+            {audience.map((item, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-3xl bg-[#030919]/80 border border-[#E8DCC8]/20 hover:border-sky-400/50 transition-all duration-300"
+              >
+                <span className="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 mb-4">
+                  <Users size={18} />
+                </span>
+                <h3 className="text-base sm:text-lg font-bold uppercase text-[#E8DCC8] tracking-tight mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed text-left hyphens-none">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ================= 3. MECHANICAL PROPERTIES (NO BOX, CLEAN LAYOUT) ================= */}
+      {hasProperties && (
       <section id="specs" className="px-4 sm:px-8 max-w-7xl mx-auto mb-24 sm:mb-32">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Description Column */}
@@ -142,6 +188,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
           </div>
         </div>
       </section>
+      )}
 
       {/* ================= 3.5 SIZES COMPACT BOX ================= */}
       {product.sizes && (
@@ -158,8 +205,9 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
             </div>
 
             {/* Compact 2-Column Split */}
-            <div className="p-6 sm:p-8 grid grid-cols-2 gap-8 items-start">
+            <div className={`p-6 sm:p-8 grid ${dims.length > 0 && thicknesses.length > 0 ? "grid-cols-2" : "grid-cols-1"} gap-8 items-start`}>
               {/* Left: Dimensions */}
+              {dims.length > 0 && (
               <div>
                 <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] mb-4 pb-2 border-b border-[#E8DCC8]/10">
                   Dimensions
@@ -180,7 +228,10 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 </div>
               </div>
 
+              )}
+
               {/* Right: Thickness */}
+              {thicknesses.length > 0 && (
               <div>
                 <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] mb-4 pb-2 border-b border-[#E8DCC8]/10">
                   Thickness (mm)
@@ -193,6 +244,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                   ))}
                 </div>
               </div>
+              )}
             </div>
           </div>
         </section>

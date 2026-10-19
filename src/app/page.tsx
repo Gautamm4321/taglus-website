@@ -8,6 +8,7 @@ import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Header from "./components/header";
 import FeatureHighlights from "./components/FeatureHighlights";
 import AccessoriesSection from "./components/AccessoriesSection";
+import Testimonials from "./components/Testimonials";
 import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
 import SafeProductImage from "./components/SafeProductImage";
@@ -268,6 +269,7 @@ export default function Home() {
       {/* Other sections */}
       <FeatureHighlights />
       <AccessoriesSection />
+      <Testimonials />
       <ProductColumns />
       <Footer />
     </div>

@@ -24,6 +24,8 @@ export interface SheetProduct {
   propertiesIntro: string;
   testingNote: string;
   propertiesList: SheetProperty[];
+  /** "Who it's for" cards (optional) */
+  audience?: SheetFeature[];
   sizes?: {
     roundDimensions: string[];
     squareDimensions: string[];

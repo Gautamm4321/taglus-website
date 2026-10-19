@@ -19,11 +19,13 @@ export function toProductView(p: Product) {
   const propertiesList = propertiesSchema.safeParse(p.propertiesList);
   const faqs = faqsSchema.safeParse(p.faqs);
   const sizes = sizesSchema.safeParse(p.sizes);
+  const audience = featuresSchema.safeParse(p.audience ?? []);
   return {
     ...p,
     features: features.success ? features.data : [],
     propertiesList: propertiesList.success ? propertiesList.data : [],
     faqs: faqs.success ? faqs.data : [],
+    audience: audience.success ? audience.data : [],
     // Hide the sizes section when every list is empty (avoids an empty table on the page)
     sizes:
       sizes.success &&
@@ -54,6 +56,7 @@ export function toProductInput(p: Product): ProductInput {
     propertiesList: v.propertiesList,
     sizes: v.sizes,
     faqs: v.faqs,
+    audience: v.audience,
     metaTitle: v.metaTitle ?? "",
     metaDescription: v.metaDescription ?? "",
     menuGroup: v.menuGroup,

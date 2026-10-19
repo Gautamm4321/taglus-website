@@ -140,6 +140,16 @@ export const productSchema = z.object({
       })
     )
     .max(50),
+  /** "Who it's for" cards — optional, the section is hidden when empty */
+  audience: z
+    .array(
+      z.object({
+        title: text("Audience title", 191),
+        description: plainText("Audience description", 2000),
+      })
+    )
+    .max(12)
+    .default([]),
   metaTitle: optionalText("SEO title", 191),
   metaDescription: optionalText("SEO description", 500),
   published: z.boolean(),

@@ -35,6 +35,7 @@ const EMPTY_PRODUCT: ProductInput = {
   propertiesList: [],
   sizes: null,
   faqs: [],
+  audience: [],
   metaTitle: "",
   metaDescription: "",
   published: true,
@@ -207,6 +208,23 @@ export default function ProductForm({
           emptyText="No features yet."
           errors={fe}
           errorPrefix="features"
+        />
+      </Section>
+
+      {/* ---------- Who it's for ---------- */}
+      <Section title="Who it's for" description="Optional cards about the customers this product suits. Leave empty to hide the section.">
+        <RepeaterField
+          items={data.audience ?? []}
+          onChange={(v) => set("audience", v)}
+          columns={[
+            { key: "title", label: "Title", placeholder: "Orthodontists" },
+            { key: "description", label: "Description", multiline: true },
+          ]}
+          emptyRow={{ title: "", description: "" }}
+          addLabel="Add audience card"
+          emptyText="No audience cards yet."
+          errors={fe}
+          errorPrefix="audience"
         />
       </Section>
 
