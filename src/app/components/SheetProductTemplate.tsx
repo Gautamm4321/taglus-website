@@ -53,7 +53,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
               {product.tagline}
             </p>
 
-            <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E8DCC8] font-normal leading-relaxed">
               {product.overview}
             </p>
 
@@ -105,10 +105,10 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 <span className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 font-mono text-xs font-bold mb-4">
                   0{idx + 1}
                 </span>
-                <h3 className="text-base sm:text-lg font-bold uppercase text-[#E8DCC8] tracking-tight mb-2">
+                <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                   {feat.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed">
+                <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                   {feat.description}
                 </p>
               </div>
@@ -121,10 +121,10 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
       {audience.length > 0 && (
         <section className="px-4 sm:px-8 max-w-7xl mx-auto mb-20 sm:mb-28">
           <div className="mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold block mb-2">
+            <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold block mb-2">
               Who It&apos;s For
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
               Built For Your Workflow
             </h2>
           </div>
@@ -137,10 +137,10 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 <span className="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 mb-4">
                   <Users size={18} />
                 </span>
-                <h3 className="text-base sm:text-lg font-bold uppercase text-[#E8DCC8] tracking-tight mb-2">
+                <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#E8DCC8] font-light leading-relaxed text-left hyphens-none">
+                <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                   {item.description}
                 </p>
               </div>
@@ -151,23 +151,25 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
 
       {/* ================= 3. MECHANICAL PROPERTIES (NO BOX, CLEAN LAYOUT) ================= */}
       {hasProperties && (
-      <section id="specs" className="px-4 sm:px-8 max-w-7xl mx-auto mb-24 sm:mb-32">
+      <section id="specs" className="scroll-mt-28 px-4 sm:px-8 max-w-7xl mx-auto mb-24 sm:mb-32">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Description Column */}
           <div className="lg:col-span-6 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold block">
-              Standardized Evaluation
+            <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold block">
+              {product.testingNote ? "Standardized Evaluation" : "Specifications"}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
-              Mechanical &amp; Optical Properties
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
+              {product.testingNote ? <>Mechanical &amp; Optical Properties</> : "Technical Properties"}
             </h2>
-            <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed pt-1">
+            <p className="text-sm sm:text-base text-[#E8DCC8] font-normal leading-relaxed pt-1">
               {product.propertiesIntro}
             </p>
-            <div className="pt-2 flex items-center gap-2.5 text-xs text-sky-300 font-medium">
-              <ShieldCheck size={18} className="text-sky-400 shrink-0" />
-              <span>{product.testingNote}</span>
-            </div>
+            {product.testingNote && (
+              <div className="pt-2 flex items-center gap-2.5 text-xs text-sky-300 font-medium">
+                <ShieldCheck size={18} className="text-sky-400 shrink-0" />
+                <span>{product.testingNote}</span>
+              </div>
+            )}
           </div>
 
           {/* Right Specs List (No Cards, Sleek Dividers) */}
@@ -253,10 +255,10 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
       {/* ================= 4. FAQ SECTION (ARTISUN STYLE HORIZONTAL DIVIDERS) ================= */}
       <section className="px-4 sm:px-8 max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold block mb-2">
+          <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold block mb-2">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
             Have Any Question?
           </h2>
         </div>
@@ -281,7 +283,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
                 </button>
 
                 {isOpen && (
-                  <div className="pb-6 sm:pb-7 pr-8 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed animate-in fade-in duration-300">
+                  <div className="pb-6 sm:pb-7 pr-8 text-base sm:text-lg text-[#E8DCC8] font-normal leading-relaxed animate-in fade-in duration-300">
                     {faq.answer}
                   </div>
                 )}

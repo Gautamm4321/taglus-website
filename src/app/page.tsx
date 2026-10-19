@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, useTransform, animate, useInView } from "framer-motion";
+import { motion, animate, useInView } from "framer-motion";
 import { useEffect } from "react";
 import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Header from "./components/header";
@@ -11,7 +11,7 @@ import AccessoriesSection from "./components/AccessoriesSection";
 import Testimonials from "./components/Testimonials";
 import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
-import SafeProductImage from "./components/SafeProductImage";
+import HeroCube from "./components/HeroCube";
 
 function CounterNumber({
   value,
@@ -49,33 +49,6 @@ function CounterNumber({
 }
 
 export default function Home() {
-  // 3D Mouse Movement Physics
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth Springs for fluid physics
-  const springX = useSpring(mouseX, { stiffness: 180, damping: 25 });
-  const springY = useSpring(mouseY, { stiffness: 180, damping: 25 });
-
-  // 3D Angles
-  const rotateX = useTransform(springY, [-0.5, 0.5], [16, -16]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-20, 20]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-hidden">
       
@@ -154,71 +127,32 @@ export default function Home() {
 
           {/* ================= RIGHT 3D INTERACTIVE SHOWCASE ================= */}
           <div 
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="lg:col-span-6 relative flex items-center justify-center min-h-[490px] lg:min-h-[580px] [perspective:1400px] select-none"
+            className="lg:col-span-6 w-full relative flex flex-col items-center justify-center pb-16 sm:pb-20 select-none"
           >
-            {/* Cinematic Center Glows */}
-            <div className="absolute w-88 h-88 rounded-full bg-blue-600/25 blur-[110px] pointer-events-none -z-10" />
-            <div className="absolute w-[460px] h-[460px] rounded-full border border-sky-400/10 pointer-events-none animate-[spin_60s_linear_infinite]" />
-            <div className="absolute w-[360px] h-[360px] rounded-full border border-dashed border-[#E8DCC8]/10 pointer-events-none animate-[spin_40s_linear_infinite_reverse]" />
+            {/* Stage: glow + rings sized to the cube, cube on top */}
+            <div className="relative z-10 w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[580px] xl:max-w-[640px] aspect-square">
+              {/* soft colour glows behind the cube */}
+              <div className="absolute inset-[18%] rounded-full bg-blue-600/30 blur-[90px] pointer-events-none" />
+              <div className="absolute inset-[30%] translate-x-[18%] -translate-y-[10%] rounded-full bg-sky-400/20 blur-[70px] pointer-events-none" />
+              <div className="absolute inset-[32%] -translate-x-[16%] translate-y-[12%] rounded-full bg-indigo-500/25 blur-[70px] pointer-events-none" />
+              {/* orbit rings hugging the cube */}
+              <div className="absolute inset-[9%] rounded-full border border-sky-400/20 pointer-events-none animate-[spin_50s_linear_infinite]">
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-sky-300 shadow-[0_0_12px_4px_rgba(56,189,248,0.7)]" />
+              </div>
+              <div className="absolute inset-[17%] rounded-full border border-dashed border-[#E8DCC8]/15 pointer-events-none animate-[spin_35s_linear_infinite_reverse]">
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full bg-indigo-300 shadow-[0_0_10px_3px_rgba(129,140,248,0.7)]" />
+              </div>
 
-            {/* 3D Motion Stage */}
-            <motion.div
-              style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-              }}
-              className="relative z-10 w-full max-w-[420px] aspect-square flex items-center justify-center"
-            >
-              {/* Natural Float & Levitation Loop */}
-              <motion.div
-                animate={{
-                  y: [-14, 12, -14],
-                  rotateZ: [-1, 2, -1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{ transformStyle: "preserve-3d" }}
-                className="relative w-full h-full flex items-center justify-center"
-              >
-                {/* Main 3D Box Render */}
-                {/* TODO: this is currently a generic mockup box (tuglas-hero-img.png), not
-                    real Taglus product photography or a real 3D model. Replace src below
-                    with an actual product photo from the client's shared folder, or swap
-                    this whole block for a real <canvas>/WebGL render if true interactive
-                    3D is required. */}
-                <div 
-                  style={{ transform: "translateZ(60px)" }}
-                  className="relative w-[340px] h-[340px] sm:w-[380px] sm:h-[380px]"
-                >
-                  <SafeProductImage
-                    src="/tuglas-hero-img.png"
-                    alt="Taglus Premium Packaging"
-                    label="Taglus Premium Packaging"
-                    className="object-contain drop-shadow-[0_35px_65px_rgba(0,140,255,0.4)] pointer-events-none transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Ground Shadow Depth */}
-                <div 
-                  style={{ transform: "translateZ(-40px) translateY(180px) rotateX(85deg)" }}
-                  className="absolute w-72 h-14 bg-sky-950/70 rounded-full blur-2xl pointer-events-none"
-                />
-              </motion.div>
-            </motion.div>
+              {/* 3D product cube: auto-rotates, drag / swipe / arrow keys to spin it */}
+              <HeroCube className="absolute inset-0" />
+            </div>
 
             {/* Floating Glass Spec Pill (Bottom) */}
             <div className="absolute bottom-2 inset-x-6 sm:inset-x-12 z-20 flex items-center justify-between px-5 py-3 rounded-2xl bg-[#030919]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-[#E8DCC8] font-medium">Flagship Material</p>
+                <p className="text-[10px] uppercase tracking-widest text-[#E8DCC8] font-medium">Aligner &amp; Retainer Sheets</p>
                 <p className="text-xs sm:text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
-                  Taglus Premium™ Aligner Sheet
+                  Premium · PU Flex · Ultra · Hard &amp; Soft · Smiles · TUFF
                 </p>
               </div>
               <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/40 text-sky-300">

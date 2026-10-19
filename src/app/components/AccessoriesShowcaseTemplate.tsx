@@ -121,14 +121,14 @@ export default function AccessoriesShowcaseTemplate() {
             <span>Taglus Orthodontic Essentials</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.2]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.2]">
             Taglus Orthodontic <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300 whitespace-normal sm:whitespace-nowrap">
               Accessories &amp; Consumables
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base text-sky-300/90 font-mono font-medium leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base text-sky-300/90 font-semibold leading-snug max-w-2xl">
             Complete the digital workflow with precision delivery accessories, chairside tools, and packaging systems.
           </p>
         </div>
@@ -176,7 +176,7 @@ export default function AccessoriesShowcaseTemplate() {
                 >
                   <div className="max-w-xl space-y-6">
                     {/* Category Label */}
-                    <p className="text-xs sm:text-[13px] font-mono tracking-widest uppercase text-sky-400 font-semibold">
+                    <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">
                       {item.category}
                     </p>
 
@@ -186,7 +186,7 @@ export default function AccessoriesShowcaseTemplate() {
                     </h2>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#E8DCC8] font-normal leading-relaxed">
                       {item.description}
                     </p>
 
@@ -195,7 +195,7 @@ export default function AccessoriesShowcaseTemplate() {
                       {item.bullets.map((bullet, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-3 text-xs sm:text-sm text-[#E8DCC8] font-light"
+                          className="flex items-start gap-3 text-xs sm:text-sm text-[#E8DCC8] font-normal"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0 mt-2" />
                           <span>{bullet}</span>
@@ -226,10 +226,10 @@ export default function AccessoriesShowcaseTemplate() {
           BOTTOM WORKFLOW CALL TO ACTION
       ======================================================== */}
       <section className="relative py-16 px-6 sm:px-12 max-w-6xl mx-auto text-center space-y-4">
-        <h3 className="text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
           Looking to Build a Custom Aligner Delivery Kit?
         </h3>
-        <p className="text-sm sm:text-base text-[#E8DCC8] font-light max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-[#E8DCC8] font-normal max-w-2xl mx-auto">
           We offer custom logo printing, packaging boxes, and clinical tool sets for aligner brands and regional distribution partners.
         </p>
         <div className="pt-2">

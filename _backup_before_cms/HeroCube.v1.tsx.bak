@@ -1,0 +1,224 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+
+/**
+ * Interactive 3D product cube for the home hero.
+ * - Model: /models/taglus-cube.glb (6 faces = Premium, PU Flex, Ultra, Hard & Soft, Smiles, TUFF)
+ * - Spins on its own around a tilted axis, so every face (incl. top & bottom) comes round.
+ * - Drag / swipe in any direction (left, right, up, down) to spin it yourself; it keeps the
+ *   momentum and then eases back into the automatic spin.
+ * - Arrow keys work too when the cube is focused.
+ * - Stops rendering when scrolled off-screen (saves battery).
+ */
+
+const MODEL_URL = "/models/taglus-cube.glb";
+const AUTO_AXIS = new THREE.Vector3(0.35, 1, 0.18).normalize();
+const AUTO_SPEED = 0.55; // rad / second
+const DRAG_SENSITIVITY = 0.008; // rad per pixel
+
+export default function HeroCube({ className = "" }: { className?: string }) {
+  const mountRef = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---------- renderer / scene / camera ---------- */
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.NoToneMapping;
+    renderer.setClearColor(0x000000, 0);
+    mount.appendChild(renderer.domElement);
+    renderer.domElement.style.display = "block";
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
+    camera.position.set(0, 0, 4.1);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x1a2a4a, 2.2));
+    const key = new THREE.DirectionalLight(0xffffff, 1.6);
+    key.position.set(2.5, 3, 4);
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(0x5ab8ff, 1.2);
+    rim.position.set(-3, -1, -2);
+    scene.add(rim);
+
+    const pivot = new THREE.Group();
+    // Start at a nice 3/4 angle so three faces are visible straight away
+    pivot.quaternion.setFromEuler(new THREE.Euler(0.42, -0.62, 0));
+    scene.add(pivot);
+
+    /* ---------- load model ---------- */
+    let disposed = false;
+    new GLTFLoader().load(MODEL_URL, (gltf) => {
+      if (disposed) return;
+      const maxAniso = renderer.capabilities.getMaxAnisotropy();
+      gltf.scene.traverse((o) => {
+        const mesh = o as THREE.Mesh;
+        if (!mesh.isMesh) return;
+        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        mats.forEach((m) => {
+          const mat = m as THREE.MeshStandardMaterial;
+          if (mat.map) mat.map.anisotropy = maxAniso;
+        });
+      });
+      pivot.add(gltf.scene);
+      setLoaded(true);
+    });
+
+    /* ---------- sizing ---------- */
+    const resize = () => {
+      const w = mount.clientWidth;
+      const h = mount.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      renderer.domElement.style.width = "100%";
+      renderer.domElement.style.height = "100%";
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(mount);
+
+    /* ---------- interaction ---------- */
+    // Angular velocity (rad/s) of the user's spin, in world space; decays back to the auto spin
+    const userVel = new THREE.Vector3();
+    let dragging = false;
+    let lastX = 0;
+    let lastY = 0;
+    let lastT = 0;
+    const tmpQ = new THREE.Quaternion();
+    const tmpAxis = new THREE.Vector3();
+
+    const rotateWorld = (axis: THREE.Vector3, angle: number) => {
+      if (!angle) return;
+      tmpQ.setFromAxisAngle(axis, angle);
+      pivot.quaternion.premultiply(tmpQ);
+    };
+
+    const onDown = (e: PointerEvent) => {
+      dragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      lastT = performance.now();
+      userVel.set(0, 0, 0);
+      renderer.domElement.setPointerCapture(e.pointerId);
+      mount.style.cursor = "grabbing";
+    };
+    const onMove = (e: PointerEvent) => {
+      if (!dragging) return;
+      const now = performance.now();
+      const dt = Math.max((now - lastT) / 1000, 1 / 240);
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      lastT = now;
+      // left/right → spin around vertical axis, up/down → spin around horizontal axis
+      rotateWorld(tmpAxis.set(0, 1, 0), dx * DRAG_SENSITIVITY);
+      rotateWorld(tmpAxis.set(1, 0, 0), dy * DRAG_SENSITIVITY);
+      userVel.set((dy * DRAG_SENSITIVITY) / dt, (dx * DRAG_SENSITIVITY) / dt, 0).clampLength(0, 12);
+    };
+    const onUp = (e: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      if (renderer.domElement.hasPointerCapture(e.pointerId)) renderer.domElement.releasePointerCapture(e.pointerId);
+      mount.style.cursor = "grab";
+    };
+    const onKey = (e: KeyboardEvent) => {
+      const kick = 4;
+      if (e.key === "ArrowLeft") userVel.y -= kick;
+      else if (e.key === "ArrowRight") userVel.y += kick;
+      else if (e.key === "ArrowUp") userVel.x -= kick;
+      else if (e.key === "ArrowDown") userVel.x += kick;
+      else return;
+      e.preventDefault();
+    };
+
+    const el = renderer.domElement;
+    el.addEventListener("pointerdown", onDown);
+    el.addEventListener("pointermove", onMove);
+    el.addEventListener("pointerup", onUp);
+    el.addEventListener("pointercancel", onUp);
+    mount.addEventListener("keydown", onKey);
+
+    /* ---------- render loop (only while visible) ---------- */
+    let visible = true;
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) clock.getDelta(); // skip the time spent off-screen
+    });
+    io.observe(mount);
+
+    const clock = new THREE.Clock();
+    let raf = 0;
+    const autoSpeed = reduceMotion ? AUTO_SPEED * 0.3 : AUTO_SPEED;
+
+    const tick = () => {
+      raf = requestAnimationFrame(tick);
+      if (!visible) return;
+      const dt = Math.min(clock.getDelta(), 0.05);
+
+      if (!dragging) {
+        // user momentum, easing out
+        const speed = userVel.length();
+        if (speed > 0.001) {
+          rotateWorld(tmpAxis.copy(userVel).normalize(), speed * dt);
+          userVel.multiplyScalar(Math.exp(-2.2 * dt));
+        }
+        // automatic spin fades back in as the user's momentum dies down
+        const blend = 1 - Math.min(speed / 3, 1);
+        rotateWorld(AUTO_AXIS, autoSpeed * blend * dt);
+      }
+
+      // gentle float
+      pivot.position.y = Math.sin(clock.elapsedTime * 1.1) * 0.04;
+      renderer.render(scene, camera);
+    };
+    tick();
+
+    return () => {
+      disposed = true;
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      io.disconnect();
+      el.removeEventListener("pointerdown", onDown);
+      el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointerup", onUp);
+      el.removeEventListener("pointercancel", onUp);
+      mount.removeEventListener("keydown", onKey);
+      scene.traverse((o) => {
+        const mesh = o as THREE.Mesh;
+        if (!mesh.isMesh) return;
+        mesh.geometry.dispose();
+        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        mats.forEach((m) => {
+          (m as THREE.MeshStandardMaterial).map?.dispose();
+          m.dispose();
+        });
+      });
+      renderer.dispose();
+      el.remove();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={mountRef}
+      tabIndex={0}
+      role="img"
+      aria-label="3D cube showing the six Taglus aligner sheet boxes: Premium, PU Flex, Ultra, Hard & Soft, Smiles and TUFF. Drag to rotate."
+      className={`relative cursor-grab outline-none [touch-action:pan-y] transition-opacity duration-700 ${
+        loaded ? "opacity-100" : "opacity-0"
+      } ${className}`}
+    />
+  );
+}

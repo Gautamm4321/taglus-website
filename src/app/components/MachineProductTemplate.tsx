@@ -37,7 +37,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
               {product.name}
             </h1>
 
-            <p className="text-base sm:text-lg text-sky-300/90 font-mono font-medium leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-sky-300/90 font-semibold leading-snug max-w-2xl">
               {product.tagline}
             </p>
 
@@ -97,7 +97,7 @@ export default function MachineProductTemplate({ product }: { product: any }) {
           <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
             Engineering Superiority
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
             Key Performance Attributes
           </h2>
         </div>
@@ -107,10 +107,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Flame size={24} />
             </div>
-            <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
+            <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
               Sub-Second Heating
             </h3>
-            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
+            <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
               Equipped with shortwave infrared heaters reaching optimal forming temperature within 1 second.
             </p>
           </div>
@@ -119,10 +119,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Gauge size={24} />
             </div>
-            <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
+            <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
               4 BAR Positive Pressure
             </h3>
-            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
+            <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
               Provides constant 60 PSI forming pressure for precision adaptation into interproximal dental areas.
             </p>
           </div>
@@ -131,10 +131,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Monitor size={24} />
             </div>
-            <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
+            <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
               4.3″ Touchscreen UI
             </h3>
-            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
+            <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
               Clearly structured display with real-time feedback for temperature, time, and pneumatic controls.
             </p>
           </div>
@@ -143,10 +143,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Volume2 size={24} />
             </div>
-            <h3 className="text-lg font-black uppercase tracking-tight text-[#E8DCC8] mb-2">
+            <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
               Whisper-Quiet Operation
             </h3>
-            <p className="text-sm text-[#E8DCC8] font-light leading-relaxed">
+            <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
               Engineered with sound-dampened mechanics for non-disruptive chairside and office dental usage.
             </p>
           </div>
@@ -163,10 +163,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
           <div className="lg:col-span-6 rounded-3xl p-8 sm:p-10 border border-[#E8DCC8]/15 bg-[#030919]/60 backdrop-blur-xl flex flex-col justify-between">
             <div className="space-y-6">
               <div>
-                <p className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
+                <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                   Operational Features
                 </p>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                   Built For Clinic &amp; Lab Workflows
                 </h2>
               </div>
@@ -176,10 +176,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
                   <div key={idx} className="py-4 first:pt-0 last:pb-0 flex items-start gap-4">
                     <span className="w-2 h-2 rounded-full bg-sky-400 shrink-0 mt-2 shadow-[0_0_8px_rgba(56,189,248,0.6)]" />
                     <div className="space-y-1">
-                      <p className="text-sm font-bold text-[#E8DCC8] tracking-wide uppercase">
+                      <p className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8]">
                         {feature.title}
                       </p>
-                      <p className="text-xs sm:text-[13px] text-[#E8DCC8] font-light leading-relaxed">
+                      <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                         {feature.description}
                       </p>
                     </div>
@@ -193,10 +193,10 @@ export default function MachineProductTemplate({ product }: { product: any }) {
           <div className="lg:col-span-6 rounded-3xl p-8 sm:p-10 border border-[#E8DCC8]/15 bg-[#030919]/60 backdrop-blur-xl flex flex-col justify-between">
             <div className="space-y-6">
               <div>
-                <p className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
+                <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                   Verified Parameters
                 </p>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                   Machine Specifications
                 </h2>
               </div>

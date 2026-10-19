@@ -152,7 +152,7 @@ export default function Testimonials() {
                 className="grid grid-cols-1 md:grid-cols-12 md:min-h-[460px]"
               >
                 {/* Photo */}
-                <div className="relative md:col-span-5 h-[260px] sm:h-[320px] md:h-auto">
+                <div className="relative md:col-span-5 h-[300px] sm:h-[360px] md:h-auto border-b md:border-b-0 md:border-r border-[#E8DCC8]/15 bg-[#0a1226]">
                   <Image
                     src={t.photo}
                     alt={t.name}
@@ -161,7 +161,6 @@ export default function Testimonials() {
                     className="object-cover"
                     style={{ objectPosition: t.focus }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030919] via-[#030919]/10 to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-[#030919]" />
                   <span className="absolute left-5 bottom-5 md:left-6 md:bottom-6 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#030919]/80 border border-[#E8DCC8]/20 backdrop-blur-md text-xs text-[#E8DCC8]">
                     <MapPin size={13} className="text-sky-400" /> {t.country}
                   </span>
@@ -175,9 +174,9 @@ export default function Testimonials() {
                   </blockquote>
 
                   <div className="mt-8 pt-6 border-t border-white/[0.08]">
-                    <p className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8]">{t.name}</p>
-                    <p className="mt-1 text-sm text-[#E8DCC8] font-light text-left">{t.role}</p>
-                    <span className="mt-3 inline-block px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-[11px] font-mono uppercase tracking-widest text-sky-300">
+                    <p className="text-lg sm:text-xl font-bold uppercase tracking-wide [word-spacing:0.2em] leading-snug text-[#E8DCC8]">{t.name}</p>
+                    <p className="mt-1.5 text-sm text-[#E8DCC8] font-normal leading-relaxed text-left">{t.role}</p>
+                    <span className="mt-4 inline-block px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-[11px] font-mono uppercase tracking-widest text-sky-300">
                       {t.product}
                     </span>
                   </div>

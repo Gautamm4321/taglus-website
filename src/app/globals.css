@@ -146,3 +146,23 @@ nextjs-portal,
     -webkit-hyphens: manual;
   }
 }
+
+
+/* One type system everywhere: "font-mono" labels (spec values, eyebrows, badges) use the site's
+   body font instead of the browser's monospace (Consolas/Courier looked like a different font). */
+.font-mono {
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Card text is never justified: in narrow columns justify creates big word gaps.
+   (Long paragraphs outside cards keep the justified style on md+ screens.) */
+@layer base {
+  [class*="rounded-2xl"] p,
+  [class*="rounded-3xl"] p,
+  [class*="rounded-[2"] p,
+  [class*="rounded-xl"] p {
+    text-align: left;
+    hyphens: manual;
+  }
+}

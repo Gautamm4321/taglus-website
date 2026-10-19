@@ -91,7 +91,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                             <span>Next-Gen 3D Photopolymer Resin</span>
                         </div>
 
-                        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[1.08]">
+                        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.08]">
                             <span className="block text-[#E8DCC8] lg:whitespace-nowrap">
                                 TAGLUS 3D PRINT
                             </span>
@@ -134,7 +134,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                         <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                             Clinical Precision Standards
                         </p>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                             Why Orthodontic Labs Rely On Taglus Resin
                         </h2>
                     </div>
@@ -149,10 +149,10 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                                 <div className="w-10 h-10 rounded-full bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-4 shrink-0">
                                     <CheckCircle2 size={20} />
                                 </div>
-                                <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-3">
+                                <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                                     {item.title}
                                 </h3>
-                                <p className="text-sm sm:text-base text-[#E8DCC8] font-normal leading-relaxed">
+                                <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                                     {item.desc}
                                 </p>
                             </div>
@@ -192,7 +192,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                             <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">
                                 Formulation 01
                             </p>
-                            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                                 TAGLUS ODOURLESS RESIN
                             </h3>
                             <p className="text-base sm:text-lg text-[#E8DCC8] leading-snug font-normal">
@@ -213,7 +213,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                             <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">
                                 Formulation 02
                             </p>
-                            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                                 TAGLUS WATER WASHABLE RESIN
                             </h3>
                             <p className="text-base sm:text-lg text-[#E8DCC8] leading-snug font-normal">
@@ -256,7 +256,7 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                     <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                         Real Lab Output
                     </p>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
                         Precision 3D Printed Teeth Arches
                     </h2>
                     <p className="mt-3 text-base sm:text-lg text-[#E8DCC8] font-normal">
@@ -289,10 +289,10 @@ export default function ResinProductTemplate({ product }: { product: any }) {
                                     <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold">
                                         Clinical Spec
                                     </span>
-                                    <h4 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-tight">
+                                    <h4 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8]">
                                         {item.title}
                                     </h4>
-                                    <p className="text-sm sm:text-base text-[#E8DCC8] leading-relaxed font-normal">
+                                    <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                                         {item.desc}
                                     </p>
                                 </div>

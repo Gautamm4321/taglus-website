@@ -60,7 +60,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                             </span>
                         </h1>
 
-                        <p className="text-base sm:text-lg text-sky-300/90 font-mono font-medium leading-relaxed max-w-2xl">
+                        <p className="text-base sm:text-lg text-sky-300/90 font-semibold leading-snug max-w-2xl">
                             Validated by HAMER &amp; ALVY Systems. <br className="hidden sm:inline" />
                             Designed to scale volume while reducing material costs up to 73%.
                         </p>
@@ -120,7 +120,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                     <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                         Engineering Superiority
                     </p>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                         Advantages of Taglus ATM Rolls
                     </h2>
                 </div>
@@ -132,10 +132,10 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
                             <Award size={24} />
                         </div>
-                        <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
+                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                             Internationally Certified
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+                        <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                             Certified under ISO 13485:2016 and compliant with stringent global regulatory medical standards.
                         </p>
                     </div>
@@ -144,10 +144,10 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
                             <Layers size={24} />
                         </div>
-                        <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
+                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                             PU &amp; PETG Materials
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+                        <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                             Available in both high-elasticity polyurethane and crystal-clear glycol-modified polyethylene options.
                         </p>
                     </div>
@@ -156,10 +156,10 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
                             <Gauge size={24} />
                         </div>
-                        <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
+                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                             High-Pressure Precision
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+                        <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                             Engineered to produce exact, defect-free adaptations under high pneumatic pressure chambers.
                         </p>
                     </div>
@@ -168,10 +168,10 @@ export default function RollProductTemplate({ product }: { product: any }) {
                         <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
                             <TrendingDown size={24} />
                         </div>
-                        <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#E8DCC8] leading-snug mb-2">
+                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-[#E8DCC8] mb-2">
                             Up to 73% Cost Savings
                         </h3>
-                        <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+                        <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                             Continuous-feed rolls significantly decrease per-tray material scrap and optimize automation speeds.
                         </p>
                     </div>
@@ -203,7 +203,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                             <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
                                 Available Portfolio Variants
                             </p>
-                            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
+                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8]">
                                 Material &amp; Thickness Specifications
                             </h2>
                         </div>
@@ -215,7 +215,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                                     className="p-5 sm:p-6 rounded-2xl border border-[#E8DCC8]/15 bg-white/[0.02] hover:border-sky-400/30 transition-all duration-300"
                                 >
                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
-                                        <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-sky-300">
+                                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-tight leading-snug text-sky-300">
                                             {item.name}
                                         </h3>
                                         <div className="flex gap-2">
@@ -229,7 +229,7 @@ export default function RollProductTemplate({ product }: { product: any }) {
                                             ))}
                                         </div>
                                     </div>
-                                    <p className="text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+                                    <p className="text-sm sm:text-[15px] font-normal leading-relaxed text-left hyphens-none text-[#E8DCC8]">
                                         {item.desc}
                                     </p>
                                 </div>
