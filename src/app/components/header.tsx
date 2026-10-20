@@ -45,11 +45,11 @@ const MENU_COLUMNS: { group: MenuGroupName; title: string; upcoming?: MenuItem[]
     group: "ACCESSORIES",
     title: "Accessories & Packaging",
     fixed: [
-      { name: "Retainer Box", desc: "Protective retainer case", href: "/products/taglus-orthodontic-accessories#retainer-box" },
-      { name: "Orthodontic Accessories", desc: "Chewies & removal tools", href: "/products/taglus-orthodontic-accessories#chewies" },
-      { name: "Membrane / Pillow Box", desc: "Smart aligner packaging", href: "/products/taglus-orthodontic-accessories#pillow-box" },
-      { name: "Articulator", desc: "Dental model articulator", href: "/products/taglus-orthodontic-accessories#articulator" },
-      { name: "Impression Tray", desc: "Trays for dental impressions", href: "/products/taglus-orthodontic-accessories#impression-tray" },
+      { name: "Retainer Box", desc: "Protective retainer case", href: "/products/taglus-orthodontic-accessories#taglus-retainer-boxes" },
+      { name: "Orthodontic Accessories", desc: "Chewies & removal tools", href: "/products/taglus-orthodontic-accessories#taglus-aligner-chewies" },
+      { name: "Membrane / Pillow Box", desc: "Smart aligner packaging", href: "/products/taglus-orthodontic-accessories#premium-dental-pillow-boxes" },
+      { name: "Articulator", desc: "Dental model articulator", href: "/products/taglus-orthodontic-accessories#articulator-with-stopper" },
+      { name: "Impression Tray", desc: "Trays for dental impressions", href: "/products/taglus-orthodontic-accessories#taglus-dental-impression-trays" },
     ],
   },
 ];
