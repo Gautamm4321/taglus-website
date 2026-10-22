@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 type Testimonial = {
   name: string;
@@ -11,9 +11,10 @@ type Testimonial = {
   country: string;
   product: string;
   quote: string;
+  /** Background-removed portrait (public/testimonials/cutouts) */
   photo: string;
-  /** Keeps the face in frame when the photo is cropped */
-  focus: string;
+  /** ISO country code → flag in public/flags */
+  flag: "es" | "br" | "eg" | "np" | "et";
 };
 
 const TESTIMONIALS: Testimonial[] = [
@@ -24,8 +25,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Aligners made from Taglus Premium",
     quote:
       "After three years of using Taglus Premium for my aligners and experiencing consistently excellent results, I can confidently attest to the remarkable mechanical properties of this product that effectively achieve the intended outcomes.",
-    photo: "/testimonials/manuel-fernandez-cano.jpg",
-    focus: "50% 30%",
+    photo: "/testimonials/cutouts/manuel-fernandez-cano-v2.webp",
+    flag: "es",
   },
   {
     name: "Dr. Marcos Eugenio",
@@ -34,8 +35,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus Duoform",
     quote:
       "If you want to produce aligners faster and more efficiently, the Taglus Duoform is the machine for you. It uses pressure technology, making it very simple and intuitive to use. You just place the sheet, select the pre-programmed settings, and the Duoform does the rest. Once the plate is heated, the machine signals with a few beeps, so there's no risk of under- or over-heating. This ensures there are no bubbles or imperfections, and the result is always a highly professional product. Truly top-notch and perfect!",
-    photo: "/testimonials/marcos-eugenio.jpg",
-    focus: "50% 25%",
+    photo: "/testimonials/cutouts/marcos-eugenio.webp",
+    flag: "br",
   },
   {
     name: "Dr. Abdullah Ali",
@@ -44,8 +45,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus Premium · 0.8 mm",
     quote:
       "We are thrilled to share a remarkable case study: a simple crowding case with a highly buccally displaced upper left canine, midline shift and lower right canine in crossbite tendency. Using the proper staging technique, the right sheet material and thickness, mild to moderate crowding cases can be treated efficiently using in-house aligners. Taglus sheets did the job perfectly, as wanted.",
-    photo: "/testimonials/abdullah-ali.jpg",
-    focus: "50% 25%",
+    photo: "/testimonials/cutouts/abdullah-ali.webp",
+    flag: "eg",
   },
   {
     name: "Dr. Dashrath Kafle",
@@ -54,8 +55,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus Premium · 0.8 mm",
     quote:
       "The case study performed by Dr. Dashrath Kafle in Nepal demonstrates the successful application. The patient's satisfaction with the treatment outcome underscores the efficacy and reliability of this orthodontic approach. After 11 months of treatment, the patient achieved significant improvement in both dental alignment and occlusion. Taglus Premium 0.8 mm aligner material facilitated precise and effective orthodontic correction.",
-    photo: "/testimonials/dashrath-kafle.jpg",
-    focus: "50% 25%",
+    photo: "/testimonials/cutouts/dashrath-kafle-v2.webp",
+    flag: "np",
   },
   {
     name: "Yenkuwel Bekele",
@@ -64,8 +65,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Aligners, attachments & branded boxes",
     quote:
       "We especially appreciate the attitude, service, and support we received from the sales team. Your responsiveness and prompt support are truly commendable. As a company, Taglus demonstrates attention to detail and a high level of professionalism toward its clients and products. We are satisfied with the products we purchased: aligners, attachments, and branded boxes for aligners and transparent boxes for zirconia. We believe we will continue strengthening our cooperation toward mutual success.",
-    photo: "/testimonials/yenkuwel-bekele.jpg",
-    focus: "50% 30%",
+    photo: "/testi-d.png",
+    flag: "et",
   },
   {
     name: "Dr. Adriana Porto",
@@ -74,8 +75,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus aligner sheets",
     quote:
       "Taglus produces some of the best aligner sheets I've ever used. The quality, consistency, and performance make them my preferred choice for fabricating aligners. Their commitment to excellence and innovation truly sets them apart.",
-    photo: "/testimonials/adriana-porto.jpg",
-    focus: "50% 22%",
+    photo: "/testimonials/cutouts/adriana-porto.webp",
+    flag: "br",
   },
   {
     name: "Dr. Rafael Ribeiro",
@@ -84,8 +85,8 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus thermoforming sheets",
     quote:
       "Our aligners are made using Taglus thermoforming sheets, the finest we've worked with. From my very first experience with the brand, I was genuinely impressed by the quality. Every week, I teach postgraduate students from across Latin America, and I'm proud to introduce them to Taglus and showcase its exceptional performance.",
-    photo: "/testimonials/rafael-ribeiro.jpg",
-    focus: "50% 30%",
+    photo: "/testimonials/cutouts/rafael-ribeiro-v2.webp",
+    flag: "br",
   },
 ];
 
@@ -135,6 +136,7 @@ export default function Testimonials() {
       {/* Card */}
       <div
         className="max-w-6xl mx-auto"
+        data-no-reveal
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={() => setPaused(true)}
@@ -151,26 +153,49 @@ export default function Testimonials() {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="grid grid-cols-1 md:grid-cols-12 md:min-h-[460px]"
               >
-                {/* Photo */}
-                <div className="relative md:col-span-5 h-[300px] sm:h-[360px] md:h-auto border-b md:border-b-0 md:border-r border-[#E8DCC8]/15 bg-[#0a1226]">
-                  <Image
-                    src={t.photo}
-                    alt={t.name}
-                    fill
-                    sizes="(min-width: 768px) 40vw, 100vw"
-                    className="object-cover"
-                    style={{ objectPosition: t.focus }}
-                  />
-                  <span className="absolute left-5 bottom-5 md:left-6 md:bottom-6 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#030919]/80 border border-[#E8DCC8]/20 backdrop-blur-md text-xs text-[#E8DCC8]">
-                    <MapPin size={13} className="text-sky-400" /> {t.country}
+                {/* Portrait: cut-out of the person on a glowing stage, with their country's flag */}
+                <div className="relative md:col-span-5 h-[340px] sm:h-[400px] md:h-auto overflow-hidden border-b md:border-b-0 md:border-r border-[#E8DCC8]/15 bg-[radial-gradient(ellipse_at_50%_100%,#123a66_0%,#071530_45%,#030919_80%)]">
+                  {/* soft grid + halo behind the person */}
+                  <div aria-hidden className="absolute inset-0 opacity-[0.14] [background-image:linear-gradient(rgba(232,220,200,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(232,220,200,.35)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+                  <div aria-hidden className="absolute left-1/2 bottom-[-18%] -translate-x-1/2 w-[115%] aspect-square rounded-full bg-gradient-to-t from-sky-500/35 via-sky-400/10 to-transparent blur-2xl" />
+                  {/* big faded flag watermark */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/flags/${t.flag}.svg`} alt="" aria-hidden className="absolute -right-10 top-8 w-48 sm:w-56 rotate-[-8deg] rounded-xl opacity-[0.18] blur-[1px]" />
+                  <motion.div
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-x-6 top-8 bottom-0"
+                  >
+                    <Image
+                      src={t.photo}
+                      alt={t.name}
+                      fill
+                      sizes="(min-width: 768px) 40vw, 100vw"
+                      className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
+                    />
+                  </motion.div>
+                  <span className="absolute left-5 top-5 md:left-6 md:top-6 inline-flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-[#030919]/85 border border-[#E8DCC8]/20 backdrop-blur-md text-xs font-semibold tracking-wide text-[#E8DCC8] shadow-lg">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/flags/${t.flag}.svg`} alt="" className="h-4 w-6 rounded-[3px] object-cover ring-1 ring-white/20" />
+                    {t.country}
                   </span>
                 </div>
 
                 {/* Quote */}
                 <div className="md:col-span-7 p-7 sm:p-10 lg:p-12 flex flex-col justify-center">
-                  <Quote size={40} className="text-sky-400/80 shrink-0" />
-                  <blockquote className="mt-5 text-base sm:text-lg lg:text-[19px] text-[#E8DCC8] font-light leading-relaxed text-left hyphens-none [text-wrap:pretty]">
+                  {/* Proper typographic quotation marks (“ ”) */}
+                  <span
+                    aria-hidden
+                    className="block font-serif text-[88px] sm:text-[110px] leading-[0.6] h-12 sm:h-14 text-transparent bg-clip-text bg-gradient-to-br from-sky-300 to-indigo-400 select-none"
+                  >
+                    &ldquo;
+                  </span>
+                  <blockquote className="mt-4 text-base sm:text-lg lg:text-[19px] text-[#E8DCC8] font-light leading-relaxed text-left hyphens-none [text-wrap:pretty]">
                     {t.quote}
+                    <span aria-hidden className="ml-1 align-[-0.35em] font-serif text-4xl leading-none text-sky-300/80">
+                      &rdquo;
+                    </span>
                   </blockquote>
 
                   <div className="mt-8 pt-6 border-t border-white/[0.08]">
@@ -211,7 +236,8 @@ export default function Testimonials() {
                     : "w-9 h-9 sm:w-11 sm:h-11 opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
                 }`}
               >
-                <Image src={p.photo} alt="" fill sizes="56px" className="object-cover" style={{ objectPosition: p.focus }} />
+                <span aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#1b3a66] to-[#071530]" />
+                <Image src={p.photo} alt="" fill sizes="56px" className="object-cover object-top scale-110 translate-y-[6%]" />
               </button>
             ))}
           </div>

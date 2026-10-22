@@ -37,7 +37,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
       <section className="relative px-4 sm:px-8 max-w-7xl mx-auto mb-20 sm:mb-28">
         <div className="absolute top-1/4 left-1/3 w-[850px] h-[500px] bg-sky-500/10 blur-[160px] pointer-events-none -z-10" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+        <div className="animate-fade-up grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Text Body */}
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs font-semibold tracking-widest uppercase backdrop-blur-md">
@@ -49,7 +49,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
               {product.name}
             </h1>
 
-            <p className="text-lg sm:text-xl font-semibold text-sky-300/90 leading-snug">
+            <p className="text-lg sm:text-xl font-semibold text-sky-300/90 leading-snug !text-left hyphens-none [text-wrap:balance] max-w-xl">
               {product.tagline}
             </p>
 
@@ -80,7 +80,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
 
           {/* Right Product Image (Expanded Size, Hover Blocked) */}
           <div className="lg:col-span-6 flex items-center justify-center">
-            <div className="relative w-full max-w-[580px] lg:max-w-[640px] aspect-square flex items-center justify-center">
+            <div className="animate-float relative w-full max-w-[580px] lg:max-w-[640px] aspect-square flex items-center justify-center">
               <Image
                 src={product.imagePath}
                 alt={product.name}

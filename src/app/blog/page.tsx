@@ -4,6 +4,7 @@ import { ArrowRight, Clock } from "lucide-react";
 import Header from "../components/header";
 import Footer from "../components/Footer";
 import BlogPostCard from "../components/BlogPostCard";
+import JoinNetworkButton from "../components/JoinNetworkButton";
 import { formatPostDate, getPublishedPosts } from "../lib/blog";
 
 export const revalidate = 3600;
@@ -36,12 +37,50 @@ export default async function BlogPage() {
         {/* Intro */}
         <section className="relative overflow-hidden">
           <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-10 sm:pb-14 space-y-4">
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">Blog &amp; News</p>
-            <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">Insights from Taglus</h1>
-            <p className="text-base sm:text-lg text-[#E8DCC8]/80 max-w-2xl text-left">
-              Material science, thermoforming know-how and practical guidance for orthodontic labs and clinics.
-            </p>
+          <div aria-hidden className="pointer-events-none absolute top-32 -right-32 h-[360px] w-[460px] rounded-full bg-indigo-500/15 blur-[120px]" />
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 grid lg:grid-cols-12 gap-10 items-center animate-fade-up">
+            <div className="lg:col-span-7 space-y-5">
+              <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">Blog &amp; News</p>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.02] text-[#E8DCC8]">
+                Insights from{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">Taglus</span>
+              </h1>
+              <p className="text-base sm:text-lg text-[#E8DCC8]/80 max-w-xl text-left">
+                Material science, thermoforming know-how and practical guidance for orthodontic labs and clinics.
+              </p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {["Aligner materials", "Thermoforming", "3D printing", "Lab workflow", "Quality"].map((t) => (
+                  <span key={t} className="rounded-full border border-[#E8DCC8]/15 bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold text-[#E8DCC8]/85">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+            {/* Stack of the latest covers, gently floating */}
+            {posts.length > 0 && (
+              <div className="hidden lg:block lg:col-span-5">
+                <div className="relative h-[340px]">
+                  {posts.slice(0, 3).map((p, i) =>
+                    p.imagePath ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={p.id}
+                        src={p.imagePath}
+                        alt=""
+                        className="absolute w-[78%] aspect-[16/10] object-cover rounded-2xl border border-[#E8DCC8]/15 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)] animate-float"
+                        style={{
+                          top: `${i * 18}%`,
+                          left: `${[18, 0, 24][i]}%`,
+                          rotate: `${[-6, 4, -2][i]}deg`,
+                          zIndex: 3 - i,
+                          animationDelay: `${i * -2}s`,
+                        }}
+                      />
+                    ) : null
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -117,18 +156,24 @@ export default async function BlogPage() {
           {/* CTA */}
           <section className="rounded-3xl border border-sky-400/20 bg-gradient-to-br from-sky-500/10 via-[#0b1329] to-[#0b1329] p-8 sm:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="space-y-2 max-w-xl">
-              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">Have a material question?</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">Join the Taglus Network</p>
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">Never miss an insight</h2>
               <p className="text-[#E8DCC8]/80 text-left">
-                Our team helps labs choose the right sheets, resins and equipment for their workflow.
+                Get new articles, product updates and exclusive offers for your orthodontic workflow.
               </p>
             </div>
-            <Link
-              href="/contact"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/20 transition-all duration-200 hover:scale-[1.02]"
-            >
-              Talk to our team
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <JoinNetworkButton className="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-[#0052cc] via-[#0088ff] to-[#00d4ff] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/20 transition-all duration-200 hover:scale-[1.02]">
+                Join the network
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </JoinNetworkButton>
+              <Link
+                href="/contact"
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E8DCC8]/25 px-6 py-3 text-sm font-semibold text-[#E8DCC8] transition-colors hover:border-sky-400 hover:text-sky-300"
+              >
+                Ask our team
+              </Link>
+            </div>
           </section>
         </div>
       </main>

@@ -79,6 +79,7 @@ const MARKS: Mark[] = [
 
 const ALL = [ISO, ...MARKS];
 
+
 const PILLARS = [
   {
     icon: ClipboardCheck,
@@ -135,36 +136,73 @@ export default function CertificationsSection() {
       <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[70vw] max-w-[900px] h-[420px] bg-sky-500/10 blur-[160px] pointer-events-none -z-10" />
       <div className="absolute top-[60%] right-0 w-[40vw] max-w-[500px] h-[400px] bg-indigo-500/10 blur-[160px] pointer-events-none -z-10" />
 
-      {/* ================= HERO ================= */}
-      <div className="text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-md">
-          <ShieldCheck size={16} className="text-sky-400" />
-          <span>Quality You Can Verify</span>
-        </div>
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.05]">
-          Certifications &amp;{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
-            Regulatory Compliance
-          </span>
-        </h1>
-        <p className="mt-6 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed max-w-2xl mx-auto text-center">
-          Our manufacturing processes are governed by internationally recognized quality standards and supported by
-          market-specific regulatory requirements.
-        </p>
-      </div>
-
-      {/* Stats strip */}
-      <div className="mt-14 grid grid-cols-3 max-w-3xl mx-auto rounded-2xl border border-[#E8DCC8]/15 bg-[#030919]/70 backdrop-blur-xl divide-x divide-[#E8DCC8]/10">
-        {[
-          { value: "ISO 13485", label: "Certified QMS" },
-          { value: `${ALL.length}`, label: "Certifications & marks" },
-          { value: `${MARKS.length}`, label: "Regulatory regions" },
-        ].map((s) => (
-          <div key={s.label} className="px-3 py-5 sm:py-6 text-center">
-            <p className="text-lg sm:text-2xl font-black text-[#E8DCC8] tracking-tight">{s.value}</p>
-            <p className="mt-1 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-sky-400">{s.label}</p>
+      {/* ================= HERO: text + orbiting certification seals ================= */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center animate-fade-up">
+        <div className="lg:col-span-6 text-center lg:text-left">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-md">
+            <ShieldCheck size={16} className="text-sky-400" />
+            <span>Quality You Can Verify</span>
           </div>
-        ))}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.05]">
+            Certifications &amp;{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
+              Regulatory Compliance
+            </span>
+          </h1>
+          <p className="mt-6 text-base sm:text-lg text-[#E8DCC8] font-light leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+            Our manufacturing processes are governed by internationally recognized quality standards and supported by
+            market-specific regulatory requirements.
+          </p>
+
+          {/* Stats */}
+          <div className="mt-10 grid grid-cols-3 max-w-xl mx-auto lg:mx-0 rounded-2xl border border-[#E8DCC8]/15 bg-[#030919]/70 backdrop-blur-xl divide-x divide-[#E8DCC8]/10">
+            {[
+              { value: "ISO 13485", label: "Certified QMS" },
+              { value: `${ALL.length}`, label: "Certifications & marks" },
+              { value: `${MARKS.length}`, label: "Regulatory regions" },
+            ].map((s) => (
+              <div key={s.label} className="px-3 py-5 text-center">
+                <p className="text-lg sm:text-2xl font-black text-[#E8DCC8] tracking-tight">{s.value}</p>
+                <p className="mt-1 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-sky-400">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Orbit: ISO seal in the centre, market marks circling around it */}
+        <div className="lg:col-span-6 flex justify-center">
+          <div className="relative w-[300px] h-[300px] sm:w-[440px] sm:h-[440px]">
+            <div aria-hidden className="absolute inset-[18%] rounded-full bg-sky-500/25 blur-[70px]" />
+            <div aria-hidden className="absolute inset-0 rounded-full border border-sky-400/20" />
+            <div aria-hidden className="absolute inset-[14%] rounded-full border border-dashed border-[#E8DCC8]/15 animate-[spin_40s_linear_infinite_reverse]" />
+            {/* rotating ring carrying the 5 marks; each badge counter-rotates so logos stay upright */}
+            <div className="absolute inset-0 animate-[spin_36s_linear_infinite]">
+              {MARKS.map((m, i) => {
+                const angle = (i / MARKS.length) * 2 * Math.PI - Math.PI / 2;
+                return (
+                  <div
+                    key={m.id}
+                    className="absolute w-[68px] h-[68px] sm:w-[92px] sm:h-[92px] -translate-x-1/2 -translate-y-1/2"
+                    style={{ left: `${50 + 50 * Math.cos(angle)}%`, top: `${50 + 50 * Math.sin(angle)}%` }}
+                  >
+                    <div className="w-full h-full animate-[spin_36s_linear_infinite_reverse]">
+                      <LogoPlaque
+                        src={m.logo}
+                        alt={m.name}
+                        className="w-full h-full rounded-full ring-2 ring-sky-400/40 shadow-[0_0_30px_rgba(56,189,248,0.35)]"
+                        imgBox="absolute inset-[22%]"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            {/* centre seal */}
+            <div className="absolute inset-[27%] rounded-full p-[3px] bg-gradient-to-br from-sky-300 via-[#E8DCC8] to-indigo-400 shadow-[0_0_60px_rgba(56,189,248,0.45)]">
+              <LogoPlaque src={ISO.logo} alt={ISO.name} className="w-full h-full rounded-full" imgBox="absolute inset-[20%]" />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ================= ISO FEATURE ================= */}
@@ -214,7 +252,7 @@ export default function CertificationsSection() {
           {MARKS.map((m) => (
             <div
               key={m.id}
-              className="group flex flex-col rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#030919]/90 hover:border-sky-400/50 hover:-translate-y-1 transition-all duration-300 shadow-xl"
+              className="group flex flex-col rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#030919]/90 hover:border-sky-400/50 hover:-translate-y-2 transition-all duration-300 shadow-xl"
             >
               <LogoPlaque src={m.logo} alt={m.name} className="h-[170px] sm:h-[180px]" />
               <div className="p-6 sm:p-7 flex flex-col flex-1">

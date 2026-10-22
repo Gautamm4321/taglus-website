@@ -19,7 +19,7 @@ export default function RollProductTemplate({ content }: { content: RollContent 
           1. HERO FRAME (About Page Typography + Natural Imagery)
       ======================================================== */}
             <section className="relative w-full pt-28 sm:pt-36 pb-20 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div className="animate-fade-up grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
                     {/* Left Column: 7 Cols */}
                     <div className="lg:col-span-7 space-y-6">
@@ -82,7 +82,7 @@ export default function RollProductTemplate({ content }: { content: RollContent 
                     {/* Right Column: 5 Cols (trim-1.png Image) */}
                     {c.heroImage && (
                     <div className="lg:col-span-5 relative flex justify-center items-center">
-                        <div className="relative w-full h-[460px] sm:h-[560px] lg:h-[620px]">
+                        <div className="animate-float relative w-full h-[460px] sm:h-[560px] lg:h-[620px]">
                             <CmsImage
                                 src={c.heroImage}
                                 alt={`${c.heroTitle} ${c.heroHighlight}`.trim()}
@@ -117,13 +117,13 @@ export default function RollProductTemplate({ content }: { content: RollContent 
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+                <div className="flex flex-wrap justify-center gap-6 items-stretch">
                     {c.advantages.map((item, idx) => {
                         const Icon = ADVANTAGE_ICONS[idx % ADVANTAGE_ICONS.length];
                         return (
                             <div
                                 key={idx}
-                                className="rounded-[2.5rem] p-6 sm:p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
+                                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] rounded-[2.5rem] p-6 sm:p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
                                     <Icon size={24} />

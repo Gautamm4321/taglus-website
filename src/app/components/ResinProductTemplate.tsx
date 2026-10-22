@@ -16,7 +16,7 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
           1. HERO FRAME (Clean Left Text + Full Natural Image on Right)
       ======================================================== */}
             <section className="relative w-full min-h-[85vh] flex items-center px-6 sm:px-12 lg:px-20 py-20 max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+                <div className="animate-fade-up grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
 
                     {/* Left Side: Typography */}
                     <div className="space-y-6">
@@ -46,7 +46,7 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
                     {/* Right Side: Full Unboxed Banner Image */}
                     {c.heroImage && (
                     <div className="relative flex justify-center items-center w-full">
-                        <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[560px]">
+                        <div className="animate-float relative w-full h-[400px] sm:h-[500px] lg:h-[560px]">
                             <CmsImage
                                 src={c.heroImage}
                                 alt={`${c.heroTitle} ${c.heroHighlight}`.trim()}
@@ -80,11 +80,11 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
                     </div>
 
                     {/* 5 in One Line Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 items-stretch">
+                    <div className="flex flex-wrap justify-center gap-4 items-stretch">
                         {c.points.map((item, idx) => (
                             <div
                                 key={idx}
-                                className="rounded-[2rem] p-5 sm:p-6 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
+                                className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(20%-0.8rem)] rounded-[2rem] p-5 sm:p-6 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
                             >
                                 <div className="w-10 h-10 rounded-full bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-4 shrink-0">
                                     <CheckCircle2 size={20} />

@@ -230,7 +230,7 @@ function AccessoriesEditor({ value, onChange, fe }: { value: AccessoriesContent;
       <Group title="Accessories (image + text blocks)">
         <RepeaterField
           items={value.items}
-          onChange={(v) => set("items", v)}
+          onChange={(v) => set("items", v as AccessoriesContent["items"])}
           columns={[
             { key: "image", label: "Image", image: true },
             { key: "category", label: "Small label", placeholder: "CLINICAL BRANDING & STORAGE" },
@@ -239,7 +239,7 @@ function AccessoriesEditor({ value, onChange, fe }: { value: AccessoriesContent;
             { key: "bullets", label: "Bullet points", multiline: true, hint: "One bullet per line." },
             { key: "buttonText", label: "Button text", hint: "Opens the Contact page. Leave empty to hide." },
           ]}
-          emptyRow={{ image: "", category: "", title: "", description: "", bullets: "", buttonText: "" }}
+          emptyRow={{ image: "", imageSize: "full", category: "", title: "", description: "", bullets: "", buttonText: "" }}
           addLabel="Add accessory"
           emptyText="No accessories yet."
           errors={fe}

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
+import JoinNetworkPopup from "./components/JoinNetworkPopup";
+import MotionEffects from "./components/MotionEffects";
 import { MenuProvider } from "./components/MenuProvider";
 import { getMenuProducts } from "./lib/products";
 import { CONTACT, IS_INDEXABLE, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "./lib/site";
@@ -89,6 +91,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
         <CustomCursor />
         <MenuProvider products={menuProducts}>{children}</MenuProvider>
+        <JoinNetworkPopup />
+        <MotionEffects />
       </body>
     </html>
   );

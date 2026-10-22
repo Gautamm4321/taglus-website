@@ -14,6 +14,8 @@ export interface RepeaterColumn<T extends Row> {
   image?: boolean;
   /** Small help text under the field */
   hint?: string;
+  /** Show a dropdown with these choices */
+  options?: { value: string; label: string }[];
 }
 
 /**
@@ -93,7 +95,15 @@ export default function RepeaterField<T extends Row>({
               return (
                 <div key={col.key}>
                   <label className="block text-xs font-medium text-gray-400 mb-1">{col.label}</label>
-                  {col.image ? (
+                  {col.options ? (
+                    <select value={item[col.key] ?? ""} onChange={(e) => update(index, col.key, e.target.value)} className={inputClass}>
+                      {col.options.map((o) => (
+                        <option key={o.value} value={o.value}>
+                          {o.label}
+                        </option>
+                      ))}
+                    </select>
+                  ) : col.image ? (
                     <ImageUpload value={item[col.key] ?? ""} onChange={(url) => update(index, col.key, url)} folder="products" />
                   ) : col.multiline ? (
                     <textarea

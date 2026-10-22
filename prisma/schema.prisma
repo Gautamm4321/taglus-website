@@ -105,3 +105,16 @@ model ContactMessage {
   @@index([createdAt])
   @@index([ipHash, createdAt])
 }
+
+// "Join the Taglus Network" pop-up sign-ups (Admin → Subscribers)
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(120)
+  country   String   @db.VarChar(100)
+  phone     String   @db.VarChar(40)
+  email     String   @unique @db.VarChar(191)
+  ipHash    String?  @db.VarChar(64)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

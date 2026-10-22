@@ -24,7 +24,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
           1. HERO FRAME (Equipment Intro + Image)
       ======================================================== */}
       <section className="relative w-full pt-28 sm:pt-36 pb-20 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="animate-fade-up grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Details: 7 Cols */}
           <div className="lg:col-span-7 space-y-6">
@@ -69,7 +69,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
 
           {/* Right Visual: 5 Cols */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="relative w-full h-[360px] sm:h-[440px] lg:h-[480px]">
+            <div className="animate-float relative w-full h-[360px] sm:h-[440px] lg:h-[480px]">
               <Image
                 src={product.imagePath || "/taglusduoform.product.png"}
                 alt={product.name}

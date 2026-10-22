@@ -22,7 +22,9 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-hidden">
       
       {/* Background Radial Glow */}
-      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(1200px,100vw)] h-[750px] bg-gradient-to-b from-[#0c1e33]/50 via-[#0a1628]/25 to-transparent blur-[120px] pointer-events-none -z-10" />
+      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(1200px,100vw)] h-[750px] pointer-events-none -z-10">
+        <div data-parallax="0.25" className="w-full h-full bg-gradient-to-b from-[#0c1e33]/50 via-[#0a1628]/25 to-transparent blur-[120px]" />
+      </div>
 
       {/* 1. Header */}
       <Header />

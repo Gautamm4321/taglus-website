@@ -158,6 +158,8 @@ export const accessoriesSchema = z.object({
         description: s(2000),
         bullets: s(2000),
         image: req("Image", 1000),
+        /** How big the product looks: "full" fills the panel, "medium"/"small" show the whole photo smaller */
+        imageSize: z.enum(["full", "medium", "small"]).default("full"),
         buttonText: s(60),
       })
     )
@@ -182,6 +184,7 @@ export const ACCESSORIES_DEFAULTS: AccessoriesContent = {
       bullets:
         "Customisable with your clinic logo & brand colours\nSturdy and lightweight protective architecture\nSecure magnetic closure mechanism\nCompetitive lab & clinic pricing tiers",
       image: "/acesories-B.jpg",
+      imageSize: "full",
       buttonText: "CUSTOMISE RETAINER BOXES",
     },
     {
@@ -192,6 +195,7 @@ export const ACCESSORIES_DEFAULTS: AccessoriesContent = {
       bullets:
         "High-grade medical silicone composition\nEnsures tight seating and seating accuracy\nMaintains oral hygiene standards during insertion\nAvailable in attractive clinical color variants",
       image: "/acesories-A.jpg",
+      imageSize: "full",
       buttonText: "VIEW CHEWIES VARIANTS",
     },
     {
@@ -202,6 +206,7 @@ export const ACCESSORIES_DEFAULTS: AccessoriesContent = {
       bullets:
         "Ergonomic handle for comfortable, non-slip grip\nPrecision dual-sided lever hook architecture\nEliminates fingernail damage & prevents gum trauma\nCompact footprint engineered to fit inside retainer cases",
       image: "/acesories-D.jpg",
+      imageSize: "full",
       buttonText: "EXPLORE REMOVAL TOOL",
     },
     {
@@ -212,6 +217,7 @@ export const ACCESSORIES_DEFAULTS: AccessoriesContent = {
       bullets:
         "Available in 1-inch, 2-inch, and 3-inch depth configurations\nFully customizable with clinical brand identity\nEco-conscious and sustainable recyclable material\nProfessional presentation for aligner start kits",
       image: "/acesories-F.jpeg",
+      imageSize: "full",
       buttonText: "VIEW PACKAGING SIZES",
     },
     {
@@ -222,6 +228,7 @@ export const ACCESSORIES_DEFAULTS: AccessoriesContent = {
       bullets:
         "Integrated stopper mechanism for precise occlusal alignment\nCurved ergonomic geometry for rapid lab mounting\nReduces required base height, saving 3D resin costs\nLightweight, durable lab construction",
       image: "/acesories-C.jpg",
+      imageSize: "small",
       buttonText: "ORDER LAB ARTICULATORS",
     },
     {
@@ -232,6 +239,7 @@ export const ACCESSORIES_DEFAULTS: AccessoriesContent = {
       bullets:
         "Medical-grade rigid non-flex polymer construction\nPerforated retention borders for secure impression hold\nAnatomically mapped arch curvatures (Upper & Lower)\nAutoclavable and single-use hygienic variants available",
       image: "/acesories-E.jpg",
+      imageSize: "medium",
       buttonText: "EXPLORE TRAY SIZES",
     },
   ],

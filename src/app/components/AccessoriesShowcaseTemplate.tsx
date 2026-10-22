@@ -51,23 +51,25 @@ export default function AccessoriesShowcaseTemplate({ content }: { content: Acce
               id={anchor}
               className="w-full border-b border-[#E8DCC8]/15"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[550px] lg:min-h-[max(560px,40vw)]">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
                 
                 {/* 1:1 Image Panel */}
                 <div
-                  className={`relative w-full aspect-[5/4] lg:aspect-auto bg-[#030919] overflow-hidden ${
+                  className={`relative w-full aspect-square bg-[#030919] overflow-hidden ${
                     isEven ? "lg:order-1" : "lg:order-2"
                   }`}
                 >
+                  {/* Every photo fills its square panel edge to edge (cut-out PNGs sit on a light studio background) */}
                   <CmsImage
                     src={item.image}
                     alt={item.title}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    className={`transition-transform duration-700 hover:scale-105 ${
+                      /\.png($|\?)/i.test(item.image) ? "object-contain p-[12%] bg-[radial-gradient(circle_at_50%_40%,#ffffff_0%,#e9eef5_70%)]" : "object-cover"
+                    }`}
                     priority={index < 2}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#020612]/40 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Content Panel */}
