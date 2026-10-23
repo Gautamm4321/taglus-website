@@ -36,8 +36,6 @@ export default async function BlogPage() {
       <main id="main-content" className="flex-1 w-full">
         {/* Intro */}
         <section className="relative overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
-          <div aria-hidden className="pointer-events-none absolute top-32 -right-32 h-[360px] w-[460px] rounded-full bg-indigo-500/15 blur-[120px]" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 grid lg:grid-cols-12 gap-10 items-center animate-fade-up">
             <div className="lg:col-span-7 space-y-5">
               <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">Blog &amp; News</p>
@@ -56,31 +54,6 @@ export default async function BlogPage() {
                 ))}
               </div>
             </div>
-            {/* Stack of the latest covers, gently floating */}
-            {posts.length > 0 && (
-              <div className="hidden lg:block lg:col-span-5">
-                <div className="relative h-[340px]">
-                  {posts.slice(0, 3).map((p, i) =>
-                    p.imagePath ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={p.id}
-                        src={p.imagePath}
-                        alt=""
-                        className="absolute w-[78%] aspect-[16/10] object-cover rounded-2xl border border-[#E8DCC8]/15 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)] animate-float"
-                        style={{
-                          top: `${i * 18}%`,
-                          left: `${[18, 0, 24][i]}%`,
-                          rotate: `${[-6, 4, -2][i]}deg`,
-                          zIndex: 3 - i,
-                          animationDelay: `${i * -2}s`,
-                        }}
-                      />
-                    ) : null
-                  )}
-                </div>
-              </div>
-            )}
           </div>
         </section>
 

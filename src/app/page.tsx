@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-clip">
       
       {/* Background Radial Glow */}
       <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(1200px,100vw)] h-[750px] pointer-events-none -z-10">
