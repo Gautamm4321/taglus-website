@@ -89,12 +89,12 @@ export default function JoinNetworkPopup() {
     window.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    window.lenis?.stop();
+    window.taglusLenis?.stop();
     const t = setTimeout(() => firstField.current?.focus(), 350);
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
-      window.lenis?.start();
+      window.taglusLenis?.start();
       clearTimeout(t);
     };
   }, [open, close]);

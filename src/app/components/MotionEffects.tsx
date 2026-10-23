@@ -17,7 +17,7 @@ const SKIP_REVEAL = ["/admin", "/about", "/case-studies"];
 
 declare global {
   interface Window {
-    lenis?: Lenis;
+    taglusLenis?: Lenis;
   }
 }
 
@@ -32,7 +32,7 @@ export default function MotionEffects() {
 
     const bar = document.getElementById("scroll-progress");
     const lenis = reduce ? undefined : new Lenis({ duration: 1.15, smoothWheel: true, anchors: { offset: -96 }, prevent: (n) => !!n.closest?.("[data-lenis-prevent]") });
-    window.lenis = lenis;
+    window.taglusLenis = lenis;
 
     let frame = 0;
     const tick = (time: number) => {
@@ -56,7 +56,7 @@ export default function MotionEffects() {
     return () => {
       cancelAnimationFrame(frame);
       lenis?.destroy();
-      window.lenis = undefined;
+      window.taglusLenis = undefined;
     };
   }, [isAdmin]);
 
