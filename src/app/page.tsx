@@ -9,6 +9,7 @@ import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
 import HeroCubeLazy from "./components/HeroCubeLazy";
 import CounterNumber from "./components/CounterNumber";
+import HomeStory from "./components/HomeStory";
 
 export const metadata: Metadata = {
   title: { absolute: "Taglus | Aligner Sheets, 3D Printing Resins & Thermoforming Machines" },
@@ -166,6 +167,9 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* Story: pinned, 4 chapters (Print → Form → Trim → Finish) */}
+      <HomeStory />
 
       {/* Other sections */}
       <FeatureHighlights />

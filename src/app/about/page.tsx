@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "../components/header";
 import AboutHero from "../components/AboutHero";
 import AboutScrollStory from "../components/AboutScrollStory";
+import HomeStory from "../components/HomeStory";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function AboutPage() {
       <Header />
       <main id="main-content" className="flex-1">
         <AboutHero />
+        <HomeStory />
         <AboutScrollStory />
       </main>
       <Footer />
