@@ -244,3 +244,10 @@ html.lenis, html.lenis body { height: auto; }
   .motion-ready [data-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
   .marquee-track, .animate-float { animation: none !important; }
 }
+
+/* ================= Catalogue flip-book: rounded outer page corners ================= */
+.book-holder .stf__item { overflow: hidden; }
+.book-holder .stf__item.--left { border-radius: 14px 0 0 14px; }
+.book-holder .stf__item.--right { border-radius: 0 14px 14px 0; }
+.book-holder .stf__parent.--portrait .stf__item,
+.book-holder .stf__item.--hard { border-radius: 14px; }

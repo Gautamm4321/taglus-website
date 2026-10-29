@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
 import { useMenuProducts } from "./MenuProvider";
 import type { MenuGroupName } from "../lib/validation";
+import { equipmentHref, menuHref } from "../lib/catalogue";
 
 type MenuItem = { name: string; desc: string; href: string; badge?: string };
 
@@ -45,11 +46,11 @@ const MENU_COLUMNS: { group: MenuGroupName; title: string; upcoming?: MenuItem[]
     group: "ACCESSORIES",
     title: "Accessories & Packaging",
     fixed: [
-      { name: "Retainer Box", desc: "Protective retainer case", href: "/products/taglus-orthodontic-accessories#taglus-retainer-boxes" },
-      { name: "Orthodontic Accessories", desc: "Chewies & removal tools", href: "/products/taglus-orthodontic-accessories#taglus-aligner-chewies" },
-      { name: "Membrane / Pillow Box", desc: "Smart aligner packaging", href: "/products/taglus-orthodontic-accessories#premium-dental-pillow-boxes" },
-      { name: "Articulator", desc: "Dental model articulator", href: "/products/taglus-orthodontic-accessories#articulator-with-stopper" },
-      { name: "Impression Tray", desc: "Trays for dental impressions", href: "/products/taglus-orthodontic-accessories#taglus-dental-impression-trays" },
+      { name: "Retainer Box", desc: "Protective retainer case", href: equipmentHref("taglus-retainer-boxes") },
+      { name: "Orthodontic Accessories", desc: "Chewies & removal tools", href: equipmentHref("taglus-aligner-chewies") },
+      { name: "Membrane / Pillow Box", desc: "Smart aligner packaging", href: equipmentHref("premium-dental-pillow-boxes") },
+      { name: "Articulator", desc: "Dental model articulator", href: equipmentHref("articulator-with-stopper") },
+      { name: "Impression Tray", desc: "Trays for dental impressions", href: equipmentHref("taglus-dental-impression-trays") },
     ],
   },
 ];
@@ -168,7 +169,8 @@ export default function Header() {
   const menuColumns = MENU_COLUMNS.map((col) => {
     const fromCms: MenuItem[] = menuProducts
       .filter((p) => p.group === col.group)
-      .map((p) => ({ name: p.title, desc: p.description, href: `/products/${p.slug}` }));
+      // Sheets, machines and resin open in the catalogue books (see lib/catalogue.ts)
+      .map((p) => ({ name: p.title, desc: p.description, href: menuHref(p.slug) }));
     const inCms = new Set(fromCms.map((i) => normalizeName(i.name)));
     const upcoming = (col.upcoming ?? []).filter((i) => !inCms.has(normalizeName(i.name)));
     return { ...col, items: [...(col.fixed ?? []), ...fromCms, ...upcoming] };
