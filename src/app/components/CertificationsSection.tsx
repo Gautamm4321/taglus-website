@@ -36,7 +36,7 @@ const MARKS: Mark[] = [
     short: "Compliance with applicable European medical-device requirements",
     detail: "CE marking for applicable products, supported by an authorised European Representative (EC REP).",
     rep: "EC REP: Wellkang Ltd, Derry, Northern Ireland",
-    logo: "/bl-1.png",
+    logo: "/bl-1-mark.png",
   },
   {
     id: "ukca",
@@ -46,7 +46,7 @@ const MARKS: Mark[] = [
     short: "Compliance for applicable products in the UK",
     detail: "UK Conformity Assessed marking for applicable products placed on the Great Britain market.",
     rep: "UK Responsible Person: Wellkang Ltd, Dover, England",
-    logo: "/bl-2.png",
+    logo: "/bl-2-mark.png",
   },
   {
     id: "tga",
@@ -55,7 +55,7 @@ const MARKS: Mark[] = [
     tag: "Health Safety Regulation",
     short: "Australian regulatory registration/recognition, where applicable",
     detail: "Recognition under the Therapeutic Goods Administration framework for applicable products in Australia and New Zealand.",
-    logo: "/bl-4.png",
+    logo: "/bl-4-mark.png",
   },
   {
     id: "anvisa",
@@ -136,14 +136,14 @@ export default function CertificationsSection() {
       <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[70vw] max-w-[900px] h-[420px] bg-sky-500/10 blur-[160px] pointer-events-none -z-10" />
       <div className="absolute top-[60%] right-0 w-[40vw] max-w-[500px] h-[400px] bg-indigo-500/10 blur-[160px] pointer-events-none -z-10" />
 
-      {/* ================= HERO: text + orbiting certification seals ================= */}
+      {/* ================= HERO: text + certificate wall ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center animate-fade-up">
         <div className="lg:col-span-6 text-center lg:text-left">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-[#E8DCC8]/25 text-sky-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-md">
             <ShieldCheck size={16} className="text-sky-400" />
             <span>Quality You Can Verify</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.05]">
+          <h1 className="text-3xl sm:text-5xl lg:text-[3.3rem] font-black uppercase tracking-tight text-[#E8DCC8] leading-[1.05]">
             Certifications &amp;{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
               Regulatory Compliance
@@ -154,53 +154,26 @@ export default function CertificationsSection() {
             market-specific regulatory requirements.
           </p>
 
-          {/* Stats */}
-          <div className="mt-10 grid grid-cols-3 max-w-xl mx-auto lg:mx-0 rounded-2xl border border-[#E8DCC8]/15 bg-[#030919]/70 backdrop-blur-xl divide-x divide-[#E8DCC8]/10">
-            {[
-              { value: "ISO 13485", label: "Certified QMS" },
-              { value: `${ALL.length}`, label: "Certifications & marks" },
-              { value: `${MARKS.length}`, label: "Regulatory regions" },
-            ].map((s) => (
-              <div key={s.label} className="px-3 py-5 text-center">
-                <p className="text-lg sm:text-2xl font-black text-[#E8DCC8] tracking-tight">{s.value}</p>
-                <p className="mt-1 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-sky-400">{s.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* Orbit: ISO seal in the centre, market marks circling around it */}
-        <div className="lg:col-span-6 flex justify-center">
-          <div className="relative w-[300px] h-[300px] sm:w-[440px] sm:h-[440px]">
-            <div aria-hidden className="absolute inset-[18%] rounded-full bg-sky-500/25 blur-[70px]" />
-            <div aria-hidden className="absolute inset-0 rounded-full border border-sky-400/20" />
-            <div aria-hidden className="absolute inset-[14%] rounded-full border border-dashed border-[#E8DCC8]/15 animate-[spin_40s_linear_infinite_reverse]" />
-            {/* rotating ring carrying the 5 marks; each badge counter-rotates so logos stay upright */}
-            <div className="absolute inset-0 animate-[spin_36s_linear_infinite]">
-              {MARKS.map((m, i) => {
-                const angle = (i / MARKS.length) * 2 * Math.PI - Math.PI / 2;
-                return (
-                  <div
-                    key={m.id}
-                    className="absolute w-[68px] h-[68px] sm:w-[92px] sm:h-[92px] -translate-x-1/2 -translate-y-1/2"
-                    style={{ left: `${50 + 50 * Math.cos(angle)}%`, top: `${50 + 50 * Math.sin(angle)}%` }}
-                  >
-                    <div className="w-full h-full animate-[spin_36s_linear_infinite_reverse]">
-                      <LogoPlaque
-                        src={m.logo}
-                        alt={m.name}
-                        className="w-full h-full rounded-full ring-2 ring-sky-400/40 shadow-[0_0_30px_rgba(56,189,248,0.35)]"
-                        imgBox="absolute inset-[22%]"
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {/* centre seal */}
-            <div className="absolute inset-[27%] rounded-full p-[3px] bg-gradient-to-br from-sky-300 via-[#E8DCC8] to-indigo-400 shadow-[0_0_60px_rgba(56,189,248,0.45)]">
-              <LogoPlaque src={ISO.logo} alt={ISO.name} className="w-full h-full rounded-full" imgBox="absolute inset-[20%]" />
-            </div>
+        {/* Certificate wall: every mark on its own clear plaque */}
+        <div className="lg:col-span-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+            {ALL.map((m, i) => (
+              <div key={m.id} className="animate-float" style={{ animationDelay: `${i * -0.7}s` }}>
+                <div className="rounded-2xl p-[1px] bg-gradient-to-br from-sky-300/50 via-[#E8DCC8]/20 to-indigo-400/40 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.8)]">
+                  <LogoPlaque
+                    src={m.logo}
+                    alt={m.name}
+                    className="aspect-[4/3] rounded-[15px]"
+                    imgBox="absolute inset-x-[16%] inset-y-[20%]"
+                  />
+                </div>
+                <p className="mt-2.5 text-center text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#E8DCC8]">
+                  {m.name}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -210,8 +183,8 @@ export default function CertificationsSection() {
         <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold text-center">
           The Foundation
         </p>
-        <h2 className="mt-3 text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] text-center">
-          Certified Quality Management
+        <h2 className="mt-3 text-2xl sm:text-4xl font-black uppercase tracking-normal text-[#E8DCC8] text-center">
+          ISO Certification
         </h2>
 
         <div className="group mt-10 grid grid-cols-1 lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#030919]/90 hover:border-sky-400/40 transition-colors">
@@ -244,8 +217,8 @@ export default function CertificationsSection() {
         <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold text-center">
           Global Market Access
         </p>
-        <h2 className="mt-3 text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] text-center">
-          Regional Regulatory Marks
+        <h2 className="mt-3 text-2xl sm:text-4xl font-black uppercase tracking-normal text-[#E8DCC8] text-center">
+          Regulatory Certification
         </h2>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
@@ -254,7 +227,7 @@ export default function CertificationsSection() {
               key={m.id}
               className="group flex flex-col rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#030919]/90 hover:border-sky-400/50 hover:-translate-y-2 transition-all duration-300 shadow-xl"
             >
-              <LogoPlaque src={m.logo} alt={m.name} className="h-[170px] sm:h-[180px]" />
+              <LogoPlaque src={m.logo} alt={m.name} className="h-[170px] sm:h-[180px]" imgBox="absolute inset-x-[24%] inset-y-[26%]" />
               <div className="p-6 sm:p-7 flex flex-col flex-1">
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-[11px] font-mono uppercase tracking-widest text-sky-400 font-semibold">{m.tag}</span>
@@ -265,12 +238,6 @@ export default function CertificationsSection() {
                 <h3 className="mt-2 text-2xl sm:text-[1.7rem] font-black uppercase tracking-tight text-[#E8DCC8]">{m.name}</h3>
                 <p className="mt-2 text-sm sm:text-[15px] font-semibold text-[#E8DCC8] leading-snug text-left hyphens-none">{m.short}</p>
                 <p className="mt-2 text-sm text-[#E8DCC8] font-light leading-relaxed text-left hyphens-none">{m.detail}</p>
-                {m.rep && (
-                  <p className="mt-auto pt-4 text-xs text-[#E8DCC8] border-t border-white/[0.08] text-left">
-                    <span className="text-sky-300 font-semibold">{m.rep.split(":")[0]}:</span>
-                    {m.rep.slice(m.rep.indexOf(":") + 1)}
-                  </p>
-                )}
               </div>
             </div>
           ))}

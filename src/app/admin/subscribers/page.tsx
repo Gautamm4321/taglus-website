@@ -47,12 +47,12 @@ export default async function SubscribersAdminPage() {
             <tbody>
               {subscribers.map((s) => (
                 <tr key={s.id} className="border-b border-white/5 last:border-0">
-                  <td className="px-5 py-3 text-white">{s.name}</td>
+                  <td className="px-5 py-3 text-white">{s.name || "—"}</td>
                   <td className="px-5 py-3">
                     <a href={`mailto:${s.email}`} className="text-blue-400 hover:underline">{s.email}</a>
                   </td>
-                  <td className="px-5 py-3 text-gray-300">{s.phone}</td>
-                  <td className="px-5 py-3 text-gray-300">{s.country}</td>
+                  <td className="px-5 py-3 text-gray-300">{s.phone || "—"}</td>
+                  <td className="px-5 py-3 text-gray-300">{s.country || "—"}</td>
                   <td className="px-5 py-3 text-gray-500 whitespace-nowrap">{fmt(s.createdAt)}</td>
                   <td className="px-5 py-3 text-right">
                     <SubscriberActions id={s.id} />

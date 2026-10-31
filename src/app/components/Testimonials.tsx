@@ -35,7 +35,7 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus Duoform",
     quote:
       "If you want to produce aligners faster and more efficiently, the Taglus Duoform is the machine for you. It uses pressure technology, making it very simple and intuitive to use. You just place the sheet, select the pre-programmed settings, and the Duoform does the rest. Once the plate is heated, the machine signals with a few beeps, so there's no risk of under- or over-heating. This ensures there are no bubbles or imperfections, and the result is always a highly professional product. Truly top-notch and perfect!",
-    photo: "/testimonials/cutouts/marcos-eugenio.webp",
+    photo: "/testimonials/cutouts/marcos-eugenio-v3.webp",
     flag: "br",
   },
   {
@@ -45,7 +45,7 @@ const TESTIMONIALS: Testimonial[] = [
     product: "Taglus Premium · 0.8 mm",
     quote:
       "We are thrilled to share a remarkable case study: a simple crowding case with a highly buccally displaced upper left canine, midline shift and lower right canine in crossbite tendency. Using the proper staging technique, the right sheet material and thickness, mild to moderate crowding cases can be treated efficiently using in-house aligners. Taglus sheets did the job perfectly, as wanted.",
-    photo: "/testimonials/cutouts/abdullah-ali.webp",
+    photo: "/testimonials/cutouts/abdullah-ali-v2.webp",
     flag: "eg",
   },
   {

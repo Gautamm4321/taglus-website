@@ -84,11 +84,15 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck size={16} className="text-sky-400" />
-                <span>MDR / CE Certified</span>
+                <span>CE Certified</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck size={16} className="text-sky-400" />
-                <span>TGA · ANVISA</span>
+                <span>TGA</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={16} className="text-sky-400" />
+                <span>ANVISA</span>
               </div>
             </div>
           </div>

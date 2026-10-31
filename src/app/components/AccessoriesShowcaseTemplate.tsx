@@ -137,7 +137,7 @@ export default function AccessoriesShowcaseTemplate({ content }: { content: Acce
       ======================================================== */}
       {c.ctaTitle && (
       <section className="relative py-16 px-6 sm:px-12 max-w-6xl mx-auto text-center space-y-4">
-        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#E8DCC8] lg:whitespace-nowrap">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-normal [word-spacing:0.12em] leading-tight text-[#E8DCC8] [text-wrap:balance]">
           {c.ctaTitle}
         </h3>
         {c.ctaText && (

@@ -202,10 +202,11 @@ function DesktopPanel({ panel }: { panel: Panel }) {
               alt={panel.alt}
               fill
               sizes="(min-width: 1280px) 1200px, 100vw"
-              className="object-cover"
+              quality={90}
+              className="object-cover contrast-[1.06] saturate-[1.12] sepia-[0.06]"
               style={{ objectPosition: panel.focus }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020612]/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
           </motion.div>
         </div>
         </div>
@@ -241,7 +242,7 @@ function MobilePanel({ panel }: { panel: Panel }) {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden border border-[#E8DCC8]/15"
       >
-        <Image src={panel.image} alt={panel.alt} fill sizes="100vw" className="object-cover" style={{ objectPosition: panel.focus }} />
+        <Image src={panel.image} alt={panel.alt} fill sizes="100vw" quality={90} className="object-cover contrast-[1.06] saturate-[1.12] sepia-[0.06]" style={{ objectPosition: panel.focus }} />
       </motion.div>
 
       <div className="mt-8 space-y-5">

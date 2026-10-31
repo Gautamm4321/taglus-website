@@ -105,7 +105,7 @@ export default async function EventsPage() {
         <section className="relative overflow-hidden">
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-12 animate-fade-up">
             <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">Events &amp; Exhibitions</p>
-            <h1 className="mt-3 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.02] text-[#E8DCC8]">
+            <h1 className="mt-3 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-normal [word-spacing:0.12em] leading-[1.05] text-[#E8DCC8]">
               Meet Taglus{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">Worldwide</span>
             </h1>

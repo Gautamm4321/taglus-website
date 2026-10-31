@@ -253,7 +253,7 @@ export default function ProductColumns() {
                       </h3>
                       <div className="flex items-center gap-1 text-[11px] text-[#E8DCC8] shrink-0">
                         <ShieldCheck size={14} className="text-sky-400" />
-                        <span>MDR IIa</span>
+                        <span>CE Certified</span>
                       </div>
                     </div>
 

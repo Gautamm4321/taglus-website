@@ -36,7 +36,7 @@ export default async function BlogPage() {
         {/* Intro: heading in the middle of the page */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-32 sm:pt-40 pb-12 sm:pb-16 text-center animate-fade-up">
           <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">Blog &amp; News</p>
-          <h1 className="mt-4 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.02] text-[#E8DCC8]">
+          <h1 className="mt-4 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-normal [word-spacing:0.12em] leading-[1.05] text-[#E8DCC8]">
             Insights from{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">Taglus</span>
           </h1>

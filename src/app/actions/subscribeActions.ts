@@ -13,15 +13,12 @@ export type SubscribeState =
   | { status: "success" }
   | { status: "error"; error: string; fieldErrors?: Record<string, string> };
 
+// The pop-up only asks for an email; name / country / phone stay optional (saved empty)
+const optional = (max: number) => z.string().trim().max(max).optional().default("");
 const schema = z.object({
-  name: z.string().trim().min(2, "Please enter your name.").max(120, "Name is too long."),
-  country: z.string().trim().min(2, "Please enter your country.").max(100, "Country is too long."),
-  phone: z
-    .string()
-    .trim()
-    .min(6, "Please enter your phone number.")
-    .max(40, "Phone number is too long.")
-    .regex(/^[+()\d\s.-]+$/, "Use digits, spaces, + ( ) - only."),
+  name: optional(120),
+  country: optional(100),
+  phone: optional(40),
   email: z.string().trim().toLowerCase().email("Please enter a valid email address.").max(191),
 });
 
@@ -33,9 +30,9 @@ export async function subscribe(_prev: SubscribeState, formData: FormData): Prom
   if (String(formData.get("company_website") ?? "").trim() !== "") return { status: "success" };
 
   const parsed = schema.safeParse({
-    name: formData.get("name"),
-    country: formData.get("country"),
-    phone: formData.get("phone"),
+    name: formData.get("name") ?? undefined,
+    country: formData.get("country") ?? undefined,
+    phone: formData.get("phone") ?? undefined,
     email: formData.get("email"),
   });
   if (!parsed.success) {
@@ -44,7 +41,7 @@ export async function subscribe(_prev: SubscribeState, formData: FormData): Prom
       const key = String(issue.path[0]);
       if (!fieldErrors[key]) fieldErrors[key] = issue.message;
     }
-    return { status: "error", error: "Please check the highlighted fields.", fieldErrors };
+    return { status: "error", error: fieldErrors.email ?? "Please check the highlighted fields.", fieldErrors };
   }
 
   const h = await headers();

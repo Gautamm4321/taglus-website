@@ -9,19 +9,21 @@ export default function CaseStudyDetail() {
     <article className="w-full select-none">
       
       {/* ================= FULL BLEED LANDSCAPE HERO (EDGE-TO-EDGE) ================= */}
-      <div className="relative w-full h-[380px] sm:h-[480px] md:h-[580px] lg:h-[640px] overflow-hidden">
+      <div className="relative w-full h-[380px] sm:h-[480px] md:h-[540px] lg:h-[580px] overflow-hidden bg-[#020612]">
         <Image
           src="/case-studies1.png"
           alt="Elevating Orthodontic Excellence in South America"
           fill
           sizes="100vw"
           priority
-          className="object-cover object-center"
+          quality={90}
+          className="object-cover object-[center_28%] contrast-[1.06] saturate-[1.12] brightness-[0.95]"
         />
 
         {/* Ambient Gradient Overlays for readable transition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020612] via-[#020612]/60 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020612]/80 via-transparent to-[#020612]/80" />
+        {/* Neutral (not blue) shading: dark only where the text sits, so the photo keeps its natural colours */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020612] via-black/30 via-45% to-black/5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 via-50% to-transparent" />
 
         {/* Header Overlay Text */}
         <div className="absolute inset-0 max-w-7xl mx-auto px-6 sm:px-10 flex flex-col justify-end pb-12 sm:pb-16 z-10">
