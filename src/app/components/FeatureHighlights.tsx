@@ -190,7 +190,7 @@ export default function FeatureHighlights() {
           <Cpu size={14} className="text-sky-400" />
           <span>Integrated Production Architecture</span>
         </div>
-        <h2 className="whitespace-nowrap text-[5.4vw] sm:text-4xl md:text-[2.75rem] lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
+        <h2 className="whitespace-nowrap text-center text-[4.4vw] sm:text-4xl md:text-[2.75rem] lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
           Aligner <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-indigo-300">Production Workflow</span>
         </h2>
         <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed hyphens-none">
@@ -299,7 +299,12 @@ export default function FeatureHighlights() {
                 itself, like a premium product tile instead of a framed
                 thumbnail with a background box behind it.
                 ============================================================ */}
-            <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[380px] bg-[#182f4b] rounded-3xl border border-white/[0.08] p-6 overflow-hidden">
+            <div
+              className={`lg:col-span-6 relative flex flex-col items-center justify-center bg-[#182f4b] rounded-3xl border border-white/[0.08] overflow-hidden ${
+                // Print step on mobile: less empty space above and below the 3 resin bottles
+                currentStep.mediaType === "grid-resins" ? "min-h-0 px-4 py-6 sm:min-h-[380px] sm:p-6" : "min-h-[380px] p-6"
+              }`}
+            >
               <div className="absolute w-64 h-64 rounded-full bg-sky-500/15 blur-[80px] hidden pointer-events-none" />
 
               <div className="w-full relative z-10">
