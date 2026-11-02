@@ -45,24 +45,24 @@ export default async function BlogPage() {
           </p>
         </section>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-20 sm:pb-28 space-y-20 sm:space-y-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20 sm:pb-28 space-y-20 sm:space-y-28">
           {/* Articles: newest first, stacking as you scroll */}
           {posts.length === 0 ? (
             <p className="text-[#E8DCC8] text-center">New articles are coming soon.</p>
           ) : (
             <section aria-label="Articles" data-no-reveal>
-              <BlogStack
-                posts={posts.map((p) => ({
-                  id: p.id,
-                  slug: p.slug,
-                  title: p.title,
-                  excerpt: p.excerpt,
-                  imagePath: p.imagePath,
-                  date: formatPostDate(p.publishedAt),
-                  isoDate: p.publishedAt ? p.publishedAt.toISOString() : null,
-                  minutes: p.minutes,
-                }))}
-              />
+                <BlogStack
+                  posts={posts.map((p) => ({
+                    id: p.id,
+                    slug: p.slug,
+                    title: p.title,
+                    excerpt: p.excerpt,
+                    imagePath: p.imagePath,
+                    date: formatPostDate(p.publishedAt),
+                    isoDate: p.publishedAt ? p.publishedAt.toISOString() : null,
+                    minutes: p.minutes,
+                  }))}
+                />
             </section>
           )}
 

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Printer, 
@@ -50,7 +49,7 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
       { name: "Low-Odor Resin", tag: "Comfort", desc: "Designed for a more comfortable lab working environment" }
     ],
     mediaType: "grid-resins",
-    mediaLabel: "Taglus Resins — 3 Materials",
+    mediaLabel: "",
     mediaItems: [
       { 
         title: "Model Resin", 
@@ -398,61 +397,6 @@ export default function FeatureHighlights() {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
-
-      {/* Summary Matrix Table — UNCHANGED */}
-      <div className="mt-14 glass-box rounded-2xl p-6 sm:p-8 border border-white/[0.08] bg-[#182f4b]/60">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#E8DCC8]">
-              Workflow Lineage Summary
-            </h4>
-            <p className="text-xs text-[#E8DCC8] font-light mt-0.5">
-              Taglus Resins → 3D Printed Models → Taglus Sheets → Thermoforming → LAC / 5X Trimmer → Finishing → Final Aligner
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-sky-300 hover:text-white transition"
-          >
-            <span>Request Full Workflow Specifications</span>
-            <ArrowRight size={13} />
-          </Link>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-[#E8DCC8] border-collapse">
-            <thead>
-              <tr className="border-b border-white/[0.1] text-sky-400 uppercase tracking-widest text-[10px]">
-                <th className="py-3 px-4 font-semibold">Stage</th>
-                <th className="py-3 px-4 font-semibold">Taglus Dedicated Product</th>
-                <th className="py-3 px-4 font-semibold hidden md:table-cell">Target Output</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/[0.05]">
-              <tr>
-                <td className="py-3 px-4 font-bold text-white">01. PRINT</td>
-                <td className="py-3 px-4">Taglus Resins (Model resin, Odorless model resin, Water-washable)</td>
-                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Dimensionally stable 3D dental model</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 font-bold text-white">02. FORM</td>
-                <td className="py-3 px-4">Taglus Sheets (Standard, Premium, PU Flex, Ultra, Hard & Soft)</td>
-                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Thermoformed clear aligner shell</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 font-bold text-white">03. TRIM</td>
-                <td className="py-3 px-4">LAC (Laser Aligner Cutter) & 5X Trimming Machine</td>
-                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Clean, consistent scalloped gingival margin</td>
-              </tr>
-              <tr>
-                <td className="py-3 px-4 font-bold text-white">04. FINISH</td>
-                <td className="py-3 px-4">Finishing Solutions & Orthodontic Accessories</td>
-                <td className="py-3 px-4 text-[#E8DCC8] hidden md:table-cell">Polished patient-ready clear aligner appliance</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
 
     </section>

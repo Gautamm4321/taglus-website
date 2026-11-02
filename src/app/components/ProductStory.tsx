@@ -72,8 +72,7 @@ export default function ProductStory() {
         <div className="sticky top-0 h-[100svh] overflow-hidden pt-20">
           {/* Heading, inside the same frame */}
           <div className="relative z-10 mx-auto max-w-4xl px-6 pt-4 sm:pt-6 text-center">
-            <p className="text-[11px] sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold">The Taglus Story</p>
-            <h2 className="mt-1.5 sm:mt-2 text-2xl sm:text-4xl font-black uppercase text-[#E8DCC8]">
+            <h2 className="text-2xl sm:text-4xl font-black uppercase text-[#E8DCC8]">
               From treatment{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">to every smile</span>
             </h2>
