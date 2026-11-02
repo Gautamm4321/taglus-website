@@ -5,7 +5,7 @@ export default function AboutHero() {
   return (
     <section className="relative w-full min-h-[100svh] flex flex-col justify-center pt-24 pb-10 sm:pt-28 lg:pt-20 lg:pb-0 lg:min-h-screen px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto select-none">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[70vw] xl:w-[800px] h-[450px] bg-sky-500/10 blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-[70vw] xl:w-[800px] h-[450px] bg-sky-500/10 blur-[150px] hidden pointer-events-none -z-10" />
 
       {/* ================= TOP SECTION: LEFT-ALIGNED ================= */}
       <div className="max-w-4xl text-left space-y-5 ">

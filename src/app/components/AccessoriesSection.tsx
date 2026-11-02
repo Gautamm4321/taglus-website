@@ -88,7 +88,7 @@ export default function AccessoriesSection() {
         {ACCESSORIES.map((item) => (
           <div
             key={item.title}
-            className="glass-box rounded-[2rem] p-3 sm:p-4 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300"
+            className="glass-box rounded-[2rem] p-3 sm:p-4 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col h-full hover:border-sky-400/40 transition-all duration-300"
           >
             <div className="relative w-full h-[260px] xl:h-[220px] 2xl:h-[250px] rounded-[1.5rem] overflow-hidden shrink-0">
               <div className={`absolute ${item.small ? "inset-10" : item.cropped ? "inset-6" : "inset-4"}`}>

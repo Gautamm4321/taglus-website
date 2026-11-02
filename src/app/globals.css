@@ -17,7 +17,7 @@
 }
 
 :root {
-  --bg-darkest: #020612;
+  --bg-darkest: #182f4b;
   --bg-glow: #0a1628;
   --bg-glow-subtle: #0c1e33;
   --text-cream: #E8DCC8;
@@ -70,16 +70,16 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #020612;
-  background-image: 
-    radial-gradient(circle at 50% 15%, #0c1e33 0%, #0a1628 35%, #050b1a 65%, #020612 100%);
+  /* One flat brand colour behind the whole site (no gradients) */
+  background-color: #182f4b;
+  background-image: none;
   color: var(--text-cream);
   overflow-x: hidden;
 }
 
 /* Luxury Dark Frosted Glass */
 .glass-box {
-  background: rgba(10, 22, 40, 0.45);
+  background: #182f4b;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(232, 220, 200, 0.12);
@@ -88,7 +88,7 @@ body {
 }
 
 .glass-nav {
-  background: rgba(2, 6, 18, 0.65);
+  background: rgba(24, 47, 75, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(232, 220, 200, 0.15);

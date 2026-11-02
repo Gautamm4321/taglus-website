@@ -30,7 +30,7 @@ export default async function BlogPage() {
   const posts = await loadPosts();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8]">
+    <div className="min-h-screen flex flex-col bg-[#182f4b] text-[#E8DCC8]">
       <Header />
       <main id="main-content" className="flex-1 w-full">
         {/* Intro: heading in the middle of the page */}
@@ -67,7 +67,7 @@ export default async function BlogPage() {
           )}
 
           {/* CTA */}
-          <section className="rounded-3xl border border-sky-400/20 bg-gradient-to-br from-sky-500/10 via-[#0b1329] to-[#0b1329] p-8 sm:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <section className="rounded-3xl border border-sky-400/20 bg-[#182f4b] p-8 sm:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="space-y-2 max-w-xl">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">Join the Taglus Network</p>
               <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">Never miss an insight</h2>

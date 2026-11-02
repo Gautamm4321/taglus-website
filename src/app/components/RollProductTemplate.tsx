@@ -13,7 +13,7 @@ export default function RollProductTemplate({ content }: { content: RollContent 
     const external = /^https?:\/\//i.test(c.primaryCtaUrl) || c.primaryCtaUrl.toLowerCase().endsWith(".pdf");
 
     return (
-        <div className="w-full bg-[#020612] text-[#E8DCC8] overflow-hidden selection:bg-sky-400 selection:text-slate-950 font-sans">
+        <div className="w-full bg-[#182f4b] text-[#E8DCC8] overflow-hidden selection:bg-sky-400 selection:text-slate-950 font-sans">
 
             {/* ========================================================
           1. HERO FRAME (About Page Typography + Natural Imagery)
@@ -123,7 +123,7 @@ export default function RollProductTemplate({ content }: { content: RollContent 
                         return (
                             <div
                                 key={idx}
-                                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] rounded-[2.5rem] p-6 sm:p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
+                                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] rounded-[2.5rem] p-6 sm:p-7 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
                                     <Icon size={24} />

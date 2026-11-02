@@ -116,7 +116,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="relative w-full py-24 sm:py-32 px-4 sm:px-8 lg:px-12 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[70vw] max-w-[900px] h-[420px] bg-sky-500/10 blur-[160px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[70vw] max-w-[900px] h-[420px] bg-sky-500/10 blur-[160px] hidden pointer-events-none -z-10" />
 
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
@@ -142,7 +142,7 @@ export default function Testimonials() {
         onTouchStart={() => setPaused(true)}
       >
         <div className="relative rounded-[2rem] p-[1px] bg-gradient-to-br from-sky-400/40 via-[#E8DCC8]/15 to-indigo-400/30 shadow-2xl shadow-black/40">
-          <div className="relative rounded-[2rem] bg-[#030919]/95 backdrop-blur-2xl overflow-hidden">
+          <div className="relative rounded-[2rem] bg-[#182f4b]/95 backdrop-blur-2xl overflow-hidden">
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
                 key={index}
@@ -154,10 +154,10 @@ export default function Testimonials() {
                 className="grid grid-cols-1 md:grid-cols-12 md:min-h-[460px]"
               >
                 {/* Portrait: cut-out of the person on a glowing stage, with their country's flag */}
-                <div className="relative md:col-span-5 h-[340px] sm:h-[400px] md:h-auto overflow-hidden border-b md:border-b-0 md:border-r border-[#E8DCC8]/15 bg-[radial-gradient(ellipse_at_50%_100%,#123a66_0%,#071530_45%,#030919_80%)]">
+                <div className="relative md:col-span-5 h-[340px] sm:h-[400px] md:h-auto overflow-hidden border-b md:border-b-0 md:border-r border-[#E8DCC8]/15 bg-[#182f4b]">
                   {/* soft grid + halo behind the person */}
                   <div aria-hidden className="absolute inset-0 opacity-[0.14] [background-image:linear-gradient(rgba(232,220,200,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(232,220,200,.35)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-                  <div aria-hidden className="absolute left-1/2 bottom-[-18%] -translate-x-1/2 w-[115%] aspect-square rounded-full bg-gradient-to-t from-sky-500/35 via-sky-400/10 to-transparent blur-2xl" />
+                  <div aria-hidden className="absolute left-1/2 bottom-[-18%] -translate-x-1/2 w-[115%] aspect-square rounded-full hidden" />
                   {/* big faded flag watermark */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={`/flags/${t.flag}.svg`} alt="" aria-hidden className="absolute -right-10 top-8 w-48 sm:w-56 rotate-[-8deg] rounded-xl opacity-[0.18] blur-[1px]" />
@@ -175,7 +175,7 @@ export default function Testimonials() {
                       className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
                     />
                   </motion.div>
-                  <span className="absolute left-5 top-5 md:left-6 md:top-6 inline-flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-[#030919]/85 border border-[#E8DCC8]/20 backdrop-blur-md text-xs font-semibold tracking-wide text-[#E8DCC8] shadow-lg">
+                  <span className="absolute left-5 top-5 md:left-6 md:top-6 inline-flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-[#182f4b]/85 border border-[#E8DCC8]/20 backdrop-blur-md text-xs font-semibold tracking-wide text-[#E8DCC8] shadow-lg">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={`/flags/${t.flag}.svg`} alt="" className="h-4 w-6 rounded-[3px] object-cover ring-1 ring-white/20" />
                     {t.country}
@@ -232,11 +232,11 @@ export default function Testimonials() {
                 aria-current={i === index}
                 className={`relative shrink-0 rounded-full overflow-hidden transition-all duration-300 ${
                   i === index
-                    ? "w-12 h-12 sm:w-14 sm:h-14 ring-2 ring-sky-400 ring-offset-2 ring-offset-[#020612]"
+                    ? "w-12 h-12 sm:w-14 sm:h-14 ring-2 ring-sky-400 ring-offset-2 ring-offset-[#182f4b]"
                     : "w-9 h-9 sm:w-11 sm:h-11 opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
                 }`}
               >
-                <span aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#1b3a66] to-[#071530]" />
+                <span aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#182f4b] to-[#182f4b]" />
                 <Image src={p.photo} alt="" fill sizes="56px" className="object-cover object-top scale-110 translate-y-[6%]" />
               </button>
             ))}

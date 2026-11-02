@@ -61,12 +61,12 @@ function StackCard({
       <motion.div style={{ scale, rotateX, transformOrigin: "50% 0%" }} className="relative">
         <Link
           href={`/blog/${post.slug}`}
-          className="group relative flex flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_58%] overflow-hidden rounded-[1.75rem] border border-[#E8DCC8]/15 bg-gradient-to-br from-[#0d1d3f] via-[#0a1630] to-[#050b1d] shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.8)]"
+          className="group relative flex flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_58%] overflow-hidden rounded-[1.75rem] border border-[#E8DCC8]/15 bg-gradient-to-br from-[#182f4b] via-[#182f4b] to-[#182f4b] shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.8)]"
         >
           {/* Cover image */}
           <div className="shrink-0 lg:order-2 lg:flex lg:items-center lg:py-14 lg:pr-6">
             {/* 16:9 frame (same shape as the blog covers): the whole image is shown, nothing cut */}
-            <div className="relative aspect-video w-full overflow-hidden lg:rounded-2xl bg-[#050B17]">
+            <div className="relative aspect-video w-full overflow-hidden lg:rounded-2xl bg-[#182f4b]">
             {post.imagePath && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -112,7 +112,7 @@ function StackCard({
           </div>
 
           {/* darkens as newer cards cover it */}
-          <motion.div aria-hidden style={{ opacity: dim }} className="pointer-events-none absolute inset-0 bg-[#020612]" />
+          <motion.div aria-hidden style={{ opacity: dim }} className="pointer-events-none absolute inset-0 bg-[#182f4b]" />
         </Link>
       </motion.div>
     </div>

@@ -10,7 +10,7 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
     const [left, right] = c.formulations;
 
     return (
-        <div className="w-full bg-[#020612] text-[#E8DCC8] overflow-hidden selection:bg-sky-400 selection:text-slate-950 font-sans">
+        <div className="w-full bg-[#182f4b] text-[#E8DCC8] overflow-hidden selection:bg-sky-400 selection:text-slate-950 font-sans">
 
             {/* ========================================================
           1. HERO FRAME (Clean Left Text + Full Natural Image on Right)
@@ -84,7 +84,7 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
                         {c.points.map((item, idx) => (
                             <div
                                 key={idx}
-                                className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(20%-0.8rem)] rounded-[2rem] p-5 sm:p-6 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
+                                className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(20%-0.8rem)] rounded-[2rem] p-5 sm:p-6 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300"
                             >
                                 <div className="w-10 h-10 rounded-full bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-4 shrink-0">
                                     <CheckCircle2 size={20} />
@@ -155,8 +155,8 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
                 {/* Marquee Train Track */}
                 <div className="relative w-full overflow-hidden">
                     {/* Edge Gradient Fades */}
-                    <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-[#020612] to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-[#020612] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-[#182f4b] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-[#182f4b] to-transparent z-10 pointer-events-none" />
 
                     <div className="animate-marquee-slow flex gap-6">
                         {marqueeItems.map((item, idx) => (
@@ -174,7 +174,7 @@ export default function ResinProductTemplate({ content }: { content: ResinConten
                                 />
 
                                 {/* Hover Content Overlay */}
-                                <div className="absolute inset-0 bg-[#020612]/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-6 space-y-3">
+                                <div className="absolute inset-0 bg-[#182f4b]/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-6 space-y-3">
                                     <span className="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold">
                                         Clinical Spec
                                     </span>

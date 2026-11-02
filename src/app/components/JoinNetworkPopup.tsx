@@ -120,10 +120,10 @@ export default function JoinNetworkPopup() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.98 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full max-w-[900px] max-h-[92vh] overflow-y-auto bg-[#030919] border border-[#E8DCC8]/15 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.85)]"
+            className="relative w-full max-w-[900px] max-h-[92vh] overflow-y-auto bg-[#182f4b] border border-[#E8DCC8]/15 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.85)]"
           >
             {/* Taglus factory photo (landscape) across the top */}
-            <div className="relative aspect-[16/7] w-full overflow-hidden bg-[#020612]">
+            <div className="relative aspect-[16/7] w-full overflow-hidden bg-[#182f4b]">
               <Image
                 src="/factory.jpg"
                 alt="Taglus manufacturing facility"
@@ -131,7 +131,7 @@ export default function JoinNetworkPopup() {
                 sizes="(min-width: 900px) 900px, 100vw"
                 className="object-cover"
               />
-              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#030919]/70 via-transparent to-transparent" />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#182f4b]/70 via-transparent to-transparent" />
             </div>
 
             {/* Text + form */}
@@ -140,7 +140,7 @@ export default function JoinNetworkPopup() {
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#030919]/70 text-[#E8DCC8] backdrop-blur transition-colors hover:text-sky-300"
+                className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#182f4b]/70 text-[#E8DCC8] backdrop-blur transition-colors hover:text-sky-300"
               >
                 <X size={20} />
               </button>

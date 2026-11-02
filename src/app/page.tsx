@@ -9,7 +9,7 @@ import ProductColumns from "./components/ProductColumns";
 import Footer from "./components/Footer";
 import HeroCubeLazy from "./components/HeroCubeLazy";
 import CounterNumber from "./components/CounterNumber";
-import HomeStory from "./components/HomeStory";
+import ProductStory from "./components/ProductStory";
 
 export const metadata: Metadata = {
   title: { absolute: "Taglus | Aligner Sheets, 3D Printing Resins & Thermoforming Machines" },
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-clip">
+    <div className="min-h-screen flex flex-col bg-[#182f4b] text-[#E8DCC8] selection:bg-sky-500/30 selection:text-white relative overflow-x-clip">
       
       {/* Background Radial Glow */}
       <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(1200px,100vw)] h-[750px] pointer-events-none -z-10">
-        <div data-parallax="0.25" className="w-full h-full bg-gradient-to-b from-[#0c1e33]/50 via-[#0a1628]/25 to-transparent blur-[120px]" />
+        <div data-parallax="0.25" className="w-full h-full hidden" />
       </div>
 
       {/* 1. Header */}
@@ -104,9 +104,9 @@ export default function Home() {
             {/* Stage: glow + rings sized to the cube, cube on top */}
             <div className="relative z-10 w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[580px] xl:max-w-[640px] aspect-square">
               {/* soft colour glows behind the cube */}
-              <div className="absolute inset-[18%] rounded-full bg-blue-600/30 blur-[90px] pointer-events-none" />
-              <div className="absolute inset-[30%] translate-x-[18%] -translate-y-[10%] rounded-full bg-sky-400/20 blur-[70px] pointer-events-none" />
-              <div className="absolute inset-[32%] -translate-x-[16%] translate-y-[12%] rounded-full bg-indigo-500/25 blur-[70px] pointer-events-none" />
+              <div className="absolute inset-[18%] rounded-full bg-blue-600/30 blur-[90px] hidden pointer-events-none" />
+              <div className="absolute inset-[30%] translate-x-[18%] -translate-y-[10%] rounded-full bg-sky-400/20 blur-[70px] hidden pointer-events-none" />
+              <div className="absolute inset-[32%] -translate-x-[16%] translate-y-[12%] rounded-full bg-indigo-500/25 blur-[70px] hidden pointer-events-none" />
               {/* orbit rings hugging the cube */}
               <div className="absolute inset-[9%] rounded-full border border-sky-400/20 pointer-events-none animate-[spin_50s_linear_infinite]">
                 <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-sky-300 shadow-[0_0_12px_4px_rgba(56,189,248,0.7)]" />
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
 
             {/* Floating Glass Spec Pill (Bottom) */}
-            <div className="absolute bottom-2 inset-x-6 sm:inset-x-12 z-20 flex items-center justify-between px-5 py-3 rounded-2xl bg-[#030919]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
+            <div className="absolute bottom-2 inset-x-6 sm:inset-x-12 z-20 flex items-center justify-between px-5 py-3 rounded-2xl bg-[#182f4b]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
               <div>
                 <p className="text-[10px] uppercase tracking-widest text-[#E8DCC8] font-medium">Aligner &amp; Retainer Sheets</p>
                 <p className="text-xs sm:text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-300">
@@ -172,8 +172,8 @@ export default function Home() {
 
       </section>
 
-      {/* Story: pinned, 4 chapters (Print → Form → Trim → Finish) */}
-      <HomeStory />
+      {/* Story: pinned, 4 chapters (Align → Retain → Protect → Capture) */}
+      <ProductStory />
 
       {/* Other sections */}
       <FeatureHighlights />

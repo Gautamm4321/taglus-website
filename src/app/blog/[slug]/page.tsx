@@ -91,7 +91,7 @@ const md: Components = {
         alt={alt ?? ""}
         loading="lazy"
         decoding="async"
-        className="my-4 w-full rounded-2xl border border-[#E8DCC8]/10 bg-[#0b1329]"
+        className="my-4 w-full rounded-2xl border border-[#E8DCC8]/10 bg-[#182f4b]"
       />
     ) : null,
   hr: () => <hr className="my-6 border-[#E8DCC8]/10" />,
@@ -120,12 +120,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8]">
+    <div className="min-h-screen flex flex-col bg-[#182f4b] text-[#E8DCC8]">
       <Header />
       <main id="main-content" className="flex-1">
         <article className="relative">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }} />
-          <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
+          <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px] hidden" />
 
           {/* Header */}
           <header className="relative max-w-4xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 space-y-6">
@@ -170,7 +170,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="border-y border-[#E8DCC8]/10 py-5">
               <ShareButtons url={url} title={post.title} />
             </div>
-            <aside className="rounded-3xl border border-sky-400/20 bg-gradient-to-br from-sky-500/10 via-[#0b1329] to-[#0b1329] p-7 sm:p-10 space-y-5">
+            <aside className="rounded-3xl border border-sky-400/20 bg-[#182f4b] p-7 sm:p-10 space-y-5">
               <h2 className="text-2xl font-black uppercase tracking-tight text-[#E8DCC8]">Have questions?</h2>
               <p className="text-[#E8DCC8]/80 text-left">
                 Talk to the Taglus team about materials, thermoforming and the right setup for your lab.
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </article>
 
         {related.length > 0 && (
-          <section aria-labelledby="related-heading" className="border-t border-[#E8DCC8]/10 bg-[#050B17]/60">
+          <section aria-labelledby="related-heading" className="border-t border-[#E8DCC8]/10 bg-[#182f4b]/60">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 space-y-8">
               <div className="flex items-end justify-between gap-4">
                 <h2 id="related-heading" className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">

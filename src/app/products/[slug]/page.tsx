@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] relative overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#182f4b] text-[#E8DCC8] relative overflow-x-hidden">
       <Header />
       <main id="main-content" className="flex-1">
         <script

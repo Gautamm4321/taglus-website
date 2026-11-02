@@ -169,7 +169,7 @@ export default function ProductColumns() {
     <section id="products" className="relative w-full py-28 sm:py-36 px-4 sm:px-8 max-w-7xl mx-auto">
 
       {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(1000px,100vw)] h-[600px] bg-sky-500/10 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(1000px,100vw)] h-[600px] bg-sky-500/10 blur-[140px] hidden pointer-events-none -z-10" />
 
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -187,7 +187,7 @@ export default function ProductColumns() {
 
       {/* Category Tabs */}
       <div className="w-full flex items-center justify-center mb-16 overflow-x-auto pb-2 scrollbar-none">
-        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-[#030919]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl rounded-2xl">
+        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-[#182f4b]/90 border border-[#E8DCC8]/20 backdrop-blur-2xl rounded-2xl">
           {CATEGORIES.map((tab) => {
             const isSelected = selectedCategory === tab.key;
             return (
@@ -222,11 +222,11 @@ export default function ProductColumns() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.3 }}
-              className="group relative flex flex-col justify-between bg-[#030919]/90 border border-[#E8DCC8]/20 hover:border-sky-400/60 transition-all duration-300 shadow-xl overflow-hidden rounded-none"
+              className="group relative flex flex-col justify-between bg-[#182f4b]/90 border border-[#E8DCC8]/20 hover:border-sky-400/60 transition-all duration-300 shadow-xl overflow-hidden rounded-none"
             >
               <div>
                 {/* Top Frame: product shown whole, centered, with breathing room */}
-                <div className="relative w-full h-[280px] sm:h-[300px] md:h-[320px] border-b border-[#E8DCC8]/15 overflow-hidden bg-gradient-to-b from-white/[0.04] to-transparent">
+                <div className="relative w-full h-[280px] sm:h-[300px] md:h-[320px] border-b border-[#E8DCC8]/15 overflow-hidden bg-[#182f4b]">
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 h-2/3 rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
                   <div className="absolute inset-3 sm:inset-4" style={{ transform: `scale(${product.imageScale ?? 1})` }}>
                     <SafeProductImage
@@ -298,7 +298,7 @@ export default function ProductColumns() {
       </motion.div>
 
       {/* Catalog Download Banner */}
-      <div className="mt-20 glass-box p-8 sm:p-10 border border-white/[0.12] bg-[#020612]/75 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl">
+      <div className="mt-20 glass-box p-8 sm:p-10 border border-white/[0.12] bg-[#182f4b]/75 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl">
         <div className="flex items-center gap-5">
           <div className="w-12 h-12 bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-300 shrink-0 rounded-2xl">
             <Download size={22} />

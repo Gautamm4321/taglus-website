@@ -5,7 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 import { sendContactMessage, type ContactState } from "../actions/contactActions";
 
 const inputClass =
-  "w-full px-4 py-3 bg-black/40 border border-[#E8DCC8]/20 text-[#E8DCC8] placeholder:text-[#E8DCC8]/40 rounded-none focus:outline-none focus:border-sky-400/80 transition-colors text-sm aria-[invalid=true]:border-red-400/70";
+  "w-full px-4 py-3 bg-white/[0.06] border border-[#E8DCC8]/20 text-[#E8DCC8] placeholder:text-[#E8DCC8]/40 rounded-none focus:outline-none focus:border-sky-400/80 transition-colors text-sm aria-[invalid=true]:border-red-400/70";
 const labelClass = "block text-[11px] uppercase font-mono tracking-wider text-[#E8DCC8] mb-2";
 
 const FIELDS = [

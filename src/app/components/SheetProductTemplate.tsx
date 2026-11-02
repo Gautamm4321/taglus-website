@@ -35,7 +35,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
     <article className="w-full select-none pt-28 sm:pt-36 pb-28">
       {/* ================= 1. HERO SECTION ================= */}
       <section className="relative px-4 sm:px-8 max-w-7xl mx-auto mb-20 sm:mb-28">
-        <div className="absolute top-1/4 left-1/3 w-[850px] h-[500px] bg-sky-500/10 blur-[160px] pointer-events-none -z-10" />
+        <div className="absolute top-1/4 left-1/3 w-[850px] h-[500px] bg-sky-500/10 blur-[160px] hidden pointer-events-none -z-10" />
 
         <div className="animate-fade-up grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Text Body */}
@@ -101,7 +101,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
           {product.features.map((feat, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-[#030919]/80 border border-[#E8DCC8]/20 flex flex-col justify-between hover:border-sky-400/50 transition-all duration-300"
+              className="p-6 rounded-3xl bg-[#182f4b]/80 border border-[#E8DCC8]/20 flex flex-col justify-between hover:border-sky-400/50 transition-all duration-300"
             >
               <div>
                 <span className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 font-mono text-xs font-bold mb-4">
@@ -134,7 +134,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
             {audience.map((item, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-3xl bg-[#030919]/80 border border-[#E8DCC8]/20 hover:border-sky-400/50 transition-all duration-300"
+                className="p-6 rounded-3xl bg-[#182f4b]/80 border border-[#E8DCC8]/20 hover:border-sky-400/50 transition-all duration-300"
               >
                 <span className="w-10 h-10 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 mb-4">
                   <Users size={18} />
@@ -197,7 +197,7 @@ export default function SheetProductTemplate({ product }: { product: SheetProduc
       {/* ================= 3.5 SIZES COMPACT BOX ================= */}
       {product.sizes && (
         <section className="px-4 sm:px-8 max-w-2xl mx-auto mb-20 sm:mb-24">
-          <div className="rounded-2xl border border-[#E8DCC8]/20 bg-[#030919]/90 overflow-hidden shadow-2xl">
+          <div className="rounded-2xl border border-[#E8DCC8]/20 bg-[#182f4b]/90 overflow-hidden shadow-2xl">
             {/* Header Strip */}
             <div className="py-3.5 px-6 bg-white/[0.03] border-b border-[#E8DCC8]/15 flex items-center justify-between">
               <span className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] font-bold">

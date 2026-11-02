@@ -8,9 +8,9 @@ export default function BlogPostCard({ post, headingLevel = "h2" }: { post: Post
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col h-full rounded-2xl border border-[#E8DCC8]/10 bg-[#0b1329]/80 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:shadow-[0_20px_50px_-20px_rgba(56,189,248,0.35)]"
+      className="group flex flex-col h-full rounded-2xl border border-[#E8DCC8]/10 bg-[#182f4b]/80 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:shadow-[0_20px_50px_-20px_rgba(56,189,248,0.35)]"
     >
-      <div className="relative aspect-[16/9] overflow-hidden bg-[#050B17]">
+      <div className="relative aspect-[16/9] overflow-hidden bg-[#182f4b]">
         {post.imagePath ? (
           // CMS images can live on any host, so a plain lazy <img> is used
           // eslint-disable-next-line @next/next/no-img-element
@@ -22,7 +22,7 @@ export default function BlogPostCard({ post, headingLevel = "h2" }: { post: Post
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-sky-500/20 to-transparent" />
+          <div className="h-full w-full hidden" />
         )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">

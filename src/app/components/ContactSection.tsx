@@ -8,7 +8,7 @@ export default function ContactSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
         
         {/* ================= LEFT COLUMN: GLASSMORPHIC FORM ================= */}
-        <div className="relative lg:col-span-6 glass-box rounded-none p-8 sm:p-10 lg:p-12 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-3xl shadow-2xl flex flex-col justify-between">
+        <div className="relative lg:col-span-6 glass-box rounded-none p-8 sm:p-10 lg:p-12 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-3xl shadow-2xl flex flex-col justify-between">
           <div>
             <div className="mb-7">
               <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold block mb-2">

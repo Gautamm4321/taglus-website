@@ -185,22 +185,22 @@ export default function FeatureHighlights() {
     <section id="workflow" className="relative w-full py-24 sm:py-32 px-4 sm:px-8 max-w-7xl mx-auto">
       
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="text-center max-w-5xl mx-auto mb-16">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#E8DCC8]/20 text-sky-300 text-xs font-semibold tracking-widest uppercase mb-4 backdrop-blur-md">
           <Cpu size={14} className="text-sky-400" />
           <span>Integrated Production Architecture</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
-          The 4-Step Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-indigo-300">Orthodontic Workflow</span>
+        <h2 className="whitespace-nowrap text-[5.4vw] sm:text-4xl md:text-[2.75rem] lg:text-5xl font-black uppercase tracking-tight text-[#E8DCC8]">
+          Aligner <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-indigo-300">Production Workflow</span>
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed">
+        <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base text-[#E8DCC8] font-light leading-relaxed hyphens-none">
           From 3D model printing to final patient packaging. Taglus supplies every critical layer of material science, 3D resin chemistry, and automated fabrication machinery.
         </p>
       </div>
 
       {/* Progress Bar (Now 4 Steps) */}
       <div className="w-full mb-12 flex justify-center">
-        <div className="w-full max-w-3xl grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-between bg-[#030919]/90 border border-[#E8DCC8]/20 rounded-2xl p-2 backdrop-blur-2xl shadow-xl">
+        <div className="w-full max-w-3xl grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-between bg-[#182f4b]/90 border border-[#E8DCC8]/20 rounded-2xl p-2 backdrop-blur-2xl shadow-xl">
           {WORKFLOW_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isActive = idx === activeStepIndex;
@@ -232,7 +232,7 @@ export default function FeatureHighlights() {
       </div>
 
       {/* Stage Detail Card */}
-      <div className="glass-box rounded-[2.5rem] p-6 sm:p-10 md:p-12 border border-[#E8DCC8]/20 bg-[#030919]/70 backdrop-blur-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden">
+      <div className="glass-box rounded-[2.5rem] p-6 sm:p-10 md:p-12 border border-[#E8DCC8]/20 bg-[#182f4b]/70 backdrop-blur-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep.id}
@@ -299,8 +299,8 @@ export default function FeatureHighlights() {
                 itself, like a premium product tile instead of a framed
                 thumbnail with a background box behind it.
                 ============================================================ */}
-            <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[380px] bg-gradient-to-b from-white/[0.03] to-transparent rounded-3xl border border-white/[0.08] p-6 overflow-hidden">
-              <div className="absolute w-64 h-64 rounded-full bg-sky-500/15 blur-[80px] pointer-events-none" />
+            <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[380px] bg-[#182f4b] rounded-3xl border border-white/[0.08] p-6 overflow-hidden">
+              <div className="absolute w-64 h-64 rounded-full bg-sky-500/15 blur-[80px] hidden pointer-events-none" />
 
               <div className="w-full relative z-10">
                 <p className="text-xs font-mono uppercase tracking-widest text-[#E8DCC8] text-center mb-6">
@@ -396,7 +396,7 @@ export default function FeatureHighlights() {
       </div>
 
       {/* Summary Matrix Table — UNCHANGED */}
-      <div className="mt-14 glass-box rounded-2xl p-6 sm:p-8 border border-white/[0.08] bg-[#020612]/60">
+      <div className="mt-14 glass-box rounded-2xl p-6 sm:p-8 border border-white/[0.08] bg-[#182f4b]/60">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-[#E8DCC8]">

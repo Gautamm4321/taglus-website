@@ -133,8 +133,8 @@ export default function CertificationsSection() {
   return (
     <section className="relative w-full pt-32 sm:pt-40 pb-28 px-4 sm:px-8 max-w-7xl mx-auto">
       {/* Ambient glows */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[70vw] max-w-[900px] h-[420px] bg-sky-500/10 blur-[160px] pointer-events-none -z-10" />
-      <div className="absolute top-[60%] right-0 w-[40vw] max-w-[500px] h-[400px] bg-indigo-500/10 blur-[160px] pointer-events-none -z-10" />
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[70vw] max-w-[900px] h-[420px] bg-sky-500/10 blur-[160px] hidden pointer-events-none -z-10" />
+      <div className="absolute top-[60%] right-0 w-[40vw] max-w-[500px] h-[400px] bg-indigo-500/10 blur-[160px] hidden pointer-events-none -z-10" />
 
       {/* ================= HERO: text + certificate wall ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center animate-fade-up">
@@ -187,7 +187,7 @@ export default function CertificationsSection() {
           ISO Certification
         </h2>
 
-        <div className="group mt-10 grid grid-cols-1 lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#030919]/90 hover:border-sky-400/40 transition-colors">
+        <div className="group mt-10 grid grid-cols-1 lg:grid-cols-5 rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#182f4b]/90 hover:border-sky-400/40 transition-colors">
           <LogoPlaque
             src={ISO.logo}
             alt={ISO.name}
@@ -225,7 +225,7 @@ export default function CertificationsSection() {
           {MARKS.map((m) => (
             <div
               key={m.id}
-              className="group flex flex-col rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#030919]/90 hover:border-sky-400/50 hover:-translate-y-2 transition-all duration-300 shadow-xl"
+              className="group flex flex-col rounded-3xl overflow-hidden border border-[#E8DCC8]/20 bg-[#182f4b]/90 hover:border-sky-400/50 hover:-translate-y-2 transition-all duration-300 shadow-xl"
             >
               <LogoPlaque src={m.logo} alt={m.name} className="h-[170px] sm:h-[180px]" imgBox="absolute inset-x-[24%] inset-y-[26%]" />
               <div className="p-6 sm:p-7 flex flex-col flex-1">
@@ -243,7 +243,7 @@ export default function CertificationsSection() {
           ))}
 
           {/* Filler tile keeps the 3-column grid balanced on desktop */}
-          <div className="hidden lg:flex flex-col justify-center rounded-3xl border border-dashed border-[#E8DCC8]/25 bg-gradient-to-br from-sky-500/[0.06] to-indigo-500/[0.06] p-8">
+          <div className="hidden lg:flex flex-col justify-center rounded-3xl border border-dashed border-[#E8DCC8]/25 bg-[#182f4b] p-8">
             <Layers size={28} className="text-sky-400" />
             <h3 className="mt-4 text-xl font-black uppercase tracking-tight text-[#E8DCC8]">Need a specific document?</h3>
             <p className="mt-2 text-sm text-[#E8DCC8] font-light leading-relaxed text-left hyphens-none">
@@ -259,7 +259,7 @@ export default function CertificationsSection() {
       {/* ================= PILLARS ================= */}
       <div className="mt-24 sm:mt-28 grid grid-cols-1 md:grid-cols-3 gap-6">
         {PILLARS.map(({ icon: Icon, title, text }) => (
-          <div key={title} className="rounded-3xl border border-[#E8DCC8]/15 bg-[#030919]/70 p-7 sm:p-8 hover:border-sky-400/40 transition-colors">
+          <div key={title} className="rounded-3xl border border-[#E8DCC8]/15 bg-[#182f4b]/70 p-7 sm:p-8 hover:border-sky-400/40 transition-colors">
             <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400">
               <Icon size={22} />
             </div>
@@ -270,8 +270,8 @@ export default function CertificationsSection() {
       </div>
 
       {/* ================= CTA ================= */}
-      <div className="mt-20 relative overflow-hidden rounded-3xl border border-[#E8DCC8]/20 bg-gradient-to-br from-[#06122b] via-[#030919] to-[#0b0f2e] p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-sky-500/20 blur-[100px] pointer-events-none" />
+      <div className="mt-20 relative overflow-hidden rounded-3xl border border-[#E8DCC8]/20 bg-gradient-to-br from-[#182f4b] via-[#182f4b] to-[#182f4b] p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-sky-500/20 blur-[100px] hidden pointer-events-none" />
         <div className="relative flex items-start gap-5">
           <div className="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 shrink-0">
             <ShieldCheck size={26} />

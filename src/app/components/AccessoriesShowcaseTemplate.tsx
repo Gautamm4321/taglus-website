@@ -8,7 +8,7 @@ import { lines, type AccessoriesContent } from "../lib/templateContent";
 export default function AccessoriesShowcaseTemplate({ content }: { content: AccessoriesContent }) {
   const c = content;
   return (
-    <div className="w-full bg-[#020612] text-[#E8DCC8] font-sans selection:bg-sky-400 selection:text-slate-950">
+    <div className="w-full bg-[#182f4b] text-[#E8DCC8] font-sans selection:bg-sky-400 selection:text-slate-950">
       
       {/* ========================================================
           TOP HEADER FRAME (Strict 2-Lines)
@@ -55,7 +55,7 @@ export default function AccessoriesShowcaseTemplate({ content }: { content: Acce
                 
                 {/* 1:1 Image Panel */}
                 <div
-                  className={`relative w-full aspect-square bg-[#030919] overflow-hidden ${
+                  className={`relative w-full aspect-square bg-[#182f4b] overflow-hidden ${
                     isEven ? "lg:order-1" : "lg:order-2"
                   }`}
                 >
@@ -76,8 +76,8 @@ export default function AccessoriesShowcaseTemplate({ content }: { content: Acce
                 <div
                   className={`flex flex-col justify-center px-8 sm:px-14 lg:px-20 py-16 ${
                     isEven
-                      ? "lg:order-2 bg-[#020612]"
-                      : "lg:order-1 bg-[#020612] lg:border-r border-[#E8DCC8]/15"
+                      ? "lg:order-2 bg-[#182f4b]"
+                      : "lg:order-1 bg-[#182f4b] lg:border-r border-[#E8DCC8]/15"
                   }`}
                 >
                   <div className="max-w-xl space-y-6">

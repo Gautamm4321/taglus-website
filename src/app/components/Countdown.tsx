@@ -30,7 +30,7 @@ export default function Countdown({ to, className = "" }: { to: string; classNam
   return (
     <div className={`flex gap-2.5 sm:gap-3 ${className}`} role="timer" aria-label="Time until the event starts">
       {parts.map((p) => (
-        <div key={p.label} className="min-w-[64px] sm:min-w-[74px] rounded-2xl border border-[#E8DCC8]/15 bg-[#030919]/80 px-3 py-3 text-center">
+        <div key={p.label} className="min-w-[64px] sm:min-w-[74px] rounded-2xl border border-[#E8DCC8]/15 bg-[#182f4b]/80 px-3 py-3 text-center">
           <p className="text-2xl sm:text-3xl font-black tabular-nums text-[#E8DCC8]">
             {typeof p.value === "number" ? String(p.value).padStart(2, "0") : p.value}
           </p>

@@ -34,11 +34,11 @@ function EventCard({ event, past }: { event: Event; past?: boolean }) {
   return (
     <article
       id={event.slug}
-      className="group scroll-mt-28 flex flex-col rounded-2xl border border-[#E8DCC8]/15 bg-[#0b1329] overflow-hidden hover:border-sky-400/40 hover:-translate-y-1.5 transition-all duration-300"
+      className="group scroll-mt-28 flex flex-col rounded-2xl border border-[#E8DCC8]/15 bg-[#182f4b] overflow-hidden hover:border-sky-400/40 hover:-translate-y-1.5 transition-all duration-300"
     >
       {event.imagePath && (
         // Full image, never cropped: natural height, width fills the card
-        <div className="overflow-hidden bg-[#060d1f]">
+        <div className="overflow-hidden bg-[#182f4b]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={event.imagePath}
@@ -98,7 +98,7 @@ export default async function EventsPage() {
   const [next, ...laterUpcoming] = upcoming;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020612] text-[#E8DCC8] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#182f4b] text-[#E8DCC8] overflow-x-hidden">
       <Header />
       <main id="main-content" className="flex-1 w-full">
         {/* ================= HERO ================= */}
@@ -122,10 +122,10 @@ export default async function EventsPage() {
               <h2 id="next-event" className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">Next Stop</h2>
               <article
                 id={next.slug}
-                className="scroll-mt-28 grid overflow-hidden rounded-3xl border border-[#E8DCC8]/15 bg-[#0b1329] lg:grid-cols-2"
+                className="scroll-mt-28 grid overflow-hidden rounded-3xl border border-[#E8DCC8]/15 bg-[#182f4b] lg:grid-cols-2"
               >
                 {next.imagePath && (
-                  <div className="relative overflow-hidden bg-[#060d1f]">
+                  <div className="relative overflow-hidden bg-[#182f4b]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={next.imagePath} alt={`${next.title} poster`} decoding="async" className="block w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]" />
                   </div>

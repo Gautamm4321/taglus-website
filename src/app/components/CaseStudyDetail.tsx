@@ -9,7 +9,7 @@ export default function CaseStudyDetail() {
     <article className="w-full select-none">
       
       {/* ================= FULL BLEED LANDSCAPE HERO (EDGE-TO-EDGE) ================= */}
-      <div className="relative w-full h-[380px] sm:h-[480px] md:h-[540px] lg:h-[580px] overflow-hidden bg-[#020612]">
+      <div className="relative w-full h-[380px] sm:h-[480px] md:h-[540px] lg:h-[580px] overflow-hidden bg-[#182f4b]">
         <Image
           src="/case-studies1.png"
           alt="Elevating Orthodontic Excellence in South America"
@@ -22,7 +22,7 @@ export default function CaseStudyDetail() {
 
         {/* Ambient Gradient Overlays for readable transition */}
         {/* Neutral (not blue) shading: dark only where the text sits, so the photo keeps its natural colours */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020612] via-black/30 via-45% to-black/5" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#182f4b] via-black/30 via-45% to-black/5" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 via-50% to-transparent" />
 
         {/* Header Overlay Text */}
@@ -100,7 +100,7 @@ export default function CaseStudyDetail() {
               </ul>
 
               {/* Quote Block */}
-              <div className="glass-box p-6 rounded-none border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-md relative mt-4">
+              <div className="glass-box p-6 rounded-none border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-md relative mt-4">
                 <Quote size={28} className="text-sky-400/40 mb-2" />
                 <p className="text-sm sm:text-base italic text-[#E8DCC8] font-light leading-relaxed">
                   “Our customer base was facing challenges for sheets with optimal clarity, crack resistance, and thermoforming consistency. There was a clear need for premiere quality materials in our portfolio.”
@@ -173,9 +173,9 @@ export default function CaseStudyDetail() {
                 sizes="(max-width: 1024px) 100vw, 450px"
                 className="object-cover object-center transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020612]/90 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#182f4b]/90 via-transparent to-transparent pointer-events-none" />
               
-              <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#030919]/95 border border-[#E8DCC8]/20 backdrop-blur-xl">
+              <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#182f4b]/95 border border-[#E8DCC8]/20 backdrop-blur-xl">
                 <span className="text-xs sm:text-sm font-mono uppercase text-sky-400 font-semibold block mb-1.5 tracking-wider">
                   Validated Clinical Workflow
                 </span>
@@ -186,7 +186,7 @@ export default function CaseStudyDetail() {
             </div>
 
             {/* Key Metrics Quick Box */}
-            <div className="glass-box p-7 sm:p-8 border border-white/[0.1] bg-[#030919]/90 max-w-[450px] mx-auto space-y-6">
+            <div className="glass-box p-7 sm:p-8 border border-white/[0.1] bg-[#182f4b]/90 max-w-[450px] mx-auto space-y-6">
               <h3 className="text-sm font-mono uppercase tracking-widest text-sky-300 font-bold">
                 Key Partnership Highlights
               </h3>

@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen w-full bg-[#020612] text-[#E8DCC8] flex flex-col justify-between relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#182f4b] text-[#E8DCC8] flex flex-col justify-between relative overflow-hidden">
       {/* Background Ambience Glow */}
-      <div aria-hidden="true" className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(900px,100vw)] h-[500px] bg-sky-500/10 blur-[150px] pointer-events-none -z-10" />
+      <div aria-hidden="true" className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(900px,100vw)] h-[500px] bg-sky-500/10 blur-[150px] hidden pointer-events-none -z-10" />
 
       <Header />
 

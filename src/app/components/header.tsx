@@ -184,7 +184,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-50 w-full bg-[#020612]/80 backdrop-blur-2xl border-b border-[#E8DCC8]/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all"
+      className="fixed top-0 inset-x-0 z-50 w-full bg-[#182f4b]/80 backdrop-blur-2xl border-b border-[#E8DCC8]/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all"
       onMouseLeave={() => setActiveMenu(null)}
     >
       <nav aria-label="Main" className="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
@@ -237,7 +237,7 @@ export default function Header() {
             </button>
 
             {activeMenu === "resources" && (
-              <div className="absolute top-full left-0 mt-3 w-84 rounded-2xl bg-[#030919]/95 backdrop-blur-2xl border border-[#E8DCC8]/20 p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute top-full left-0 mt-3 w-84 rounded-2xl bg-[#182f4b]/95 backdrop-blur-2xl border border-[#E8DCC8]/20 p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="space-y-2.5">
                   {RESOURCES_LINKS.map((item) => (
                     <Link
@@ -276,7 +276,7 @@ export default function Header() {
             </button>
 
             {activeMenu === "company" && (
-              <div className="absolute top-full left-0 mt-3 w-80 rounded-2xl bg-[#030919]/95 backdrop-blur-2xl border border-[#E8DCC8]/20 p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute top-full left-0 mt-3 w-80 rounded-2xl bg-[#182f4b]/95 backdrop-blur-2xl border border-[#E8DCC8]/20 p-4 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="space-y-2.5">
                   {COMPANY_LINKS.map((item) => (
                     <Link
@@ -330,7 +330,7 @@ export default function Header() {
 
       {/* ================= MOBILE MENU ================= */}
       {mobileOpen && (
-        <div className="lg:hidden h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-[#E8DCC8]/10 bg-[#020612]">
+        <div className="lg:hidden h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-[#E8DCC8]/10 bg-[#182f4b]">
           <div className="px-6 pt-2 pb-10">
             <MobileGroup title="Products" open={mobileSection === "products"} onToggle={() => toggleSection("products")}>
               <div className="space-y-5 pt-1">
@@ -379,7 +379,7 @@ export default function Header() {
       {/* ================= PRODUCTS MEGA-MENU OVERLAY ================= */}
       {activeMenu === "products" && (
         <div
-          className="hidden lg:block max-w-7xl mx-auto mb-4 rounded-2xl bg-[#030919]/98 backdrop-blur-3xl border border-[#E8DCC8]/15 shadow-[0_30px_70px_rgba(0,0,0,0.9)] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
+          className="hidden lg:block max-w-7xl mx-auto mb-4 rounded-2xl bg-[#182f4b]/98 backdrop-blur-3xl border border-[#E8DCC8]/15 shadow-[0_30px_70px_rgba(0,0,0,0.9)] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
           onMouseEnter={() => setActiveMenu("products")}
         >
           {/* Product columns, driven by the CMS (see MENU_COLUMNS at the top of this file) */}

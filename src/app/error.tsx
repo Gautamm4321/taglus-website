@@ -10,7 +10,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
   }, [error]);
 
   return (
-    <main id="main-content" className="min-h-screen flex items-center justify-center px-4 py-24 bg-[#020612] text-[#E8DCC8]">
+    <main id="main-content" className="min-h-screen flex items-center justify-center px-4 py-24 bg-[#182f4b] text-[#E8DCC8]">
       <div className="max-w-xl text-center space-y-5">
         <p className="text-xs sm:text-sm uppercase tracking-widest text-sky-400 font-semibold">Something went wrong</p>
         <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight">We couldn&apos;t load this page</h1>

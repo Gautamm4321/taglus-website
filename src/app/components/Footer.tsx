@@ -102,7 +102,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full border-t border-[#E8DCC8]/10 bg-gradient-to-b from-transparent via-[#04102a]/60 to-[#020612]">
+    <footer className="relative w-full border-t border-[#E8DCC8]/10 bg-gradient-to-b from-transparent via-[#182f4b]/60 to-[#182f4b]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10 sm:pt-12 pb-6">
         {/* ===== Top: links (left) + brand, socials & buttons (right) ===== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">

@@ -17,7 +17,7 @@ const PAGES = Array.from({ length: PAGE_COUNT }, (_, i) => `/catalogue/page-${St
 export default function CataloguePage() {
   return (
     // One screen, no scrolling: the header is fixed (80px), the book fills the rest
-    <div data-lenis-prevent className="h-[100dvh] overflow-hidden overscroll-none flex flex-col bg-[#020612] text-[#E8DCC8]">
+    <div data-lenis-prevent className="h-[100dvh] overflow-hidden overscroll-none flex flex-col bg-[#182f4b] text-[#E8DCC8]">
       <Header />
       <main id="main-content" className="flex min-h-0 flex-1 flex-col pt-20">
         <h1 className="sr-only">Taglus Product Catalogue</h1>

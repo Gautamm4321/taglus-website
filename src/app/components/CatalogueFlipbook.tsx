@@ -204,7 +204,7 @@ export default function CatalogueFlipbook({ pages }: { pages: string[] }) {
       <div ref={template} hidden aria-hidden>
         {/* Front cover: vertical Taglus factory photo */}
         <div className="book-page" data-density="hard">
-          <div className="relative h-full w-full overflow-hidden bg-[#020612]">
+          <div className="relative h-full w-full overflow-hidden bg-[#182f4b]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/factory-landscape-image.jpg" alt="Taglus factory" className="absolute inset-0 h-full w-full object-cover" />
           </div>
@@ -220,7 +220,7 @@ export default function CatalogueFlipbook({ pages }: { pages: string[] }) {
         ))}
         {/* Back cover: lets the last catalogue page turn over too, and closes the book */}
         <div className="book-page" data-density="hard">
-          <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0b1d3f] via-[#061229] to-[#020612]">
+          <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#182f4b] via-[#182f4b] to-[#182f4b]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-tuglas.png" alt="Taglus" className="w-[55%] h-auto" />
           </div>
@@ -237,7 +237,7 @@ function NavButton({ dir, onClick, disabled }: { dir: "prev" | "next"; onClick: 
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className="inline-flex items-center gap-2 rounded-full border border-[#E8DCC8]/25 bg-[#0b1329]/90 px-5 py-2.5 text-sm font-semibold text-[#E8DCC8] transition-colors hover:border-sky-400 disabled:opacity-30 disabled:pointer-events-none"
+      className="inline-flex items-center gap-2 rounded-full border border-[#E8DCC8]/25 bg-[#182f4b]/90 px-5 py-2.5 text-sm font-semibold text-[#E8DCC8] transition-colors hover:border-sky-400 disabled:opacity-30 disabled:pointer-events-none"
     >
       {prev && <ChevronLeft size={18} />}
       {prev ? "Previous" : "Next"}

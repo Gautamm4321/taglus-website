@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#020612",
+  themeColor: "#182f4b",
   colorScheme: "dark",
 };
 
@@ -80,7 +80,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang="en"
       className={`${fontHeading.variable} ${fontBody.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#020612] text-[#E8DCC8] overflow-x-hidden">
+      <body className="min-h-full flex flex-col bg-[#182f4b] text-[#E8DCC8] overflow-x-hidden">
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

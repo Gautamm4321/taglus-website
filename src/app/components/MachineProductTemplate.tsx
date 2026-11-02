@@ -18,7 +18,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
   const features = product.features || [];
 
   return (
-    <div className="w-full bg-[#020612] text-[#E8DCC8] font-sans selection:bg-sky-400 selection:text-slate-950">
+    <div className="w-full bg-[#182f4b] text-[#E8DCC8] font-sans selection:bg-sky-400 selection:text-slate-950">
       
       {/* ========================================================
           1. HERO FRAME (Equipment Intro + Image)
@@ -103,7 +103,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
+          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Flame size={24} />
             </div>
@@ -115,7 +115,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
             </p>
           </div>
 
-          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
+          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Gauge size={24} />
             </div>
@@ -127,7 +127,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
             </p>
           </div>
 
-          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
+          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Monitor size={24} />
             </div>
@@ -139,7 +139,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
             </p>
           </div>
 
-          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#030919]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
+          <div className="rounded-[2.5rem] p-7 border border-[#E8DCC8]/20 bg-[#182f4b]/90 backdrop-blur-2xl flex flex-col justify-start hover:border-sky-400/40 transition-all duration-300">
             <div className="w-12 h-12 rounded-2xl bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-5 shrink-0">
               <Volume2 size={24} />
             </div>
@@ -160,7 +160,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left Card: Operational Features */}
-          <div className="lg:col-span-6 rounded-3xl p-8 sm:p-10 border border-[#E8DCC8]/15 bg-[#030919]/60 backdrop-blur-xl flex flex-col justify-between">
+          <div className="lg:col-span-6 rounded-3xl p-8 sm:p-10 border border-[#E8DCC8]/15 bg-[#182f4b]/60 backdrop-blur-xl flex flex-col justify-between">
             <div className="space-y-6">
               <div>
                 <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
@@ -190,7 +190,7 @@ export default function MachineProductTemplate({ product }: { product: ProductVi
           </div>
 
           {/* Right Card: Machine Specifications */}
-          <div className="lg:col-span-6 rounded-3xl p-8 sm:p-10 border border-[#E8DCC8]/15 bg-[#030919]/60 backdrop-blur-xl flex flex-col justify-between">
+          <div className="lg:col-span-6 rounded-3xl p-8 sm:p-10 border border-[#E8DCC8]/15 bg-[#182f4b]/60 backdrop-blur-xl flex flex-col justify-between">
             <div className="space-y-6">
               <div>
                 <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-sky-400 font-semibold mb-2">
