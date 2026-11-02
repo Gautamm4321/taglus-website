@@ -119,7 +119,6 @@ export default async function EventsPage() {
           {/* ================= NEXT EVENT (featured, with live countdown) ================= */}
           {next ? (
             <section aria-labelledby="next-event" className="space-y-6">
-              <h2 id="next-event" className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#E8DCC8]">Next Stop</h2>
               <article
                 id={next.slug}
                 className="scroll-mt-28 grid overflow-hidden rounded-3xl border border-[#E8DCC8]/15 bg-[#182f4b] lg:grid-cols-2"
